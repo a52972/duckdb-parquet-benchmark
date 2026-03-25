@@ -1,116 +1,135 @@
-# DuckDB Parquet In-Situ Benchmark
+# Analyzing DuckDB's In-Situ Query Performance on Hierarchical and Flat Parquet Layouts
 
-Benchmark scripts, raw results, and analysis notebooks for the paper:
+[![Python - 3.12](https://img.shields.io/badge/Python-3.12-blue)](https://www.python.org/)
+[![DuckDB - 1.5.0](https://img.shields.io/badge/DuckDB-1.5.0-yellow)](https://duckdb.org/)
+[![Status - Academic Repository](https://img.shields.io/badge/Status-Academic%20Repository-lightgrey)](#)
+[![License - MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-> **"Analyzing DuckDB's In-Situ Query Performance on Hierarchical and Flat Parquet Layouts"**  
-> D.S. Eleuterio, P. Matos, P. Oliveira — *Journal of Systems and Software*, 2026
+This repository contains the full experimental suite, raw data, and analysis notebooks for the study:  
+**"Analyzing DuckDB's In-Situ Query Performance on Hierarchical and Flat Parquet Layouts"** (2026).
+
+The research investigates how different physical arrangements of Parquet files impact the in-situ performance of DuckDB v1.5.0. It evaluates 11 distinct layout models across two TPC-H scale factors (SF-1 and SF-10). Data engineers face a crucial trade-off: partitioning data into hierarchical directories to leverage partition pruning versus the performance degradation caused by the "small file problem".
+
+---
+
+## Overview
+Modern Lakehouse architectures often query Parquet files directly without prior ingestion. However, the performance of these queries is highly sensitive to how the data is laid out on disk. This project provides a reproducible framework to evaluate:
+* **File Granularity (RQ1):** The impact of file counts versus file sizes on query execution, specifically observing the "small-file problem".
+* **Partition Hierarchy (RQ2):** The performance trade-offs of deep Hive-partitioning structures, testing up to three directory levels.
+* **Key Ordering (RQ3):** How the order of keys in a hierarchy (e.g., Year/Month vs. Month/Year) affects metadata traversal and pruning latency.
+* **Scalability (RQ4):** How layout-induced bottlenecks shift or amplify as the dataset grows from SF-1 to SF-10.
+* **Resource Efficiency (RQ5):** The query planning time and peak memory overhead associated with high file fragmentation.
+
+---
+
+## Methodology
+The benchmark rigorously evaluates DuckDB's vectorized execution engine using a multi-dimensional set of independent variables (file layouts) and dependent variables (latency, memory, execution time).
+
+### Experimental Environment
+* **Hardware:** All tests are conducted on a single Virtual Machine (VM) provisioned with 4 vCPUs, 16 GB of RAM, and an NVMe SSD.
+* **Software:** DuckDB v1.5.0 running on Debian 13 (Linux kernel 6.x).
+
+### Execution Protocol
+* **Caching Profile:** Each query and model combination is subjected to 20 cold-cache runs. The OS page cache, dentries, and inodes are explicitly flushed before every run to guarantee pure cold-cache measurements.
+* **Measurement Metrics:** The benchmark captures wall-clock time, DuckDB-internal execution time, query planning time, and peak RSS memory. Performance is reported using the median of the 20 cold-cache observations.
+
+### Dataset and Scalability
+* **Base Schema:** Modifies the standard TPC-H benchmark.
+* **Scale Factors:** Evaluates models at SF-1 (~1 GB raw, 6 million rows) and SF-10 (~10 GB raw, 60 million rows) to analyze volume-dependent scalability constraints.
+* **Base File Structure:** All Parquet files use a fixed row group size of 1,048,576 rows and ZSTD compression to isolate layout effects from intra-file variations.
+
+### File Layout Models
+The experiment synthesizes 11 layout models segmented into three series:
+* **Series A (Flat Layouts):** Seven models testing file counts spanning from a single file to 7,500 files at SF-10.
+* **Series B (Hierarchical Layouts):** Evaluates partition depths ranging from flat, to shallow (/year/), to three-level deep structures (/year/month/day/).
+* **Series C (Inverted Hierarchy):** Tests specific key ordering configurations (e.g., /month/year/).
+
+### Workload
+* The suite consists of eight customized SQL queries designed to stress specific execution paths: full scans (Q1, Q6), selective filters (Q2a, Q2b, Q2c), multi-column predicates (Q5), joins (Q7), and metadata collection (Q4).
+
+---
+
+## Results Summary
+
+Our empirical results expose major performance inflection points when operating DuckDB natively on Parquet files:
+
+* **Optimal File Size:** Parquet files sized between 100 MB and 200 MB offer the best balance of fast parallel scan efficiency and minimal metadata management.
+* **The File-Count Cliff:** Performance drastically regresses beyond 150 files at SF-10. Full-scan latency drops by 3.5x. For 7,500 fragmented 1 MB files, metadata-only queries execute over 2,400x slower.
+* **Memory Overhead Bloat:** High file fragmentation places tremendous memory pressure on the engine. Peak memory scales super-linearly, rocketing from 86 MB on flat single-file layouts to 13.7 GB on the worst-case fragmented layout.
+* **The Hierarchy Depth Paradox:** A standard two-level Hive partition (/year/month/) yields a 3.4x speedup for selective queries compared to flat files. However, implementing a three-level depth (/year/month/day/) creates massive directory-traversal overhead, yielding a catastrophic 24x performance regression below the flat baseline.
+* **Partition Key Ordering Matters:** Filtering on a nested partition key triggers a scatter-gather penalty that is 8% slower than filtering directly on the top-level key.
+* **The Limits of Zonemaps:** DuckDB's row-group skipping (min/max zonemaps) is largely ineffective on unsorted data. For flat files, selective query performance scales with total data volume, not filter selectivity. This highlights exactly why physical directory pruning (like Hive partitioning) is an absolute necessity for achieving selectivity-proportional speedups.
+* **The Caching Illusion:** Relying on the OS page cache (warm cache) to mitigate the "small file problem" is ineffective for extreme fragmentation. The worst-case layout (7,500 files) showed zero performance improvement on warm runs, proving the bottleneck shifts entirely from disk I/O to CPU and kernel-level metadata parsing, which massive RAM caches cannot resolve.
+* **Scale-Dependent Degradation:** Extreme performance penalties caused by high file fragmentation are practically invisible at the SF-1 development scale. However, scaling the same fragmented structure to SF-10 results in performance scaling 244x worse than the expected data-volume factor, rendering development-scale benchmark sizing dangerously unreliable
+
+![Benchmark Results](figures-article/fig_summary_overview.png)
 
 ---
 
 ## Repository Structure
-To satisfy the script execution paths, the benchmark scripts and the duckdb binary must reside in the root directory.
 
 ```
 duckdb-parquet-benchmark/
-├── README.md                   ← This file
-├── requirements.txt            ← Python dependencies for notebooks
-├── duckdb                      ← DuckDB binary (to be downloaded)
-├── 00_check_env.sh             ← Validates environment and dependencies
-├── 01_generate_layouts.sh      ← TPC-H generation & builds all 11 file layouts
-├── 02_run_benchmark.py         ← Executes queries, writes CSV output
-├── queries/                    ← SQL definitions for all 8 query types
-│   ├── Q1.sql
-│   ├── Q2a.sql
-│   └── ...
-├── notebooks/                  ← Python Notebooks for data analysis
-│   ├── 00_data_quality.ipynb
+├── queries/                # SQL definitions (Q1–Q7)
+├── notebooks/              # Statistical analysis & Visualization
 │   ├── 01_rq1_file_granularity.ipynb
 │   ├── 02_rq2_rq3_hierarchy.ipynb
 │   └── 03_summary_statistics.ipynb
-├── results-article/*           ← CSV results of the article official benchmark
-└── figures-article/*           ← Plots produced by notebooks regarding article results
-├── data/                       ← (Auto-generated) Staging TPC-H Parquet files
-├── experiments/                ← (Auto-generated) 11 Parquet layouts (A1-A7, B1-B4, C1)
-├── profiles/                   ← (Auto-generated) JSON profile outputs from DuckDB
-├── results/                    ← (Auto-generated) Raw benchmark outputs (.csv)
-└── figures/                    ← (Auto-generated) Plots produced by notebooks
-
+├── results-article/        # Raw CSV data used in the paper
+├── figures-article/        # Generated plots and LaTeX tables
+├── 01_generate_layouts.sh  # Layout builder script
+└── 02_run_benchmark.py     # Main execution engine
 ```
 
 ---
 
-# Reproducing the Benchmark: Step-by-Step
+## Reproducibility Guarantee
+This repository is explicitly designed to allow independent researchers and data engineers to recreate the findings of the 2026 article with minimal friction. The provided shell and Python scripts automate the entire experimental pipeline to eliminate manual configuration drift and ensure scientific rigor.
 
-### Step 1: Clone and Install Dependencies
-Ensure you have Python 3.x installed. Clone this repository and install the required Python libraries for the analysis notebooks:
+* **Deterministic Data Generation:** The <code>01_generate_layouts.sh</code> script utilizes DuckDB's internal <code>dbgen</code> to create the exact TPC-H scale factors, then systematically redistributes the data into the 11 specific physical layouts. It strictly enforces the control variables defined in the paper, including consistent ZSTD compression and a fixed 1,048,576 row group size.
+* **Rigorous Cold-Cache Isolation:** To guarantee that latency measurements are not skewed by the OS page cache, <code>02_run_benchmark.py</code> hooks directly into the Linux kernel via sudo to drop system caches (<code>/proc/sys/vm/drop_caches</code>) prior to every single cold run.
+* **Automated Execution Protocol:** The runner enforces the exact protocol published in the methodology: 20 cold-cache runs followed by 3 warm-cache runs per configuration. It also features built-in resumption capabilities, tracking progress in <code>results/benchmark_results.csv</code> so you can safely pause and resume the lengthy SF-10 benchmarks.
+* **Transparent Profiling:** The execution script extracts end-to-end wall-clock latency, but also wraps the DuckDB process with <code>/usr/bin/time</code> to capture true Peak RSS memory. It simultaneously parses DuckDB's internal JSON execution trees to isolate query planning time from raw internal execution time.
+* **Statistical Verification:** Once the benchmark completes, the Jupyter notebooks in the <code>/notebooks/</code> directory leverage <code>scipy</code> and <code>pandas</code> to apply the Wilcoxon signed-rank tests to your localized results, allowing you to generate the exact median latency plots and statistical tables featured in the manuscript.
 
+---
+
+## Quick Start
+
+### 1. Prerequisites
+Ensure you have the DuckDB binary (v1.5.0) in the root folder and install the Python requirements:
 ```bash
-git clone [https://github.com/a52972/duckdb-parquet-benchmark.git](https://github.com/a52972/duckdb-parquet-benchmark.git)
-cd duckdb-parquet-benchmark
 pip install -r requirements.txt
-```
-
-### Step 2: Download the DuckDB Binary
-The benchmark scripts expect a standalone DuckDB executable in the root directory. Download DuckDB v1.5.0 (the version used in the paper) for Linux:
-
-```bash
-wget [https://github.com/duckdb/duckdb/releases/download/v1.1.2/duckdb_cli-linux-amd64.zip](https://github.com/duckdb/duckdb/releases/download/v1.1.2/duckdb_cli-linux-amd64.zip)
-unzip duckdb_cli-linux-amd64.zip
-chmod +x duckdb
-```
-
-(Note: adjust the URL to strictly match DuckDB v1.5.0 once released, or the specific version utilized in your environment).
-
----
-
-### Step 3: Verify the Environment
-Run the environment checker to ensure your system meets all prerequisites (DuckDB execution, TPC-H extension, Python, <code>/usr/bin/time</code>, <code>sudo</code> for cache dropping, and disk space):
-
-```bash
+chmod +x 00_check_env.sh 01_generate_layouts.sh
 ./00_check_env.sh
 ```
 
----
-
-### Step 4: Generate Data and Layouts (Series A, B, and C)
-This script generates the TPC-H data via DuckDB's internal dbgen extension and organizes it into the 11 specific layout models (Flat, Hierarchical, and Inverted Hierarchies).
-
-Run the script specifying the Scale Factor (1 for ~1GB or 10 for ~10GB):
-
+### 2. Data Generation
+Generate the TPC-H datasets and the 11 specific experimental layouts (A1-A7, B1-B4, C1):
 ```bash
-./01_generate_layouts.sh 1 # for SF-1
-./01_generate_layouts.sh 10 # for SF-10
+./01_generate_layouts.sh
 ```
 
-Note: Generating the SF-10 layouts requires at least 50GB of free disk space.
-
-### Step 5: Run the Benchmark Workload
-
-Execute the benchmark runner. This will perform 20 cold-cache runs and 3 warm-cache runs for every model-query combination. <code>sudo</code> privileges are required to clear the OS page cache (echo 3 > /proc/sys/vm/drop_caches) between cold runs. We recommend to run this with root user.
-
+### 3. Execution
+Run the full benchmark suite. Use <code>sudo</code> if you wish the script to clear the OS Page Cache between runs (recommended for "cold" results):
 ```bash
 sudo python3 02_run_benchmark.py --sf 10
+sudo python3 02_run_benchmark.py --sf 1
 ```
 
-Once finished, the raw results will be compiled into <code>results/benchmark_results.csv</code>.
+### 4. Analysis
+After running the full benchmark, run the notebooks to analyse your own results.
 
-### Step 6: Analyze Results and Generate Figures
-Start Jupyter Notebook and run the notebooks in sequence to reproduce all tables and figures presented in the paper:
-
-```bash
-jupyter notebook
-```
-
-- 00_data_quality.ipynb: Verifies benchmark completeness and schema.
-- 01_rq1_file_granularity.ipynb: Analyzes the small-file problem (RQ1, RQ4, RQ5) and outputs Table 2 and Table 5.
-- 02_rq2_rq3_hierarchy.ipynb: Analyzes partition depth and key ordering (RQ2, RQ3) and outputs Table 3 and Table 4.
-- 03_summary_statistics.ipynb: Exports complete LaTeX tables and generates high-resolution figures.
-
-## Experimental Notes
-- Intra-file constraints: All Parquet files are written with ZSTD compression and a fixed row group size of 1,048,576 rows to isolate the performance impact of physical file layouts.
-- Join evaluations: The orders table (~200 MB at SF-10) is stored as a single contiguous file and is read exclusively by Q7.
-- Model A2 limitations: Model A2 (8 × 950 MB files) exists only at SF-10. At SF-1, it would yield a single file (identical to Model A1) and is thus omitted.
-- Cache Isolation: Every cold-cache query executes in a completely fresh, isolated DuckDB sub-process.
+---
 
 ## Citation
-If you use this benchmark methodology or dataset in your research, please cite.
+If you use this benchmark or refer to the findings, please cite:
+
+```bib
+@article{eleuterio2026duckdb,
+  title   = {Analyzing DuckDB's In-Situ Query Performance on Hierarchical and Flat Parquet Layouts},
+  author  = {Eleuterio, D.S. and Matos, P. and Oliveira, P.},
+  journal = {Journal of Systems and Software},
+  year    = {2026},
+}
+```
