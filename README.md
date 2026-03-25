@@ -27,6 +27,8 @@ duckdb-parquet-benchmark/
 │   ├── 01_rq1_file_granularity.ipynb
 │   ├── 02_rq2_rq3_hierarchy.ipynb
 │   └── 03_summary_statistics.ipynb
+├── results-article/*           ← CSV results of the article official benchmark
+└── figures-article/*           ← Plots produced by notebooks regarding article results
 ├── data/                       ← (Auto-generated) Staging TPC-H Parquet files
 ├── experiments/                ← (Auto-generated) 11 Parquet layouts (A1-A7, B1-B4, C1)
 ├── profiles/                   ← (Auto-generated) JSON profile outputs from DuckDB
