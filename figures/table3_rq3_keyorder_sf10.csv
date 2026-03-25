@@ -1,0 +1,8 @@
+Model,Filter / Operation,Median (ms),Std (ms)
+C1,"C1 — nested key
+(year filter)",82.9,5.3
+C1,"C1 — top-level key
+(month filter)",76.8,3.4
+C1,C1 — both keys,70.9,1.7
+B3,"B3 — direct path
+(year + month)",69.7,3.8

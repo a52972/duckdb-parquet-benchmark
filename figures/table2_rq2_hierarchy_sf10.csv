@@ -1,0 +1,8 @@
+Model/Query,Strategy,Median (ms),Std (ms),Speedup vs B1
+B1 — Flat (control),Flat,235.6,18.9,1.0
+B2 — Shallow: /year=,/year=,88.4,2.8,2.66
+B3 — Deep: /year=/month=,/year=/month=,69.7,3.8,3.38
+B4 — 3-level: same-month query,"/year=/month=/day=
+(month query)",5663.5,189.5,0.04
+B4 — 3-level: single-day query,"/year=/month=/day=
+(day query)",5329.7,167.7,0.04
