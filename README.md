@@ -132,4 +132,14 @@ If you use this benchmark or refer to the findings, please cite:
   journal = {Journal of Systems and Software},
   year    = {2026},
 }
+
+@software{eleuterio2026duckdb_repository,
+  author = {Eleuterio, D.S. and Matos, P. and Oliveira, P.},
+  doi = {10.5281/zenodo.19232333},
+  month = {3},
+  title = {Analyzing DuckDB's In-Situ Query Performance on Hierarchical and Flat Parquet Layouts},
+  url = {https://github.com/a52972/duckdb-parquet-benchmark},
+  version = {1.0.0},
+  year = {2026}
+}
 ```
