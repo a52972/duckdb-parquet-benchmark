@@ -1,0 +1,102 @@
+[
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "E5b_SY",
+      "E5b_YS"
+    ],
+    "queries": [
+      "E5b_SY:Q3_Year",
+      "E5b_SY:Q3_Supp",
+      "E5b_SY:Q3_SuppYear",
+      "E5b_YS:Q3_Year",
+      "E5b_YS:Q3_Supp",
+      "E5b_YS:Q3_SuppYear"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 1,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "bm_d1_keycard",
+    "seed": 20261026,
+    "platform": "baremetal",
+    "order": "interleaved",
+    "pre_cold_cmd": null,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "bm_d1_keycard",
+      "--sf",
+      "10",
+      "--models",
+      "E5b_SY,E5b_YS",
+      "--queries",
+      "E5b_SY:Q3_Year,E5b_SY:Q3_Supp,E5b_SY:Q3_SuppYear,E5b_YS:Q3_Year,E5b_YS:Q3_Supp,E5b_YS:Q3_SuppYear",
+      "--cold",
+      "20",
+      "--warm",
+      "3",
+      "--strace-runs",
+      "1",
+      "--order",
+      "interleaved",
+      "--platform",
+      "baremetal"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-27T14:30:03.212489+00:00",
+    "combinations": [
+      [
+        10,
+        "E5b_SY",
+        "Q3_Supp"
+      ],
+      [
+        10,
+        "E5b_SY",
+        "Q0"
+      ],
+      [
+        10,
+        "E5b_YS",
+        "Q0"
+      ],
+      [
+        10,
+        "E5b_SY",
+        "Q3_SuppYear"
+      ],
+      [
+        10,
+        "E5b_YS",
+        "Q3_Year"
+      ],
+      [
+        10,
+        "E5b_YS",
+        "Q3_SuppYear"
+      ],
+      [
+        10,
+        "E5b_YS",
+        "Q3_Supp"
+      ],
+      [
+        10,
+        "E5b_SY",
+        "Q3_Year"
+      ]
+    ],
+    "layout_files": {
+      "sf10/E5b_SY": 1400,
+      "sf10/E5b_YS": 1400
+    }
+  }
+]

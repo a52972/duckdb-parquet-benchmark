@@ -1,145 +1,175 @@
 # Analyzing DuckDB's In-Situ Query Performance on Hierarchical and Flat Parquet Layouts
 
-[![Python - 3.12](https://img.shields.io/badge/Python-3.12-blue)](https://www.python.org/)
 [![DuckDB - 1.5.0](https://img.shields.io/badge/DuckDB-1.5.0-yellow)](https://duckdb.org/)
-[![Status - Academic Repository](https://img.shields.io/badge/Status-Academic%20Repository-lightgrey)](#)
+[![Python - 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue)](https://www.python.org/)
 [![License - MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-This repository contains the full experimental suite, raw data, and analysis notebooks for the study:  
-**"Analyzing DuckDB's In-Situ Query Performance on Hierarchical and Flat Parquet Layouts"** (2026).
+Code, raw measurements and analysis of the article *Analyzing DuckDB's In-Situ Query
+Performance on Hierarchical and Flat Parquet Layouts* (Eleuterio, Oliveira, Matos, 2026).
 
-The research investigates how different physical arrangements of Parquet files impact the in-situ performance of DuckDB v1.5.0. It evaluates 11 distinct layout models across two TPC-H scale factors (SF-1 and SF-10). Data engineers face a crucial trade-off: partitioning data into hierarchical directories to leverage partition pruning versus the performance degradation caused by the "small file problem".
+## The study
 
----
+DuckDB can query Parquet files where they lie. How the files are laid out (how many,
+how large, in which Hive folder tree, in which row order) then decides much of the
+cost of a query. The study measures that cost for DuckDB 1.5.0 on TPC-H `lineitem` at
+scale factors 1 and 10: eleven layouts (1 to 7,500 flat files; Hive trees by year,
+year/month, year/month/day and month/year), eight queries, 20 cold and 3 warm runs
+per combination, plus experiments that isolate hierarchy depth, key order, file
+size, writer settings, row order, threads and skewed data. Everything was measured on
+two machines with the same binary, data and byte-identical layouts: a bare-metal
+Linux PC (5 campaigns) and a VMware VM (2 campaigns). A comparison is claimed only if it
+holds in every campaign on both; results measured on one machine are marked below.
 
-## Overview
-Modern Lakehouse architectures often query Parquet files directly without prior ingestion. However, the performance of these queries is highly sensitive to how the data is laid out on disk. This project provides a reproducible framework to evaluate:
-* **File Granularity (RQ1):** The impact of file counts versus file sizes on query execution, specifically observing the "small-file problem".
-* **Partition Hierarchy (RQ2):** The performance trade-offs of deep Hive-partitioning structures, testing up to three directory levels.
-* **Key Ordering (RQ3):** How the order of keys in a hierarchy (e.g., Year/Month vs. Month/Year) affects metadata traversal and pruning latency.
-* **Scalability (RQ4):** How layout-induced bottlenecks shift or amplify as the dataset grows from SF-1 to SF-10.
-* **Resource Efficiency (RQ5):** The query planning time and peak memory overhead associated with high file fragmentation.
+Main results (SF-10, DuckDB engine latency, bare metal / VM):
 
----
+| | Bare metal | VM |
+|---|---|---|
+| Peak memory per extra file, `COUNT(*)` / full scan | 12.6 / 22.2 KiB | 12.3 / 21.4 KiB |
+| Latency per extra file, `COUNT(*)` / full scan | 0.11 / 0.18 ms | 0.14 / 0.23 ms |
+| One-month query, `/year/month/` Hive vs flat files | 8.6× faster | 8.7× faster |
+| Planning cost per Hive leaf folder (the whole tree is listed before pruning) | 0.18 ms | 0.12 ms |
+| Order of the partition keys, same predicate (point estimates) | ≤ 2 % | ≤ 5 % |
+| 200-value top-level partition key vs 7-value one | no significant difference | not measured |
+| Rows sorted by the filter column, one-month query, 1 / 75 files | 13× / 15× faster | 13× / 13× faster |
+| Best file size between 1 and 512 MB | none (full scans degrade below ~8 MB) | none (below ~32 MB) |
+| Unequal (Zipf) file sizes vs equal sizes, latency / peak memory | ≤ 7 % / up to 1.9× | not measured |
+| `/year/month/` gain for a month holding 20 % of skewed data | 4.8× (rare month 10.9×) | not measured |
 
-## Methodology
-The benchmark rigorously evaluates DuckDB's vectorized execution engine using a multi-dimensional set of independent variables (file layouts) and dependent variables (latency, memory, execution time).
+The cost grows linearly with the number of files: each file costs two `openat`
+and two `pread64` calls and a fixed amount of memory. Above 8–32 MB per file, the writer's codec and row-group
+size, and the row order, matter more than file size.
 
-### Experimental Environment
-* **Hardware:** All tests are conducted on a single Virtual Machine (VM) provisioned with 4 vCPUs, 16 GB of RAM, and an NVMe SSD.
-* **Software:** DuckDB v1.5.0 running on Debian 13 (Linux kernel 6.x).
+## Reproducing
 
-### Execution Protocol
-* **Caching Profile:** Each query and model combination is subjected to 20 cold-cache runs. The OS page cache, dentries, and inodes are explicitly flushed before every run to guarantee pure cold-cache measurements.
-* **Measurement Metrics:** The benchmark captures wall-clock time, DuckDB-internal execution time, query planning time, and peak RSS memory. Performance is reported using the median of the 20 cold-cache observations.
+### Tables and figures from the published measurements (any OS, Python ≥ 3.11, ~5 min)
 
-### Dataset and Scalability
-* **Base Schema:** Modifies the standard TPC-H benchmark.
-* **Scale Factors:** Evaluates models at SF-1 (~1 GB raw, 6 million rows) and SF-10 (~10 GB raw, 60 million rows) to analyze volume-dependent scalability constraints.
-* **Base File Structure:** All Parquet files use a fixed row group size of 1,048,576 rows and ZSTD compression to isolate layout effects from intra-file variations.
-
-### File Layout Models
-The experiment synthesizes 11 layout models segmented into three series:
-* **Series A (Flat Layouts):** Seven models testing file counts spanning from a single file to 7,500 files at SF-10.
-* **Series B (Hierarchical Layouts):** Evaluates partition depths ranging from flat, to shallow (/year/), to three-level deep structures (/year/month/day/).
-* **Series C (Inverted Hierarchy):** Tests specific key ordering configurations (e.g., /month/year/).
-
-### Workload
-* The suite consists of eight customized SQL queries designed to stress specific execution paths: full scans (Q1, Q6), selective filters (Q2a, Q2b, Q2c), multi-column predicates (Q5), joins (Q7), and metadata collection (Q4).
-
----
-
-## Results Summary
-
-Our empirical results expose major performance inflection points when operating DuckDB natively on Parquet files:
-
-* **Optimal File Size:** Parquet files sized between 100 MB and 200 MB offer the best balance of fast parallel scan efficiency and minimal metadata management.
-* **The File-Count Cliff:** Performance drastically regresses beyond 150 files at SF-10. Full-scan latency drops by 3.5x. For 7,500 fragmented 1 MB files, metadata-only queries execute over 2,400x slower.
-* **Memory Overhead Bloat:** High file fragmentation places tremendous memory pressure on the engine. Peak memory scales super-linearly, rocketing from 86 MB on flat single-file layouts to 13.7 GB on the worst-case fragmented layout.
-* **The Hierarchy Depth Paradox:** A standard two-level Hive partition (/year/month/) yields a 3.4x speedup for selective queries compared to flat files. However, implementing a three-level depth (/year/month/day/) creates massive directory-traversal overhead, yielding a catastrophic 24x performance regression below the flat baseline.
-* **Partition Key Ordering Matters:** Filtering on a nested partition key triggers a scatter-gather penalty that is 8% slower than filtering directly on the top-level key.
-* **The Limits of Zonemaps:** DuckDB's row-group skipping (min/max zonemaps) is largely ineffective on unsorted data. For flat files, selective query performance scales with total data volume, not filter selectivity. This highlights exactly why physical directory pruning (like Hive partitioning) is an absolute necessity for achieving selectivity-proportional speedups.
-* **The Caching Illusion:** Relying on the OS page cache (warm cache) to mitigate the "small file problem" is ineffective for extreme fragmentation. The worst-case layout (7,500 files) showed zero performance improvement on warm runs, proving the bottleneck shifts entirely from disk I/O to CPU and kernel-level metadata parsing, which massive RAM caches cannot resolve.
-* **Scale-Dependent Degradation:** Extreme performance penalties caused by high file fragmentation are practically invisible at the SF-1 development scale. However, scaling the same fragmented structure to SF-10 results in performance scaling 244x worse than the expected data-volume factor, rendering development-scale benchmark sizing dangerously unreliable
-
-![Benchmark Results](figures-article/fig_summary_overview.png)
-
----
-
-## Repository Structure
-
-```
-duckdb-parquet-benchmark/
-├── queries/                # SQL definitions (Q1–Q7)
-├── notebooks/              # Statistical analysis & Visualization
-│   ├── 01_rq1_file_granularity.ipynb
-│   ├── 02_rq2_rq3_hierarchy.ipynb
-│   └── 03_summary_statistics.ipynb
-├── results-article/        # Raw CSV data used in the paper
-├── figures-article/        # Generated plots and LaTeX tables
-├── 01_generate_layouts.sh  # Layout builder script
-└── 02_run_benchmark.py     # Main execution engine
-```
-
----
-
-## Reproducibility Guarantee
-This repository is explicitly designed to allow independent researchers and data engineers to recreate the findings of the 2026 article with minimal friction. The provided shell and Python scripts automate the entire experimental pipeline to eliminate manual configuration drift and ensure scientific rigor.
-
-* **Deterministic Data Generation:** The <code>01_generate_layouts.sh</code> script utilizes DuckDB's internal <code>dbgen</code> to create the exact TPC-H scale factors, then systematically redistributes the data into the 11 specific physical layouts. It strictly enforces the control variables defined in the paper, including consistent ZSTD compression and a fixed 1,048,576 row group size.
-* **Rigorous Cold-Cache Isolation:** To guarantee that latency measurements are not skewed by the OS page cache, <code>02_run_benchmark.py</code> hooks directly into the Linux kernel via sudo to drop system caches (<code>/proc/sys/vm/drop_caches</code>) prior to every single cold run.
-* **Automated Execution Protocol:** The runner enforces the exact protocol published in the methodology: 20 cold-cache runs followed by 3 warm-cache runs per configuration. It also features built-in resumption capabilities, tracking progress in <code>results/benchmark_results.csv</code> so you can safely pause and resume the lengthy SF-10 benchmarks.
-* **Transparent Profiling:** The execution script extracts end-to-end wall-clock latency, but also wraps the DuckDB process with <code>/usr/bin/time</code> to capture true Peak RSS memory. It simultaneously parses DuckDB's internal JSON execution trees to isolate query planning time from raw internal execution time.
-* **Statistical Verification:** Once the benchmark completes, the Jupyter notebooks in the <code>/notebooks/</code> directory leverage <code>scipy</code> and <code>pandas</code> to apply the Wilcoxon signed-rank tests to your localized results, allowing you to generate the exact median latency plots and statistical tables featured in the manuscript.
-
----
-
-## Quick Start
-
-### 1. Prerequisites
-Ensure you have the DuckDB binary (v1.5.0) in the root folder and install the Python requirements:
 ```bash
-pip install -r requirements.txt
-chmod +x 00_check_env.sh 01_generate_layouts.sh
-./00_check_env.sh
+bash reproduce.sh tables
 ```
 
-### 2. Data Generation
-Generate the TPC-H datasets and the 11 specific experimental layouts (A1-A7, B1-B4, C1):
+or, without bash: `python -m venv .venv`, `.venv/bin/pip install -r requirements.txt`,
+`.venv/bin/python analysis/run_all.py`. This rewrites `results/v1.1/derived/` and
+`figures/v1.1/` from the raw runs; the tables come out identical to the published ones.
+
+### The whole benchmark (Linux x86_64)
+
+Needs 16 GB RAM, about 40 GB of free disk, `sudo` once (cold runs drop the page cache
+through a small helper, `scripts/setup/setup_sudo.sh`) and internet access for the
+DuckDB binary and its `tpch` extension.
+
 ```bash
-./01_generate_layouts.sh
+git clone https://github.com/a52972/duckdb-parquet-benchmark.git
+cd duckdb-parquet-benchmark
+bash reproduce.sh setup   # packages, DuckDB 1.5.0 (SHA-256 checked), .venv, cache-drop helper
+bash reproduce.sh smoke   # ~10 min: SF-1 only, a few runs per combination (needs sudo and internet, like the full run)
+setsid nohup bash reproduce.sh all > reproduce.log 2>&1 < /dev/null &   # ~7 h; survives a closed SSH session
 ```
 
-### 3. Execution
-Run the full benchmark suite. Use <code>sudo</code> if you wish the script to clear the OS Page Cache between runs (recommended for "cold" results):
-```bash
-sudo python3 02_run_benchmark.py --sf 10
-sudo python3 02_run_benchmark.py --sf 1
+`all` runs these steps, which can also be run one at a time:
+
+| Step | What it does | Time on our bare-metal machine |
+|---|---|---|
+| `setup` | system packages, DuckDB CLI, Python environment, cache-drop helper | a few minutes |
+| `data` | TPC-H `lineitem` and `orders` at SF-1 and SF-10 (`scripts/setup/make_data.sh`) | a few minutes |
+| `layouts` | the eleven layouts at both scale factors (`01_generate_layouts.sh`), ~17 GB | ~16 min |
+| `core` | five core campaigns, 20 cold + 3 warm runs, interleaved order | ~3.6 h |
+| `experiments` | E4, E7, E8, E9, E6, D1, D2, E10 (each writes and later deletes its layouts) | ~2.5 h |
+| `analysis` | every table and figure for your runs, and the comparison with ours | ~5 min |
+
+New runs go to `results/local/` (not tracked by git), so the published data are never
+modified. `analysis` treats your machine as the bare-metal platform and uses the
+published VM runs as the second platform; its outputs are in `results/local/derived/`
+and `results/local/figures/`. `results/local/derived/compare_published.csv` lists every
+bare-metal result of your run next to ours, with the published confidence interval.
+Absolute times depend on the machine; the per-file and per-folder costs, the
+directions of the effects and their orders of magnitude are the quantities to compare.
+
+`make_data.sh` checks the generated data against `data/FINGERPRINTS.csv` (row counts
+and an order-independent hash of all rows of the published input files) and then
+against `data/SHA256SUMS`. On our bare-metal machine the regenerated files were identical
+to the published ones byte for byte; on another machine the bytes may differ while the
+rows are the same.
+
+The VM campaigns used the scripts in `scripts/vm/`. `scripts/vm/host_cache/` empties
+the file cache of a Windows host from inside a VMware guest; it is only needed to
+repeat the cache experiments on a VM.
+
+## Contents
+
+```
+reproduce.sh             one entry point for all steps above
+00_check_env.sh          environment check
+01_generate_layouts.sh   writes the layouts (one COPY per file; file and row counts are checked)
+02_run_benchmark.py      runs the benchmark (one DuckDB process per run)
+queries/                 the SQL of every query
+scripts/setup/           input data and fingerprints, cache-drop helper, environment capture
+scripts/baremetal/       campaign and experiment drivers (bare metal)
+scripts/vm/              campaign and experiment drivers (VM)
+scripts/tools/           layout inventory, cold-cache test, Polars runner
+analysis/                statistics, tables and figures (run_all.py runs everything)
+results/v1.1/            raw runs per platform, layout inventories, derived tables
+results/v1.0/            measurements of release 1.0.0
+figures/v1.1/            the figures of the article
+data/                    fingerprints and checksums of the input data (the data are generated)
 ```
 
-### 4. Analysis
-After running the full benchmark, run the notebooks to analyse your own results.
+### Run folders
 
----
+| Folder (`results/v1.1/…`) | Experiment |
+|---|---|
+| `baremetal/bm_core_a` … `bm_core_e`, `vm/core_v2`, `vm/core_v2_b` | core benchmark, SF-1 and SF-10 |
+| `baremetal/bm_e4`, `vm/e4_depth_count` | E4: hierarchy depth vs number of files vs number of folders |
+| `vm/e5_keyorder` | E5: key order with the same predicate |
+| `baremetal/bm_d1_keycard`, `baremetal/bm_d1_strace` | D1: high-cardinality top-level key, and its system calls |
+| `baremetal/bm_e6_size`, `vm/e6_size` | E6: file size from 512 MB to 1 MB |
+| `baremetal/bm_d2_writers` | D2: codec, row-group size and file size of real writers |
+| `baremetal/bm_e7`, `vm/e7_sorted` | E7: rows sorted by `l_shipdate` |
+| `baremetal/bm_e8`, `vm/e8_mechanisms` | E8: system calls per file; Polars as a second reader |
+| `baremetal/bm_e9_*`, `vm/e9_t*` | E9: threads (1, 2, 4) and memory limit (4, 8, 10 GB) |
+| `baremetal/bm_e10_skew` | E10: skewed file sizes and skewed data |
+| `baremetal/bm_cold_cache`, `vm/e9_cold_cache`, `vm/e9_true_cold_validation` | cold-read checks before the campaigns |
+| `vm/e2b`, `vm/e2b_a7sf10` | the layouts of release 1.0.0 re-measured with the current runner |
+| `inventories/` | every file of every layout: size, rows, row groups |
+| `derived/` | every table computed by `analysis/` |
+
+Each run folder holds `benchmark_results.csv` (one row per run), `run_config.json`
+(the exact invocation and the shuffled order) and `env.txt` (hardware, OS and software).
+Machine names and home directories were replaced by neutral labels.
+
+Columns of `benchmark_results.csv`: `RunType` is `COLD` (page cache dropped before the
+run) or `WARM`; `WallClock_ms` is the time of the whole DuckDB process; `Latency_ms` and
+`PlannerBinding_ms` come from DuckDB's detailed profile (`Latency_ms` is the engine
+latency used in the article; `COUNT(*)` on one file, which DuckDB answers without a
+profile, has none: the article leaves that case out, and the derived tables that fill it
+with the wall-clock time minus the `Q0` start-up baseline mark it `LatencySource = wall-minus-Q0`);
+`PeakRSS_KB`, `UserCPU_s`, `SysCPU_s` and `FSInputBlocks` (512-byte blocks read from disk;
+the MB read quoted in the article are `FSInputBlocks` × 512) come from GNU `time`;
+`RowsScanned`, `ScanRowsOut`, `FilesRead` and `BytesRead` from the profile (`BytesRead`
+is DuckDB's own counter, not the bytes read from disk); `LayoutFiles` is the real number of files of the layout.
+
+## Versions
+
+Version 1.0.0 of this repository (DOI [10.5281/zenodo.19232333](https://doi.org/10.5281/zenodo.19232333))
+accompanied an earlier version of the manuscript. Its layouts had been written with DuckDB's
+`COPY ... PARTITION_BY`, which by default keeps at most 100 files open and silently split
+partitions into many more files than intended (e.g. 850,600 instead of 7,500). Version
+1.1.0 writes every file with its own `COPY` and checks file and row counts; all
+results above come from 1.1.0. `results/v1.0/` keeps the 1.0.0 measurements, and
+`vm/e2b` re-measures those layouts with the current runner.
 
 ## Citation
-If you use this benchmark or refer to the findings, please cite:
 
 ```bib
-@article{eleuterio2026duckdb,
+@software{eleuterio2026duckdb_v11,
+  author  = {Eleuterio, Davi Silva and Oliveira, Pedro Filipe and Matos, Paulo},
   title   = {Analyzing DuckDB's In-Situ Query Performance on Hierarchical and Flat Parquet Layouts},
-  author  = {Eleuterio, D.S. and Matos, P. and Oliveira, P.},
-  journal = {Journal of Systems and Software},
-  year    = {2026},
-}
-
-@software{eleuterio2026duckdb_repository,
-  author = {Eleuterio, D.S. and Matos, P. and Oliveira, P.},
-  doi = {10.5281/zenodo.19232333},
-  month = {3},
-  title = {Analyzing DuckDB's In-Situ Query Performance on Hierarchical and Flat Parquet Layouts},
-  url = {https://github.com/a52972/duckdb-parquet-benchmark},
-  version = {1.0.0},
-  year = {2026}
+  version = {1.1.0},
+  doi     = {10.5281/zenodo.XXXXXXXX},
+  url     = {https://github.com/a52972/duckdb-parquet-benchmark},
+  year    = {2026}
 }
 ```
+
+## License
+
+MIT, see `LICENSE`.

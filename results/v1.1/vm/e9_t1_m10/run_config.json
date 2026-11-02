@@ -1,0 +1,132 @@
+[
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "A1",
+      "A4",
+      "A6",
+      "A7",
+      "B3",
+      "B4"
+    ],
+    "queries": [
+      "A1:Q1",
+      "A1:Q4",
+      "A4:Q1",
+      "A4:Q4",
+      "A6:Q1",
+      "A6:Q4",
+      "A7:Q1",
+      "A7:Q4",
+      "B3:Q1_hive",
+      "B3:Q4_hive",
+      "B4:Q1_hive",
+      "B4:Q4_hive"
+    ],
+    "no_baseline": true,
+    "cold": 10,
+    "warm": 0,
+    "strace_runs": 0,
+    "threads": 1,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e9_t1_m10",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e9_t1_m10",
+      "--sf",
+      "10",
+      "--models",
+      "A1,A4,A6,A7,B3,B4",
+      "--queries",
+      "A1:Q1,A1:Q4,A4:Q1,A4:Q4,A6:Q1,A6:Q4,A7:Q1,A7:Q4,B3:Q1_hive,B3:Q4_hive,B4:Q1_hive,B4:Q4_hive",
+      "--no-baseline",
+      "--threads",
+      "1",
+      "--memory-limit",
+      "10GB",
+      "--cold",
+      "10",
+      "--warm",
+      "0"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T15:54:20.316375+00:00",
+    "combinations": [
+      [
+        10,
+        "B3",
+        "Q1_hive"
+      ],
+      [
+        10,
+        "B4",
+        "Q4_hive"
+      ],
+      [
+        10,
+        "B3",
+        "Q4_hive"
+      ],
+      [
+        10,
+        "B4",
+        "Q1_hive"
+      ],
+      [
+        10,
+        "A6",
+        "Q4"
+      ],
+      [
+        10,
+        "A1",
+        "Q1"
+      ],
+      [
+        10,
+        "A6",
+        "Q1"
+      ],
+      [
+        10,
+        "A7",
+        "Q1"
+      ],
+      [
+        10,
+        "A7",
+        "Q4"
+      ],
+      [
+        10,
+        "A4",
+        "Q1"
+      ],
+      [
+        10,
+        "A4",
+        "Q4"
+      ],
+      [
+        10,
+        "A1",
+        "Q4"
+      ]
+    ],
+    "layout_files": {
+      "sf10/A1": 1,
+      "sf10/A4": 75,
+      "sf10/A6": 750,
+      "sf10/A7": 7500,
+      "sf10/B3": 84,
+      "sf10/B4": 2526
+    }
+  }
+]

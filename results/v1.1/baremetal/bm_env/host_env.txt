@@ -1,0 +1,28 @@
+Bare-metal platform environment (captured 2026-10-26; identifiers omitted)
+=====================================================================================
+Platform label   : baremetal (runner --platform / BENCH_PLATFORM)
+Virtualisation   : none (systemd-detect-virt = none); physical machine, no hypervisor
+Motherboard      : MSI H170A PC MATE (MS-7971), BIOS B.E0 (2018-06-27)
+CPU              : Intel Core i7-7700K @ 4.20 GHz (Kaby Lake), 1 socket, 4 cores / 8 threads,
+                   max 4.5 GHz, L3 8 MiB; benchmark runs use threads=4 (same as the VM)
+CPU frequency    : intel_pstate (HWP), scaling_governor = powersave,
+                   energy_performance_preference = performance, turbo enabled (no_turbo = 0)
+RAM              : MemTotal 46,934,464 kB (44.8 GiB); swap 8 GiB; vm.swappiness = 60
+Storage          : Samsung SSD 860 EVO 500GB (firmware 2B6Q), SATA, SSD (rotational = 0)
+                   block queue: scheduler mq-deadline, read_ahead_kb 128, nr_requests 64
+Filesystem       : /dev/sda2 ext4 (rw,relatime), 457 GB, same device as the OS
+THP              : madvise
+OS               : Ubuntu 26.04.1 LTS, kernel 7.0.0-38-generic, x86_64
+Python           : 3.14.4 (system)
+DuckDB           : v1.5.0 (3a3967aa81), same binary as the VM (SHA256 checked by reproduce.sh setup)
+GPU              : NVIDIA GeForce RTX 5070 Ti (not used by the benchmark)
+Time zone        : Europe/Lisbon (WET, UTC+0 on 2026-10-26). The VM logs were in UTC-3;
+                   CSV Timestamp columns are UTC on both platforms.
+Background load  : the machine also hosts a Docker stack (ollama/llama-server, qdrant,
+                   postgres, redis, FastAPI, Streamlit), stopped during all measurements.
+
+Differences from the VM platform (results/v1.1/vm/host_env.txt):
+- no hypervisor: drop_caches empties the only page cache in the I/O path;
+- SATA SSD (~0.5 GB/s class) instead of NVMe behind an emulated LSI Logic controller;
+- 4C/8T desktop CPU (2017) instead of 4 vCPU on an i7-13650HX laptop host;
+- 44.8 GiB RAM instead of 16 GB (memory_limit stays 10GB on both).

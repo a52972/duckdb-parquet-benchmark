@@ -1,0 +1,29 @@
+Experiment,Comparison,Metric,A,B,nA,nB,MedianA,MedianB,Ratio,Ratio_CI95_lo,Ratio_CI95_hi,p,p_holm
+E4,depth@84 filter: E4_D1 vs B3,EngineLatency_ms,Model=B3 Query=Q3_B3,Model=E4_D1 Query=Q3_D1,20,20,21.4184,19.6262,0.916322,0.890837,0.942711,1.80745e-05,0.000108447
+E4,depth@84 filter: E4_D1 vs B3,WallClock_ms,Model=B3 Query=Q3_B3,Model=E4_D1 Query=Q3_D1,20,20,75.6,73.785,0.975992,0.946277,0.986031,0.0010141,0.00405639
+E4,depth@84 filter: E4_D3 vs B3,EngineLatency_ms,Model=B3 Query=Q3_B3,Model=E4_D3 Query=Q3_D3,20,20,21.4184,24.5242,1.14501,1.09615,1.17813,5.22689e-07,4.18151e-06
+E4,depth@84 filter: E4_D3 vs B3,WallClock_ms,Model=B3 Query=Q3_B3,Model=E4_D3 Query=Q3_D3,20,20,75.6,78.2,1.03439,1.00141,1.05221,0.0179386,0.0538158
+E4,count@depth2 filter: E4_D2x10 vs B3,EngineLatency_ms,Model=B3 Query=Q3_B3,Model=E4_D2x10 Query=Q3_B3,20,20,21.4184,31.282,1.46052,1.41022,1.50419,6.79562e-08,1.90009e-06
+E4,count@depth2 filter: E4_D2x10 vs B3,WallClock_ms,Model=B3 Query=Q3_B3,Model=E4_D2x10 Query=Q3_B3,20,20,75.6,84.495,1.11766,1.08632,1.13972,6.79562e-08,1.90009e-06
+E4,count@depth2 filter: E4_D2x30 vs B3,EngineLatency_ms,Model=B3 Query=Q3_B3,Model=E4_D2x30 Query=Q3_B3,20,20,21.4184,61.6071,2.87636,2.80652,2.94072,6.79562e-08,1.90009e-06
+E4,count@depth2 filter: E4_D2x30 vs B3,WallClock_ms,Model=B3 Query=Q3_B3,Model=E4_D2x30 Query=Q3_B3,20,20,75.6,116.085,1.53552,1.49311,1.55365,6.79562e-08,1.90009e-06
+E4,~2520 files filter: E4_D2x30 vs E4_F2526,EngineLatency_ms,Model=E4_F2526 Query=Q3_B1,Model=E4_D2x30 Query=Q3_B3,20,20,856.238,61.6071,0.071951,0.070977,0.0726665,6.79562e-08,1.90009e-06
+E4,~2520 files filter: E4_D2x30 vs E4_F2526,WallClock_ms,Model=E4_F2526 Query=Q3_B1,Model=E4_D2x30 Query=Q3_B3,20,20,930.32,116.085,0.12478,0.12296,0.126065,6.78604e-08,1.90009e-06
+E4,~2520 files filter: B4 vs E4_F2526,EngineLatency_ms,Model=E4_F2526 Query=Q3_B1,Model=B4 Query=Q3_B4_month,20,20,856.238,359.643,0.420027,0.411267,0.425634,6.79562e-08,1.90009e-06
+E4,~2520 files filter: B4 vs E4_F2526,WallClock_ms,Model=E4_F2526 Query=Q3_B1,Model=B4 Query=Q3_B4_month,20,20,930.32,415.435,0.446551,0.441265,0.453215,6.78604e-08,1.90009e-06
+E4,~2520 files filter: B4 vs E4_D2x30,EngineLatency_ms,Model=E4_D2x30 Query=Q3_B3,Model=B4 Query=Q3_B4_month,20,20,61.6071,359.643,5.83768,5.75816,5.89962,6.79562e-08,1.90009e-06
+E4,~2520 files filter: B4 vs E4_D2x30,WallClock_ms,Model=E4_D2x30 Query=Q3_B3,Model=B4 Query=Q3_B4_month,20,20,116.085,415.435,3.57871,3.55262,3.62825,6.79562e-08,1.90009e-06
+E4,depth@84 count: E4_D1 vs B3,EngineLatency_ms,Model=B3 Query=Q4_hive,Model=E4_D1 Query=Q4_hive,20,20,28.4945,28.3997,0.996671,0.957212,1.02775,0.364842,0.364842
+E4,depth@84 count: E4_D1 vs B3,WallClock_ms,Model=B3 Query=Q4_hive,Model=E4_D1 Query=Q4_hive,20,20,82.485,81.135,0.983633,0.966515,1.01144,0.107495,0.21499
+E4,depth@84 count: E4_D3 vs B3,EngineLatency_ms,Model=B3 Query=Q4_hive,Model=E4_D3 Query=Q4_hive,20,20,28.4945,32.8689,1.15352,1.09335,1.19523,1.57567e-06,1.10297e-05
+E4,depth@84 count: E4_D3 vs B3,WallClock_ms,Model=B3 Query=Q4_hive,Model=E4_D3 Query=Q4_hive,20,20,82.485,86.12,1.04407,1.02089,1.07496,3.48744e-05,0.000174372
+E4,count@depth2 count: E4_D2x10 vs B3,EngineLatency_ms,Model=B3 Query=Q4_hive,Model=E4_D2x10 Query=Q4_hive,20,20,28.4945,135.957,4.77134,4.62587,4.8783,6.79562e-08,1.90009e-06
+E4,count@depth2 count: E4_D2x10 vs B3,WallClock_ms,Model=B3 Query=Q4_hive,Model=E4_D2x10 Query=Q4_hive,20,20,82.485,192.32,2.33158,2.30162,2.37236,6.79562e-08,1.90009e-06
+E4,count@depth2 count: E4_D2x30 vs B3,EngineLatency_ms,Model=B3 Query=Q4_hive,Model=E4_D2x30 Query=Q4_hive,20,20,28.4945,369.968,12.9838,12.5263,13.2558,6.79562e-08,1.90009e-06
+E4,count@depth2 count: E4_D2x30 vs B3,WallClock_ms,Model=B3 Query=Q4_hive,Model=E4_D2x30 Query=Q4_hive,20,20,82.485,437.14,5.29963,5.16683,5.46985,6.79562e-08,1.90009e-06
+E4,~2520 files count: E4_D2x30 vs E4_F2526,EngineLatency_ms,Model=E4_F2526 Query=Q4,Model=E4_D2x30 Query=Q4_hive,20,20,328.763,369.968,1.12533,1.1007,1.14991,6.79562e-08,1.90009e-06
+E4,~2520 files count: E4_D2x30 vs E4_F2526,WallClock_ms,Model=E4_F2526 Query=Q4,Model=E4_D2x30 Query=Q4_hive,20,20,390.845,437.14,1.11845,1.08934,1.14496,6.79562e-08,1.90009e-06
+E4,~2520 files count: B4 vs E4_F2526,EngineLatency_ms,Model=E4_F2526 Query=Q4,Model=B4 Query=Q4_hive,20,20,328.763,653.719,1.98842,1.95485,2.03647,6.79562e-08,1.90009e-06
+E4,~2520 files count: B4 vs E4_F2526,WallClock_ms,Model=E4_F2526 Query=Q4,Model=B4 Query=Q4_hive,20,20,390.845,714.73,1.82868,1.80884,1.86383,6.79562e-08,1.90009e-06
+E4,~2520 files count: B4 vs E4_D2x30,EngineLatency_ms,Model=E4_D2x30 Query=Q4_hive,Model=B4 Query=Q4_hive,20,20,369.968,653.719,1.76696,1.72603,1.81802,6.79562e-08,1.90009e-06
+E4,~2520 files count: B4 vs E4_D2x30,WallClock_ms,Model=E4_D2x30 Query=Q4_hive,Model=B4 Query=Q4_hive,20,20,437.14,714.73,1.63501,1.59754,1.68696,6.79562e-08,1.90009e-06

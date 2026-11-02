@@ -1,0 +1,22 @@
+Experiment,Comparison,Metric,A,B,nA,nB,MedianA,MedianB,Ratio,Ratio_CI95_lo,Ratio_CI95_hi,p,p_holm
+E10,"file sizes Zipf vs equal, 75 files, Q1: Z75 vs A4",EngineLatency_ms,Model=A4 Query=Q1,Model=Z75 Query=Q1,20,20,967.099,958.525,0.991134,0.987148,0.998363,0.0114328,0.0571641
+E10,"file sizes Zipf vs equal, 75 files, Q4: Z75 vs A4",EngineLatency_ms,Model=A4 Query=Q4,Model=Z75 Query=Q4,20,20,29.9066,31.2725,1.04567,0.992394,1.08489,0.0810317,0.305724
+E10,"file sizes Zipf vs equal, 75 files, Q3_B1: Z75 vs A4",EngineLatency_ms,Model=A4 Query=Q3_B1,Model=Z75 Query=Q3_B1,20,20,493.815,459.146,0.929794,0.923969,0.939659,1.20089e-06,1.32098e-05
+E10,"file sizes Zipf vs equal, 750 files, Q1: Z750 vs A6",EngineLatency_ms,Model=A6 Query=Q1,Model=Z750 Query=Q1,20,20,1106.08,1144.44,1.03469,1.01519,1.04391,1.37606e-06,1.37606e-05
+E10,"file sizes Zipf vs equal, 750 files, Q4: Z750 vs A6",EngineLatency_ms,Model=A6 Query=Q4,Model=Z750 Query=Q4,20,20,115.118,114.11,0.991243,0.953716,1.05987,0.967635,1
+E10,"file sizes Zipf vs equal, 750 files, Q3_B1: Z750 vs A6",EngineLatency_ms,Model=A6 Query=Q3_B1,Model=Z750 Query=Q3_B1,20,20,651.892,692.322,1.06202,1.02539,1.0804,9.74798e-06,8.77318e-05
+E10,"skewed vs uniform data, 75 flat files, Q1: S_B1 vs A4",EngineLatency_ms,Model=A4 Query=Q1,Model=S_B1 Query=Q1,20,20,967.099,962.327,0.995066,0.990145,1.00108,0.0764309,0.305724
+E10,"skewed vs uniform data, 75 flat files, Q4: S_B1 vs A4",EngineLatency_ms,Model=A4 Query=Q4,Model=S_B1 Query=Q4,20,20,29.9066,29.4667,0.985291,0.936397,1.03062,0.675014,1
+E10,"skewed data: sorted vs hash-distributed rows, Q1: S_S75 vs S_B1",EngineLatency_ms,Model=S_B1 Query=Q1,Model=S_S75 Query=Q1,20,20,962.327,956.235,0.993669,0.987445,0.998781,0.00655719,0.0393432
+E10,"skewed data: sorted vs hash-distributed rows, Q3_B1: S_S75 vs S_B1",EngineLatency_ms,Model=S_B1 Query=Q3_B1,Model=S_S75 Query=Q3_B1,20,20,480.939,59.0078,0.122693,0.120091,0.125325,6.79562e-08,1.42105e-06
+E10,"skewed data: sorted vs hash-distributed rows, Q3_B1_cold: S_S75 vs S_B1",EngineLatency_ms,Model=S_B1 Query=Q3_B1_cold,Model=S_S75 Query=Q3_B1_cold,20,20,476.141,30.4787,0.0640119,0.062034,0.0728743,6.79562e-08,1.42105e-06
+E10,"pruning, uniform data, hot month 1996-01: B3 vs A4",EngineLatency_ms,Model=A4 Query=Q3_B1,Model=B3 Query=Q3_B3,20,20,493.815,50.0656,0.101385,0.0864311,0.113293,6.79562e-08,1.42105e-06
+E10,"pruning, uniform data, cold month 1992-01: B3 vs A4",EngineLatency_ms,Model=A4 Query=Q3_B1_cold,Model=B3 Query=Q3_B3_cold,20,20,494.089,45.6881,0.0924695,0.0833484,0.109343,6.79562e-08,1.42105e-06
+E10,"pruning, skewed data, hot month 1996-01: S_B3 vs S_B1",EngineLatency_ms,Model=S_B1 Query=Q3_B1,Model=S_B3 Query=Q3_B3,20,20,480.939,100.922,0.209845,0.19327,0.219086,6.79562e-08,1.42105e-06
+E10,"pruning, skewed data, cold month 1992-01: S_B3 vs S_B1",EngineLatency_ms,Model=S_B1 Query=Q3_B1_cold,Model=S_B3 Query=Q3_B3_cold,20,20,476.141,43.7441,0.0918721,0.0821117,0.106506,6.79562e-08,1.42105e-06
+E10,"hot vs cold month, S_B1",EngineLatency_ms,Model=S_B1 Query=Q3_B1_cold,Model=S_B1 Query=Q3_B1,20,20,476.141,480.939,1.01008,1.00495,1.01366,0.000757881,0.00530517
+E10,"hot vs cold month, S_B3",EngineLatency_ms,Model=S_B3 Query=Q3_B3_cold,Model=S_B3 Query=Q3_B3,20,20,43.7441,100.922,2.30711,1.94133,2.60929,1.59972e-05,0.000127978
+E10,"hot vs cold month, S_S75",EngineLatency_ms,Model=S_S75 Query=Q3_B1_cold,Model=S_S75 Query=Q3_B1,20,20,30.4787,59.0078,1.93604,1.6968,2.00494,9.12665e-07,1.0952e-05
+E10,"peak memory, Q1: Z75 vs A4",PeakRSS_KB,Model=A4 Query=Q1,Model=Z75 Query=Q1,20,20,70064,113842,1.62483,1.59312,1.66348,6.79562e-08,1.42105e-06
+E10,"peak memory, Q1: Z750 vs A6",PeakRSS_KB,Model=A6 Query=Q1,Model=Z750 Query=Q1,20,20,51336,98102,1.91098,1.87076,1.94408,6.76692e-08,1.42105e-06
+E10,"peak memory, Q1_hive: S_B3 vs B3",PeakRSS_KB,Model=B3 Query=Q1_hive,Model=S_B3 Query=Q1_hive,20,20,76680,102222,1.3331,1.29285,1.40012,6.79562e-08,1.42105e-06

@@ -1,0 +1,1010 @@
+[
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "A1"
+    ],
+    "queries": [
+      "Q1",
+      "Q2a",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e6_size",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e6_size",
+      "--sf",
+      "10",
+      "--models",
+      "A1",
+      "--queries",
+      "Q1,Q2a,Q4,Q5,Q6,Q7",
+      "--cold",
+      "20",
+      "--warm",
+      "3"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T15:17:56.252313+00:00",
+    "combinations": [
+      [
+        10,
+        "A1",
+        "Q2a"
+      ],
+      [
+        10,
+        "A1",
+        "Q7"
+      ],
+      [
+        10,
+        "A1",
+        "Q5"
+      ],
+      [
+        10,
+        "A1",
+        "Q4"
+      ],
+      [
+        10,
+        "A1",
+        "Q6"
+      ],
+      [
+        10,
+        "A1",
+        "Q1"
+      ],
+      [
+        10,
+        "A1",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/A1": 1
+    }
+  },
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "E6_512MB"
+    ],
+    "queries": [
+      "Q1",
+      "Q2a",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e6_size",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e6_size",
+      "--sf",
+      "10",
+      "--models",
+      "E6_512MB",
+      "--queries",
+      "Q1,Q2a,Q4,Q5,Q6,Q7",
+      "--cold",
+      "20",
+      "--warm",
+      "3"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T15:20:00.507641+00:00",
+    "combinations": [
+      [
+        10,
+        "E6_512MB",
+        "Q2a"
+      ],
+      [
+        10,
+        "E6_512MB",
+        "Q7"
+      ],
+      [
+        10,
+        "E6_512MB",
+        "Q5"
+      ],
+      [
+        10,
+        "E6_512MB",
+        "Q4"
+      ],
+      [
+        10,
+        "E6_512MB",
+        "Q6"
+      ],
+      [
+        10,
+        "E6_512MB",
+        "Q1"
+      ],
+      [
+        10,
+        "E6_512MB",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/E6_512MB": 3
+    }
+  },
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "E6_256MB"
+    ],
+    "queries": [
+      "Q1",
+      "Q2a",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e6_size",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e6_size",
+      "--sf",
+      "10",
+      "--models",
+      "E6_256MB",
+      "--queries",
+      "Q1,Q2a,Q4,Q5,Q6,Q7",
+      "--cold",
+      "20",
+      "--warm",
+      "3"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T15:21:56.201249+00:00",
+    "combinations": [
+      [
+        10,
+        "E6_256MB",
+        "Q2a"
+      ],
+      [
+        10,
+        "E6_256MB",
+        "Q7"
+      ],
+      [
+        10,
+        "E6_256MB",
+        "Q5"
+      ],
+      [
+        10,
+        "E6_256MB",
+        "Q4"
+      ],
+      [
+        10,
+        "E6_256MB",
+        "Q6"
+      ],
+      [
+        10,
+        "E6_256MB",
+        "Q1"
+      ],
+      [
+        10,
+        "E6_256MB",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/E6_256MB": 6
+    }
+  },
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "E6_128MB"
+    ],
+    "queries": [
+      "Q1",
+      "Q2a",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e6_size",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e6_size",
+      "--sf",
+      "10",
+      "--models",
+      "E6_128MB",
+      "--queries",
+      "Q1,Q2a,Q4,Q5,Q6,Q7",
+      "--cold",
+      "20",
+      "--warm",
+      "3"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T15:23:52.068349+00:00",
+    "combinations": [
+      [
+        10,
+        "E6_128MB",
+        "Q2a"
+      ],
+      [
+        10,
+        "E6_128MB",
+        "Q7"
+      ],
+      [
+        10,
+        "E6_128MB",
+        "Q5"
+      ],
+      [
+        10,
+        "E6_128MB",
+        "Q4"
+      ],
+      [
+        10,
+        "E6_128MB",
+        "Q6"
+      ],
+      [
+        10,
+        "E6_128MB",
+        "Q1"
+      ],
+      [
+        10,
+        "E6_128MB",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/E6_128MB": 12
+    }
+  },
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "E6_64MB"
+    ],
+    "queries": [
+      "Q1",
+      "Q2a",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e6_size",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e6_size",
+      "--sf",
+      "10",
+      "--models",
+      "E6_64MB",
+      "--queries",
+      "Q1,Q2a,Q4,Q5,Q6,Q7",
+      "--cold",
+      "20",
+      "--warm",
+      "3"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T15:26:00.649756+00:00",
+    "combinations": [
+      [
+        10,
+        "E6_64MB",
+        "Q2a"
+      ],
+      [
+        10,
+        "E6_64MB",
+        "Q7"
+      ],
+      [
+        10,
+        "E6_64MB",
+        "Q5"
+      ],
+      [
+        10,
+        "E6_64MB",
+        "Q4"
+      ],
+      [
+        10,
+        "E6_64MB",
+        "Q6"
+      ],
+      [
+        10,
+        "E6_64MB",
+        "Q1"
+      ],
+      [
+        10,
+        "E6_64MB",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/E6_64MB": 24
+    }
+  },
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "E6_32MB"
+    ],
+    "queries": [
+      "Q1",
+      "Q2a",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e6_size",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e6_size",
+      "--sf",
+      "10",
+      "--models",
+      "E6_32MB",
+      "--queries",
+      "Q1,Q2a,Q4,Q5,Q6,Q7",
+      "--cold",
+      "20",
+      "--warm",
+      "3"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T15:28:10.821967+00:00",
+    "combinations": [
+      [
+        10,
+        "E6_32MB",
+        "Q2a"
+      ],
+      [
+        10,
+        "E6_32MB",
+        "Q7"
+      ],
+      [
+        10,
+        "E6_32MB",
+        "Q5"
+      ],
+      [
+        10,
+        "E6_32MB",
+        "Q4"
+      ],
+      [
+        10,
+        "E6_32MB",
+        "Q6"
+      ],
+      [
+        10,
+        "E6_32MB",
+        "Q1"
+      ],
+      [
+        10,
+        "E6_32MB",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/E6_32MB": 48
+    }
+  },
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "E6_16MB"
+    ],
+    "queries": [
+      "Q1",
+      "Q2a",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e6_size",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e6_size",
+      "--sf",
+      "10",
+      "--models",
+      "E6_16MB",
+      "--queries",
+      "Q1,Q2a,Q4,Q5,Q6,Q7",
+      "--cold",
+      "20",
+      "--warm",
+      "3"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T15:30:25.171580+00:00",
+    "combinations": [
+      [
+        10,
+        "E6_16MB",
+        "Q2a"
+      ],
+      [
+        10,
+        "E6_16MB",
+        "Q7"
+      ],
+      [
+        10,
+        "E6_16MB",
+        "Q5"
+      ],
+      [
+        10,
+        "E6_16MB",
+        "Q4"
+      ],
+      [
+        10,
+        "E6_16MB",
+        "Q6"
+      ],
+      [
+        10,
+        "E6_16MB",
+        "Q1"
+      ],
+      [
+        10,
+        "E6_16MB",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/E6_16MB": 96
+    }
+  },
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "E6_8MB"
+    ],
+    "queries": [
+      "Q1",
+      "Q2a",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e6_size",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e6_size",
+      "--sf",
+      "10",
+      "--models",
+      "E6_8MB",
+      "--queries",
+      "Q1,Q2a,Q4,Q5,Q6,Q7",
+      "--cold",
+      "20",
+      "--warm",
+      "3"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T15:32:40.064358+00:00",
+    "combinations": [
+      [
+        10,
+        "E6_8MB",
+        "Q2a"
+      ],
+      [
+        10,
+        "E6_8MB",
+        "Q7"
+      ],
+      [
+        10,
+        "E6_8MB",
+        "Q5"
+      ],
+      [
+        10,
+        "E6_8MB",
+        "Q4"
+      ],
+      [
+        10,
+        "E6_8MB",
+        "Q6"
+      ],
+      [
+        10,
+        "E6_8MB",
+        "Q1"
+      ],
+      [
+        10,
+        "E6_8MB",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/E6_8MB": 191
+    }
+  },
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "E6_4MB"
+    ],
+    "queries": [
+      "Q1",
+      "Q2a",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e6_size",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e6_size",
+      "--sf",
+      "10",
+      "--models",
+      "E6_4MB",
+      "--queries",
+      "Q1,Q2a,Q4,Q5,Q6,Q7",
+      "--cold",
+      "20",
+      "--warm",
+      "3"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T15:35:10.679026+00:00",
+    "combinations": [
+      [
+        10,
+        "E6_4MB",
+        "Q2a"
+      ],
+      [
+        10,
+        "E6_4MB",
+        "Q7"
+      ],
+      [
+        10,
+        "E6_4MB",
+        "Q5"
+      ],
+      [
+        10,
+        "E6_4MB",
+        "Q4"
+      ],
+      [
+        10,
+        "E6_4MB",
+        "Q6"
+      ],
+      [
+        10,
+        "E6_4MB",
+        "Q1"
+      ],
+      [
+        10,
+        "E6_4MB",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/E6_4MB": 383
+    }
+  },
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "E6_1MB"
+    ],
+    "queries": [
+      "Q1",
+      "Q2a",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e6_size",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e6_size",
+      "--sf",
+      "10",
+      "--models",
+      "E6_1MB",
+      "--queries",
+      "Q1,Q2a,Q4,Q5,Q6,Q7",
+      "--cold",
+      "20",
+      "--warm",
+      "3"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T15:38:23.144476+00:00",
+    "combinations": [
+      [
+        10,
+        "E6_1MB",
+        "Q2a"
+      ],
+      [
+        10,
+        "E6_1MB",
+        "Q7"
+      ],
+      [
+        10,
+        "E6_1MB",
+        "Q5"
+      ],
+      [
+        10,
+        "E6_1MB",
+        "Q4"
+      ],
+      [
+        10,
+        "E6_1MB",
+        "Q6"
+      ],
+      [
+        10,
+        "E6_1MB",
+        "Q1"
+      ],
+      [
+        10,
+        "E6_1MB",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/E6_1MB": 1531
+    }
+  },
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "E6_duckdb_fsb128"
+    ],
+    "queries": [
+      "Q1",
+      "Q2a",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e6_size",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e6_size",
+      "--sf",
+      "10",
+      "--models",
+      "E6_duckdb_fsb128",
+      "--queries",
+      "Q1,Q2a,Q4,Q5,Q6,Q7",
+      "--cold",
+      "20",
+      "--warm",
+      "3"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T15:40:52.008554+00:00",
+    "combinations": [
+      [
+        10,
+        "E6_duckdb_fsb128",
+        "Q2a"
+      ],
+      [
+        10,
+        "E6_duckdb_fsb128",
+        "Q7"
+      ],
+      [
+        10,
+        "E6_duckdb_fsb128",
+        "Q5"
+      ],
+      [
+        10,
+        "E6_duckdb_fsb128",
+        "Q4"
+      ],
+      [
+        10,
+        "E6_duckdb_fsb128",
+        "Q6"
+      ],
+      [
+        10,
+        "E6_duckdb_fsb128",
+        "Q1"
+      ],
+      [
+        10,
+        "E6_duckdb_fsb128",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/E6_duckdb_fsb128": 18
+    }
+  },
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "E6_polars_default"
+    ],
+    "queries": [
+      "Q1",
+      "Q2a",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e6_size",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e6_size",
+      "--sf",
+      "10",
+      "--models",
+      "E6_polars_default",
+      "--queries",
+      "Q1,Q2a,Q4,Q5,Q6,Q7",
+      "--cold",
+      "20",
+      "--warm",
+      "3"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T15:42:37.256084+00:00",
+    "combinations": [
+      [
+        10,
+        "E6_polars_default",
+        "Q2a"
+      ],
+      [
+        10,
+        "E6_polars_default",
+        "Q7"
+      ],
+      [
+        10,
+        "E6_polars_default",
+        "Q5"
+      ],
+      [
+        10,
+        "E6_polars_default",
+        "Q4"
+      ],
+      [
+        10,
+        "E6_polars_default",
+        "Q6"
+      ],
+      [
+        10,
+        "E6_polars_default",
+        "Q1"
+      ],
+      [
+        10,
+        "E6_polars_default",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/E6_polars_default": 1
+    }
+  }
+]

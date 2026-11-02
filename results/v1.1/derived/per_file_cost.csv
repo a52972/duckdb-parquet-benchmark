@@ -1,0 +1,103 @@
+Condition,Source,SF,Query,Metric,Unit,Slope,Slope_CI95_lo,Slope_CI95_hi,R2,N_campaigns,Slope_min,Slope_max,Consistent,CI_type,n,Models,MinFiles,MaxFiles,Slope_core_v2,Slope_core_v2_b
+v1-default-writer,E2b,10,Q1,EngineLatency_ms,ms/file,0.196724,0.178687,0.229474,0.947966,1,0.196724,0.196724,True,bootstrap (runs),10,A5 A6,5923,75000,,
+v1-default-writer,E2b,10,Q1,WallClock_ms,ms/file,0.213076,0.194772,0.246126,0.955705,1,0.213076,0.213076,True,bootstrap (runs),10,A5 A6,5923,75000,,
+v1-default-writer,E2b,10,Q1,PeakRSS_KB,KB/file,28.1664,28.1589,28.1738,1,1,28.1664,28.1664,True,bootstrap (runs),10,A5 A6,5923,75000,,
+v1-default-writer,E2b,10,Q4,EngineLatency_ms,ms/file,0.209059,0.188519,0.222378,0.992644,1,0.209059,0.209059,True,bootstrap (runs),13,A5 A6 A7,5923,850600,,
+v1-default-writer,E2b,10,Q4,WallClock_ms,ms/file,0.218687,0.198615,0.231567,0.993388,1,0.218687,0.218687,True,bootstrap (runs),13,A5 A6 A7,5923,850600,,
+v1-default-writer,E2b,10,Q4,PeakRSS_KB,KB/file,12.3463,12.3403,12.3511,1,1,12.3463,12.3463,True,bootstrap (runs),13,A5 A6 A7,5923,850600,,
+v1-default-writer,v1.0 published,1,Q1,EngineLatency_ms,ms/file,0.182229,0.175373,0.195002,0.974598,1,0.182229,0.182229,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q1,WallClock_ms,ms/file,0.190883,0.183692,0.20376,0.977288,1,0.190883,0.190883,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q1,PeakRSS_KB,KB/file,24.762,24.718,24.8047,0.968055,1,24.762,24.762,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q2a,EngineLatency_ms,ms/file,0.178119,0.177315,0.178988,0.999789,1,0.178119,0.178119,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q2a,WallClock_ms,ms/file,0.184542,0.183367,0.185799,0.999663,1,0.184542,0.184542,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q2a,PeakRSS_KB,KB/file,18.2501,18.2038,18.301,0.938488,1,18.2501,18.2501,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q2b,EngineLatency_ms,ms/file,0.178189,0.177573,0.178842,0.999849,1,0.178189,0.178189,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q2b,WallClock_ms,ms/file,0.185319,0.184389,0.186291,0.999761,1,0.185319,0.185319,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q2b,PeakRSS_KB,KB/file,18.2391,18.1949,18.2811,0.938379,1,18.2391,18.2391,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q2c,EngineLatency_ms,ms/file,0.177382,0.176928,0.177844,0.999887,1,0.177382,0.177382,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q2c,WallClock_ms,ms/file,0.184423,0.183672,0.185235,0.999825,1,0.184423,0.184423,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q2c,PeakRSS_KB,KB/file,18.3206,18.2721,18.3733,0.941705,1,18.3206,18.3206,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q4,EngineLatency_ms,ms/file,0.144981,0.14225,0.148117,0.997234,1,0.144981,0.144981,True,bootstrap (runs),100,A3 A4 A5 A6 A7,4,7740,,
+v1-default-writer,v1.0 published,1,Q4,WallClock_ms,ms/file,0.148667,0.145808,0.151639,0.997509,1,0.148667,0.148667,True,bootstrap (runs),100,A3 A4 A5 A6 A7,4,7740,,
+v1-default-writer,v1.0 published,1,Q4,PeakRSS_KB,KB/file,12.3772,12.3642,12.3906,0.999575,1,12.3772,12.3772,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q5,EngineLatency_ms,ms/file,0.207069,0.206525,0.20767,0.999784,1,0.207069,0.207069,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q5,WallClock_ms,ms/file,0.220694,0.218936,0.222766,0.999315,1,0.220694,0.220694,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q5,PeakRSS_KB,KB/file,37.204,37.1497,37.2568,0.979705,1,37.204,37.204,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q6,EngineLatency_ms,ms/file,0.190332,0.188456,0.192619,0.998904,1,0.190332,0.190332,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q6,WallClock_ms,ms/file,0.20133,0.198673,0.20439,0.998101,1,0.20133,0.20133,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q6,PeakRSS_KB,KB/file,29.5058,29.464,29.5455,0.979018,1,29.5058,29.5058,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q7,EngineLatency_ms,ms/file,0.198914,0.196651,0.202006,0.99824,1,0.198914,0.198914,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q7,WallClock_ms,ms/file,0.213582,0.210378,0.217089,0.997524,1,0.213582,0.213582,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,1,Q7,PeakRSS_KB,KB/file,45.9949,45.896,46.0945,0.990355,1,45.9949,45.9949,True,bootstrap (runs),120,A1 A3 A4 A5 A6 A7,1,7740,,
+v1-default-writer,v1.0 published,10,Q1,EngineLatency_ms,ms/file,0.318374,0.31061,0.32495,0.996414,1,0.318374,0.318374,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q1,WallClock_ms,ms/file,0.365261,0.358698,0.371254,0.998094,1,0.365261,0.365261,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q1,PeakRSS_KB,KB/file,16.3495,16.3032,16.398,0.996215,1,16.3495,16.3495,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q2a,EngineLatency_ms,ms/file,0.315497,0.305905,0.324722,0.994439,1,0.315497,0.315497,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q2a,WallClock_ms,ms/file,0.356425,0.345997,0.367055,0.994331,1,0.356425,0.356425,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q2a,PeakRSS_KB,KB/file,16.2401,16.182,16.2949,0.999132,1,16.2401,16.2401,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q2b,EngineLatency_ms,ms/file,0.352114,0.345911,0.357169,0.998439,1,0.352114,0.352114,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q2b,WallClock_ms,ms/file,0.393045,0.385783,0.398706,0.998478,1,0.393045,0.393045,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q2b,PeakRSS_KB,KB/file,16.2221,16.1818,16.2631,0.999166,1,16.2221,16.2221,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q2c,EngineLatency_ms,ms/file,0.364392,0.357968,0.370709,0.997988,1,0.364392,0.364392,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q2c,WallClock_ms,ms/file,0.406505,0.399682,0.413195,0.99832,1,0.406505,0.406505,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q2c,PeakRSS_KB,KB/file,16.2277,16.1881,16.2639,0.999175,1,16.2277,16.2277,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q4,EngineLatency_ms,ms/file,0.222184,0.21403,0.231561,0.988128,1,0.222184,0.222184,True,bootstrap (runs),120,A2 A3 A4 A5 A6 A7,8,850600,,
+v1-default-writer,v1.0 published,10,Q4,WallClock_ms,ms/file,0.232073,0.223275,0.242323,0.98816,1,0.232073,0.232073,True,bootstrap (runs),120,A2 A3 A4 A5 A6 A7,8,850600,,
+v1-default-writer,v1.0 published,10,Q4,PeakRSS_KB,KB/file,12.3324,12.3262,12.3377,0.999999,1,12.3324,12.3324,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q5,EngineLatency_ms,ms/file,0.295299,0.285255,0.30532,0.992155,1,0.295299,0.295299,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q5,WallClock_ms,ms/file,0.386077,0.370008,0.401444,0.989248,1,0.386077,0.386077,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q5,PeakRSS_KB,KB/file,16.1489,16.095,16.2005,0.982532,1,16.1489,16.1489,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q6,EngineLatency_ms,ms/file,0.298038,0.29221,0.305716,0.996876,1,0.298038,0.298038,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q6,WallClock_ms,ms/file,0.350447,0.344473,0.358133,0.997897,1,0.350447,0.350447,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q6,PeakRSS_KB,KB/file,16.4477,16.416,16.4815,0.992661,1,16.4477,16.4477,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q7,EngineLatency_ms,ms/file,0.264243,0.260741,0.268045,0.998274,1,0.264243,0.264243,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q7,WallClock_ms,ms/file,0.297727,0.293744,0.301978,0.998501,1,0.297727,0.297727,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v1-default-writer,v1.0 published,10,Q7,PeakRSS_KB,KB/file,15.8692,15.825,15.9121,0.971685,1,15.8692,15.8692,True,bootstrap (runs),140,A1 A2 A3 A4 A5 A6 A7,1,850600,,
+v2,E2,1,Q1,EngineLatency_ms,ms/file,0.191508,0.180038,0.202493,0.978914,2,0.181481,0.201536,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,0.201536,0.181481
+v2,E2,1,Q1,WallClock_ms,ms/file,0.193135,0.180586,0.205062,0.958519,2,0.182182,0.204087,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,0.204087,0.182182
+v2,E2,1,Q1,PeakRSS_KB,KB/file,-14.8577,-15.7291,-14.0492,0.0895066,2,-15.4484,-14.267,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,-15.4484,-14.267
+v2,E2,1,Q2a,EngineLatency_ms,ms/file,0.21902,0.191558,0.2603,0.921348,2,0.192854,0.245187,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,0.245187,0.192854
+v2,E2,1,Q2a,WallClock_ms,ms/file,0.238302,0.194842,0.307696,0.813002,2,0.196243,0.280362,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,0.280362,0.196243
+v2,E2,1,Q2a,PeakRSS_KB,KB/file,-24.2603,-24.9087,-23.6512,0.176833,2,-24.6521,-23.8686,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,-23.8686,-24.6521
+v2,E2,1,Q2b,EngineLatency_ms,ms/file,0.227074,0.189463,0.272244,0.935896,2,0.19058,0.263568,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,0.263568,0.19058
+v2,E2,1,Q2b,WallClock_ms,ms/file,0.236072,0.19076,0.291651,0.908922,2,0.192101,0.280042,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,0.280042,0.192101
+v2,E2,1,Q2b,PeakRSS_KB,KB/file,-25.0151,-25.4955,-24.5651,0.180799,2,-25.2231,-24.8072,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,-25.2231,-24.8072
+v2,E2,1,Q2c,EngineLatency_ms,ms/file,0.215669,0.209472,0.221591,0.982886,2,0.211572,0.219767,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,0.211572,0.219767
+v2,E2,1,Q2c,WallClock_ms,ms/file,0.223591,0.213485,0.233346,0.96239,2,0.216116,0.231067,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,0.216116,0.231067
+v2,E2,1,Q2c,PeakRSS_KB,KB/file,-24.3104,-25.0447,-23.5482,0.179922,2,-24.8371,-23.7837,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,-23.7837,-24.8371
+v2,E2,1,Q4,EngineLatency_ms,ms/file,0.136619,0.130645,0.14141,0.983618,2,0.134169,0.139069,True,"hierarchical bootstrap (campaigns, runs)",200,A3 A4 A5 A6 A7,4,750,0.134169,0.139069
+v2,E2,1,Q4,WallClock_ms,ms/file,0.138049,0.129177,0.146087,0.969353,2,0.13263,0.143469,True,"hierarchical bootstrap (campaigns, runs)",200,A3 A4 A5 A6 A7,4,750,0.13263,0.143469
+v2,E2,1,Q4,PeakRSS_KB,KB/file,13.5278,13.4507,13.6059,0.960084,2,13.5111,13.5444,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,13.5111,13.5444
+v2,E2,1,Q5,EngineLatency_ms,ms/file,0.355739,0.343114,0.385691,0.958555,2,0.346365,0.365113,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,0.365113,0.346365
+v2,E2,1,Q5,WallClock_ms,ms/file,0.359299,0.346513,0.388613,0.954617,2,0.349814,0.368784,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,0.368784,0.349814
+v2,E2,1,Q5,PeakRSS_KB,KB/file,-7.85393,-8.59701,-7.17545,0.0197485,2,-8.28734,-7.42052,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,-8.28734,-7.42052
+v2,E2,1,Q6,EngineLatency_ms,ms/file,0.273905,0.249617,0.294068,0.958959,2,0.256268,0.291542,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,0.256268,0.291542
+v2,E2,1,Q6,WallClock_ms,ms/file,0.27929,0.252583,0.302756,0.939323,2,0.258687,0.299892,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,0.258687,0.299892
+v2,E2,1,Q6,PeakRSS_KB,KB/file,-15.346,-15.6641,-15.0571,0.0788228,2,-15.4651,-15.2269,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,-15.4651,-15.2269
+v2,E2,1,Q7,EngineLatency_ms,ms/file,0.459384,0.350314,0.585032,0.90824,2,0.354085,0.564682,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,0.564682,0.354085
+v2,E2,1,Q7,WallClock_ms,ms/file,0.476472,0.360798,0.609229,0.900622,2,0.364646,0.588297,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,0.588297,0.364646
+v2,E2,1,Q7,PeakRSS_KB,KB/file,129.753,128.99,130.491,0.833092,2,129.551,129.955,True,"hierarchical bootstrap (campaigns, runs)",240,A1 A3 A4 A5 A6 A7,1,750,129.955,129.551
+v2,E2,10,Q1,EngineLatency_ms,ms/file,0.227734,0.209431,0.25144,0.9741,2,0.21176,0.243708,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,0.243708,0.21176
+v2,E2,10,Q1,WallClock_ms,ms/file,0.238872,0.218924,0.263979,0.973839,2,0.221306,0.256437,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,0.256437,0.221306
+v2,E2,10,Q1,PeakRSS_KB,KB/file,21.385,21.311,21.459,0.844142,2,21.3543,21.4156,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,21.3543,21.4156
+v2,E2,10,Q2a,EngineLatency_ms,ms/file,0.212357,0.208187,0.22127,0.985411,2,0.210194,0.21452,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,0.21452,0.210194
+v2,E2,10,Q2a,WallClock_ms,ms/file,0.219305,0.215229,0.228091,0.986143,2,0.217087,0.221523,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,0.221523,0.217087
+v2,E2,10,Q2a,PeakRSS_KB,KB/file,14.8421,14.7594,14.9183,0.714686,2,14.8016,14.8825,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,14.8825,14.8016
+v2,E2,10,Q2b,EngineLatency_ms,ms/file,0.226588,0.210487,0.243275,0.986402,2,0.21093,0.242247,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,0.242247,0.21093
+v2,E2,10,Q2b,WallClock_ms,ms/file,0.235509,0.217771,0.253969,0.98493,2,0.218227,0.252791,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,0.252791,0.218227
+v2,E2,10,Q2b,PeakRSS_KB,KB/file,14.8468,14.7794,14.9138,0.716162,2,14.8287,14.8649,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,14.8649,14.8287
+v2,E2,10,Q2c,EngineLatency_ms,ms/file,0.225834,0.209472,0.242779,0.984052,2,0.209819,0.241848,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,0.209819,0.241848
+v2,E2,10,Q2c,WallClock_ms,ms/file,0.234428,0.216822,0.252762,0.984005,2,0.21723,0.251627,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,0.21723,0.251627
+v2,E2,10,Q2c,PeakRSS_KB,KB/file,14.8046,14.7389,14.8744,0.710622,2,14.7742,14.8351,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,14.8351,14.7742
+v2,E2,10,Q4,EngineLatency_ms,ms/file,0.140668,0.131283,0.15062,0.993027,2,0.131913,0.149424,True,"hierarchical bootstrap (campaigns, runs)",240,A2 A3 A4 A5 A6 A7,8,7500,0.149424,0.131913
+v2,E2,10,Q4,WallClock_ms,ms/file,0.144114,0.135212,0.153667,0.992734,2,0.135907,0.152321,True,"hierarchical bootstrap (campaigns, runs)",240,A2 A3 A4 A5 A6 A7,8,7500,0.152321,0.135907
+v2,E2,10,Q4,PeakRSS_KB,KB/file,12.3278,12.3007,12.3534,0.999588,2,12.3081,12.3475,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,12.3081,12.3475
+v2,E2,10,Q5,EngineLatency_ms,ms/file,0.411167,0.383958,0.437666,0.993833,2,0.387292,0.435042,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,0.435042,0.387292
+v2,E2,10,Q5,WallClock_ms,ms/file,0.431626,0.402013,0.460468,0.993845,2,0.405487,0.457764,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,0.457764,0.405487
+v2,E2,10,Q5,PeakRSS_KB,KB/file,36.3008,36.2289,36.3715,0.927797,2,36.2752,36.3264,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,36.3264,36.2752
+v2,E2,10,Q6,EngineLatency_ms,ms/file,0.339236,0.276765,0.408168,0.954243,2,0.278317,0.400155,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,0.400155,0.278317
+v2,E2,10,Q6,WallClock_ms,ms/file,0.350877,0.286969,0.420955,0.955429,2,0.288764,0.41299,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,0.41299,0.288764
+v2,E2,10,Q6,PeakRSS_KB,KB/file,26.3737,26.2687,26.4756,0.897767,2,26.2995,26.4478,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,26.4478,26.2995
+v2,E2,10,Q7,EngineLatency_ms,ms/file,0.320829,0.297129,0.344646,0.952866,2,0.302089,0.339569,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,0.339569,0.302089
+v2,E2,10,Q7,WallClock_ms,ms/file,0.3435,0.319943,0.367089,0.955431,2,0.325245,0.361755,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,0.361755,0.325245
+v2,E2,10,Q7,PeakRSS_KB,KB/file,128.112,127.923,128.308,0.672049,2,128.078,128.146,True,"hierarchical bootstrap (campaigns, runs)",280,A1 A2 A3 A4 A5 A6 A7,1,7500,128.146,128.078

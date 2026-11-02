@@ -1,0 +1,12 @@
+duckdb
+duckdb_cli-*.zip
+data/*
+!data/FINGERPRINTS.csv
+!data/SHA256SUMS
+layouts/
+profiles/
+results/local/
+*.log
+*_tmp*
+.venv/
+__pycache__/

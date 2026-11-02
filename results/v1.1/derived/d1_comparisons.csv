@@ -1,0 +1,7 @@
+Experiment,Comparison,Metric,A,B,nA,nB,MedianA,MedianB,Ratio,Ratio_CI95_lo,Ratio_CI95_hi,p,p_holm
+D1,Q3_Year: /supp/year/ vs /year/supp/,EngineLatency_ms,Model=E5b_YS Query=Q3_Year,Model=E5b_SY Query=Q3_Year,20,20,349.099,359.061,1.02853,0.972879,1.10984,0.473481,1
+D1,Q3_Year: /supp/year/ vs /year/supp/,PlannerBinding_ms,Model=E5b_YS Query=Q3_Year,Model=E5b_SY Query=Q3_Year,20,20,267.756,281.661,1.05193,0.978044,1.15939,0.250297,1
+D1,Q3_Supp: /supp/year/ vs /year/supp/,EngineLatency_ms,Model=E5b_YS Query=Q3_Supp,Model=E5b_SY Query=Q3_Supp,20,20,277.189,297.306,1.07257,0.975468,1.17462,0.163596,0.887079
+D1,Q3_Supp: /supp/year/ vs /year/supp/,PlannerBinding_ms,Model=E5b_YS Query=Q3_Supp,Model=E5b_SY Query=Q3_Supp,20,20,258.057,278.382,1.07876,0.975587,1.19003,0.147847,0.887079
+D1,Q3_SuppYear: /supp/year/ vs /year/supp/,EngineLatency_ms,Model=E5b_YS Query=Q3_SuppYear,Model=E5b_SY Query=Q3_SuppYear,20,20,289.821,301.574,1.04056,0.948617,1.08806,0.881731,1
+D1,Q3_SuppYear: /supp/year/ vs /year/supp/,PlannerBinding_ms,Model=E5b_YS Query=Q3_SuppYear,Model=E5b_SY Query=Q3_SuppYear,20,20,267.972,280.62,1.0472,0.946969,1.09856,0.860431,1

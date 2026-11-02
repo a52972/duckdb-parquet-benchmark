@@ -1,0 +1,3 @@
+sf,model,files,leaf_dirs,bytes,size_mean_bytes,size_min_bytes,size_max_bytes,row_groups,rg_rows_mean,rg_rows_min,rg_rows_max,total_rows,created_by
+10,E5b_SY,1400,1400,1551403198,1108145,869988,1201205,1400,42847.2,33758,46182,59986052,DuckDB version v1.5.0 (build 3a3967aa81)
+10,E5b_YS,1400,1400,1551403198,1108145,869988,1201205,1400,42847.2,33758,46182,59986052,DuckDB version v1.5.0 (build 3a3967aa81)

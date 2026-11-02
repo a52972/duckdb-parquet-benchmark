@@ -1,0 +1,135 @@
+[
+  {
+    "sf": [
+      1,
+      10
+    ],
+    "models": [
+      "B3",
+      "C1"
+    ],
+    "queries": [
+      "Q3_Year",
+      "Q3_Month",
+      "Q3_Both"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e5_keyorder",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e5_keyorder",
+      "--sf",
+      "1",
+      "--sf",
+      "10",
+      "--models",
+      "B3,C1",
+      "--queries",
+      "Q3_Year,Q3_Month,Q3_Both",
+      "--cold",
+      "20",
+      "--warm",
+      "3"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T13:28:18.232409+00:00",
+    "combinations": [
+      [
+        10,
+        "B3",
+        "Q3_Year"
+      ],
+      [
+        1,
+        "C1",
+        "Q3_Year"
+      ],
+      [
+        10,
+        "C1",
+        "Q3_Month"
+      ],
+      [
+        10,
+        "B3",
+        "Q3_Both"
+      ],
+      [
+        1,
+        "C1",
+        "Q0"
+      ],
+      [
+        10,
+        "C1",
+        "Q3_Year"
+      ],
+      [
+        1,
+        "B3",
+        "Q0"
+      ],
+      [
+        1,
+        "B3",
+        "Q3_Year"
+      ],
+      [
+        10,
+        "B3",
+        "Q0"
+      ],
+      [
+        1,
+        "C1",
+        "Q3_Month"
+      ],
+      [
+        1,
+        "C1",
+        "Q3_Both"
+      ],
+      [
+        1,
+        "B3",
+        "Q3_Month"
+      ],
+      [
+        10,
+        "B3",
+        "Q3_Month"
+      ],
+      [
+        10,
+        "C1",
+        "Q3_Both"
+      ],
+      [
+        10,
+        "C1",
+        "Q0"
+      ],
+      [
+        1,
+        "B3",
+        "Q3_Both"
+      ]
+    ],
+    "layout_files": {
+      "sf1/B3": 84,
+      "sf1/C1": 84,
+      "sf10/B3": 84,
+      "sf10/C1": 84
+    }
+  }
+]

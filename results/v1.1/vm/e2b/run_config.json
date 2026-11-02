@@ -1,0 +1,235 @@
+[
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "A5",
+      "A6"
+    ],
+    "queries": [
+      "Q1",
+      "Q4"
+    ],
+    "no_baseline": false,
+    "cold": 5,
+    "warm": 0,
+    "strace_runs": 1,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<v1.0-workdir>/experiments",
+    "layout_label": "v1-default-writer",
+    "run_id": "e2b",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e2b",
+      "--experiments-dir",
+      "<v1.0-workdir>/experiments",
+      "--layout-label",
+      "v1-default-writer",
+      "--threads",
+      "4",
+      "--memory-limit",
+      "10GB",
+      "--cold",
+      "5",
+      "--warm",
+      "0",
+      "--strace-runs",
+      "1",
+      "--sf",
+      "10",
+      "--models",
+      "A5,A6",
+      "--queries",
+      "Q1,Q4"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T11:21:24.960446+00:00",
+    "combinations": [
+      [
+        10,
+        "A6",
+        "Q4"
+      ],
+      [
+        10,
+        "A5",
+        "Q4"
+      ],
+      [
+        10,
+        "A6",
+        "Q0"
+      ],
+      [
+        10,
+        "A6",
+        "Q1"
+      ],
+      [
+        10,
+        "A5",
+        "Q1"
+      ],
+      [
+        10,
+        "A5",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/A5": 5923,
+      "sf10/A6": 75000
+    }
+  },
+  {
+    "sf": [
+      1
+    ],
+    "models": [
+      "A7"
+    ],
+    "queries": [
+      "Q1",
+      "Q4"
+    ],
+    "no_baseline": false,
+    "cold": 5,
+    "warm": 0,
+    "strace_runs": 1,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<v1.0-workdir>/experiments",
+    "layout_label": "v1-default-writer",
+    "run_id": "e2b",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e2b",
+      "--experiments-dir",
+      "<v1.0-workdir>/experiments",
+      "--layout-label",
+      "v1-default-writer",
+      "--threads",
+      "4",
+      "--memory-limit",
+      "10GB",
+      "--cold",
+      "5",
+      "--warm",
+      "0",
+      "--strace-runs",
+      "1",
+      "--sf",
+      "1",
+      "--models",
+      "A7",
+      "--queries",
+      "Q1,Q4"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T11:27:08.386490+00:00",
+    "combinations": [
+      [
+        1,
+        "A7",
+        "Q1"
+      ],
+      [
+        1,
+        "A7",
+        "Q4"
+      ],
+      [
+        1,
+        "A7",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf1/A7": 7740
+    }
+  },
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "B4"
+    ],
+    "queries": [
+      "Q1_hive",
+      "Q4_hive",
+      "Q3_B4_month"
+    ],
+    "no_baseline": false,
+    "cold": 5,
+    "warm": 0,
+    "strace_runs": 1,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<v1.0-workdir>/experiments",
+    "layout_label": "v1-default-writer",
+    "run_id": "e2b",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e2b",
+      "--experiments-dir",
+      "<v1.0-workdir>/experiments",
+      "--layout-label",
+      "v1-default-writer",
+      "--threads",
+      "4",
+      "--memory-limit",
+      "10GB",
+      "--cold",
+      "5",
+      "--warm",
+      "0",
+      "--strace-runs",
+      "1",
+      "--sf",
+      "10",
+      "--models",
+      "B4",
+      "--queries",
+      "Q1_hive,Q4_hive,Q3_B4_month"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T11:27:42.321862+00:00",
+    "combinations": [
+      [
+        10,
+        "B4",
+        "Q1_hive"
+      ],
+      [
+        10,
+        "B4",
+        "Q4_hive"
+      ],
+      [
+        10,
+        "B4",
+        "Q3_B4_month"
+      ],
+      [
+        10,
+        "B4",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/B4": 278680
+    }
+  }
+]

@@ -1,251 +1,269 @@
 #!/usr/bin/env bash
-# Usage: ./01_generate_layouts.sh [SF]   (SF = 1 or 10, default 10)
+# Writes the Parquet layouts (one COPY per file; exact file and row counts are checked).
+# Usage: ./01_generate_layouts.sh --sf 1|10 [--models A1,B3] [--custom NAME:flat:N|NAME:zipf:N:S|NAME:sorted:N|NAME:hive:col1+col2[:K]]
+#        [--staging FILE] [--force]
 set -euo pipefail
-
-SF="${1:-10}"
-[[ "$SF" == "1" || "$SF" == "10" ]] || { echo "SF must be 1 or 10"; exit 1; }
 
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$BASE_DIR"
-
 DUCKDB="$BASE_DIR/duckdb"
-DATA_DIR="$BASE_DIR/data/sf${SF}"
-EXP_DIR="$BASE_DIR/experiments/sf${SF}"
-STAGING="$DATA_DIR/lineitem_staging.parquet"
-ORDERS="$DATA_DIR/orders.parquet"
-SPILL="$DATA_DIR/duckdb_spill_gen"
 
-mkdir -p "$DATA_DIR" "$EXP_DIR" "$SPILL"
-trap 'rm -rf "$SPILL"' EXIT
+SF=""; MODELS=""; CUSTOM=(); FORCE=0; KEEP=0; STAGING=""
+EXP_ROOT="$BASE_DIR/layouts"
+INVENTORY="$BASE_DIR/results/local/inventories/inventory_v2.csv"
+INV_FILES="$BASE_DIR/results/local/inventories/inventory_v2_files"
+GEN_LOG="$BASE_DIR/results/local/inventories/generation_log.csv"
+THREADS=4; MEMORY_LIMIT="${GEN_MEMORY_LIMIT:-8GB}"
 
-log()  { echo "[$(date +'%H:%M:%S')] $*"; }
-die()  { echo "ERROR: $*" >&2; exit 1; }
-
-# Run DuckDB with -c flag (NOT stdin redirect).
-# CRITICAL: DuckDB CLI in stdin mode (duckdb < file) does NOT stop on SQL
-# errors — it continues past failed statements and exits 0, silently producing
-# no output files.  The -c flag executes the SQL as a batch, stops immediately
-# on any error, and returns a non-zero exit code.  All DuckDB calls in this
-# script use this wrapper.
-run_sql() {
-    local sql="$1"
-    "$DUCKDB" -c "$sql" || return 1
-}
-
-rowcount() {
-    "$DUCKDB" -noheader -csv \
-        -c "SELECT COUNT(*) FROM read_parquet('$1')"
-}
-
-# ── Generate flat layout using hash-based partitioning
-generate_flat() {
-    local src="$1" dst="$2" n="$3"
-    mkdir -p "$dst"
-
-    log "  → flat (hash-partitioned): $n files"
-
-    run_sql "
-SET memory_limit='12GB';
-SET temp_directory='${SPILL}';
-COPY (
-    SELECT *,
-        (abs(hash(l_orderkey * 10000 + l_linenumber)) % ${n})::INTEGER AS _fid
-    FROM read_parquet('${src}')
-) TO '${dst}'
-(FORMAT PARQUET,
- PARTITION_BY (_fid),
- WRITE_PARTITION_COLUMNS false,
- COMPRESSION ZSTD,
- ROW_GROUP_SIZE 1048576);
-" || die "flat layout generation failed for $dst"
-
-    # Flatten: move files out of _fid=N/ subdirs into dst directly
-    local counter=0
-    while IFS= read -r f; do
-        mv "$f" "$dst/part_$(printf '%06d' $counter).parquet"
-        counter=$(( counter + 1 ))
-    done < <(find "$dst" -mindepth 2 -name "*.parquet" | sort)
-    find "$dst" -mindepth 1 -type d -empty -delete 2>/dev/null || true
-
-    local actual; actual=$(find "$dst" -maxdepth 1 -name "*.parquet" | wc -l)
-    log "  → done: $actual files in $(du -sh "$dst" | cut -f1)"
-}
-
-# ── Generate Hive-partitioned layout
-generate_hive() {
-    local src="$1" dst="$2" partition_cols="$3"
-    mkdir -p "$dst"
-
-    log "  → hive PARTITION BY ($partition_cols)"
-
-    run_sql "
-SET memory_limit='12GB';
-SET temp_directory='${SPILL}';
-COPY (
-    SELECT *,
-        date_part('year',  l_shipdate)::INTEGER AS ship_year,
-        date_part('month', l_shipdate)::INTEGER AS ship_month,
-        date_part('day',   l_shipdate)::INTEGER AS ship_day
-    FROM read_parquet('${src}')
-) TO '${dst}'
-(FORMAT PARQUET,
- PARTITION_BY (${partition_cols}),
- COMPRESSION ZSTD,
- ROW_GROUP_SIZE 1048576);
-" || die "hive layout generation failed for $dst"
-
-    local actual; actual=$(find "$dst" -name "*.parquet" | wc -l)
-    log "  → done: $actual files in $(du -sh "$dst" | cut -f1)"
-}
-
-# ── Skip helper
-already_done() {
-    local dir="$1"
-    [[ -d "$dir" ]] && [[ -n "$(find "$dir" -name '*.parquet' 2>/dev/null | head -1)" ]]
-}
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# PHASE 0 — TPC-H data generation
-# ═══════════════════════════════════════════════════════════════════════════════
-log "=== PHASE 0: TPC-H SF-$SF ==="
-
-if [[ -f "$STAGING" ]] && [[ -f "$ORDERS" ]]; then
-    log "Staging files exist — skipping TPC-H generation."
-else
-    # WHY LOAD NOT INSTALL:
-    # 00_check_env.sh already ran INSTALL tpch for this DuckDB version.
-    # Using INSTALL again causes DuckDB to attempt a network check for
-    # extension updates. If the VM has no internet access this fails
-    # silently. LOAD tpch uses the already-installed local copy directly.
-    #
-    # WHY ORDERS BEFORE LINEITEM:
-    # Orders is small (~25 MB at SF-1, ~200 MB at SF-10). Exporting it
-    # first frees the orders table from the buffer pool before the large
-    # lineitem export begins.
-
-    log "Exporting orders table…"
-    run_sql "
-SET memory_limit='12GB';
-SET temp_directory='${SPILL}';
-LOAD tpch;
-CALL dbgen(sf=${SF});
-COPY orders TO '${ORDERS}' (FORMAT PARQUET, COMPRESSION ZSTD);
-" || die "orders export failed"
-    [[ -f "$ORDERS" ]] || die "orders.parquet was not created — check disk space and DuckDB output above"
-    log "  → orders: $(du -sh "$ORDERS" | cut -f1)"
-
-    # Lineitem is exported in a separate run_sql call.
-    # Both calls share NO session state — dbgen must be called again.
-    # This is intentional: each run_sql is a fresh in-memory DuckDB process.
-    # The cost is running dbgen twice, which takes ~5-10 seconds at SF-1
-    # and ~60-90 seconds at SF-10 but is completely reliable.
-    log "Exporting lineitem table…"
-    run_sql "
-SET memory_limit='12GB';
-SET temp_directory='${SPILL}';
-LOAD tpch;
-CALL dbgen(sf=${SF});
-COPY lineitem TO '${STAGING}' (FORMAT PARQUET, COMPRESSION ZSTD, ROW_GROUP_SIZE 1048576);
-" || die "lineitem export failed"
-    [[ -f "$STAGING" ]] || die "lineitem_staging.parquet was not created — check disk space and DuckDB output above"
-    log "  → lineitem: $(du -sh "$STAGING" | cut -f1)"
-
-    log "TPC-H data ready."
-fi
-
-TOTAL=$(rowcount "$STAGING")
-log "Total lineitem rows: $TOTAL"
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# PHASE 1 — Flat models
-# ═══════════════════════════════════════════════════════════════════════════════
-log ""
-log "=== PHASE 1: Flat models ==="
-
-# A1 — monolithic (staging file is already a single Parquet file)
-if already_done "$EXP_DIR/A1"; then
-    log "A1 exists — skipping."
-else
-    log "A1 (1 monolithic file)…"
-    mkdir -p "$EXP_DIR/A1"
-    cp "$STAGING" "$EXP_DIR/A1/lineitem.parquet"
-    log "  → done: $(du -sh "$EXP_DIR/A1" | cut -f1)"
-fi
-
-# A2 — ~950 MB (SF-10 only; at SF-1 essentially the same as A1)
-if [[ "$SF" == "10" ]]; then
-    already_done "$EXP_DIR/A2" && log "A2 exists — skipping." \
-        || { log "A2 (~8 files @ ~950 MB)…"
-             generate_flat "$STAGING" "$EXP_DIR/A2" 8; }
-fi
-
-# A3 — ~200 MB  (SF-10: ~38 files | SF-1: ~4 files)
-N_A3=38; [[ "$SF" == "1" ]] && N_A3=4
-already_done "$EXP_DIR/A3" && log "A3 exists — skipping." \
-    || { log "A3 (~200 MB files, ~$N_A3 files)…"
-         generate_flat "$STAGING" "$EXP_DIR/A3" $N_A3; }
-
-# A4 — ~100 MB  (SF-10: ~75 files | SF-1: ~8 files)  ← also used as B1 control
-N_A4=75; [[ "$SF" == "1" ]] && N_A4=8
-already_done "$EXP_DIR/A4" && log "A4 exists — skipping." \
-    || { log "A4 (~100 MB files, ~$N_A4 files)…"
-         generate_flat "$STAGING" "$EXP_DIR/A4" $N_A4; }
-
-# A5 — ~50 MB   (SF-10: ~150 files | SF-1: ~15 files)
-N_A5=150; [[ "$SF" == "1" ]] && N_A5=15
-already_done "$EXP_DIR/A5" && log "A5 exists — skipping." \
-    || { log "A5 (~50 MB files, ~$N_A5 files)…"
-         generate_flat "$STAGING" "$EXP_DIR/A5" $N_A5; }
-
-# A6 — ~10 MB   (SF-10: ~750 files | SF-1: ~75 files)
-N_A6=750; [[ "$SF" == "1" ]] && N_A6=75
-already_done "$EXP_DIR/A6" && log "A6 exists — skipping." \
-    || { log "A6 (~10 MB files, ~$N_A6 files)…"
-         generate_flat "$STAGING" "$EXP_DIR/A6" $N_A6; }
-
-# A7 — ~1 MB    (SF-10: ~7500 files | SF-1: ~750 files)
-N_A7=7500; [[ "$SF" == "1" ]] && N_A7=750
-already_done "$EXP_DIR/A7" && log "A7 exists — skipping." \
-    || { log "A7 (~1 MB files, ~$N_A7 files)…"
-         generate_flat "$STAGING" "$EXP_DIR/A7" $N_A7; }
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# PHASE 2 — Hierarchical models
-# ═══════════════════════════════════════════════════════════════════════════════
-log ""
-log "=== PHASE 2: Hierarchical models ==="
-
-already_done "$EXP_DIR/B2" && log "B2 exists — skipping." \
-    || { log "B2 (/year/)…"
-         generate_hive "$STAGING" "$EXP_DIR/B2" "ship_year"; }
-
-already_done "$EXP_DIR/B3" && log "B3 exists — skipping." \
-    || { log "B3 (/year/month/)…"
-         generate_hive "$STAGING" "$EXP_DIR/B3" "ship_year, ship_month"; }
-
-already_done "$EXP_DIR/B4" && log "B4 exists — skipping." \
-    || { log "B4 (/year/month/day/)…"
-         generate_hive "$STAGING" "$EXP_DIR/B4" "ship_year, ship_month, ship_day"; }
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# PHASE 3 — Inverted hierarchy
-# ═══════════════════════════════════════════════════════════════════════════════
-log ""
-log "=== PHASE 3: Inverted hierarchy ==="
-
-already_done "$EXP_DIR/C1" && log "C1 exists — skipping." \
-    || { log "C1 (/month/year/)…"
-         generate_hive "$STAGING" "$EXP_DIR/C1" "ship_month, ship_year"; }
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# Summary
-# ═══════════════════════════════════════════════════════════════════════════════
-log ""
-log "=== SF-$SF layout summary ==="
-for m in A1 A2 A3 A4 A5 A6 A7 B2 B3 B4 C1; do
-    [[ -d "$EXP_DIR/$m" ]] || continue
-    cnt=$(find "$EXP_DIR/$m" -name "*.parquet" | wc -l)
-    sz=$(du -sh "$EXP_DIR/$m" 2>/dev/null | cut -f1)
-    printf "  %-4s  %5s files   %s\n" "$m" "$cnt" "$sz"
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --sf) SF="$2"; shift 2 ;;
+        --models) MODELS="$2"; shift 2 ;;
+        --custom) CUSTOM+=("$2"); shift 2 ;;
+        --force) FORCE=1; shift ;;
+        --keep-intermediates) KEEP=1; shift ;;
+        --experiments-dir) EXP_ROOT="$(realpath -m "$2")"; shift 2 ;;
+        --inventory) INVENTORY="$2"; shift 2 ;;
+        --inventory-files) INV_FILES="$2"; shift 2 ;;
+        --gen-log) GEN_LOG="$2"; shift 2 ;;
+        --staging) STAGING="$(realpath -m "$2")"; shift 2 ;;
+        *) echo "unknown argument: $1" >&2; exit 1 ;;
+    esac
 done
-log "Generation complete for SF-$SF."
+[[ "$SF" == "1" || "$SF" == "10" ]] || { echo "--sf must be 1 or 10" >&2; exit 1; }
+
+STAGING="${STAGING:-$BASE_DIR/data/sf${SF}/lineitem_staging.parquet}"
+EXP_DIR="$EXP_ROOT/sf${SF}"
+WORK="$EXP_ROOT/_gen_tmp/sf${SF}"           # intermediates + SQL scripts
+SPILL="$EXP_ROOT/_spill_tmp"
+INTER_HASH="$WORK/by_hash.parquet"
+INTER_DATE="$WORK/by_date.parquet"
+[[ -f "$STAGING" ]] || { echo "staging not found: $STAGING" >&2; exit 1; }
+mkdir -p "$EXP_DIR" "$WORK" "$SPILL" "$(dirname "$INVENTORY")" "$(dirname "$GEN_LOG")" "$INV_FILES"
+
+cleanup() {
+    rm -rf "$SPILL"
+    if [[ $KEEP -eq 0 ]]; then
+        rm -rf "$WORK"
+        rmdir "$EXP_ROOT/_gen_tmp" 2>/dev/null || true
+    fi
+}
+trap cleanup EXIT
+
+log() { echo "[$(date +'%H:%M:%S')] $*"; }
+die() { echo "ERROR: $*" >&2; exit 1; }
+
+AVAIL_GB=$(df -BG --output=avail "$EXP_ROOT" | tail -1 | tr -dc 0-9)
+SPILL_CAP_GB=$(( AVAIL_GB - 6 ))
+(( SPILL_CAP_GB >= 1 )) || die "only ${AVAIL_GB} GB free; need more than 6 GB"
+SETTINGS="SET threads=${THREADS}; SET memory_limit='${MEMORY_LIMIT}'; SET temp_directory='${SPILL}'; SET max_temp_directory_size='${SPILL_CAP_GB}GB'; SET parquet_metadata_cache=true;"
+
+run_sql_file() {
+    local f="$1" t="$WORK/_time.txt"
+    if ! /usr/bin/time -f "%e %M" -o "$t" "$DUCKDB" -bail -f "$f" >/dev/null; then
+        cat "$t" >&2    # e.g. "Command terminated by signal 9" (OOM killer)
+        die "DuckDB failed on $f"
+    fi
+    read -r LAST_SECONDS LAST_RSS_KB < <(tail -1 "$t")
+}
+
+query() { "$DUCKDB" -noheader -list -c "$1"; }
+
+gen_log() {  # sf, model, step, seconds, peak_rss_kb, files
+    [[ -s "$GEN_LOG" ]] || echo "timestamp,sf,model,step,seconds,peak_rss_kb,files,threads,memory_limit" > "$GEN_LOG"
+    echo "$(date -u +%Y-%m-%dT%H:%M:%SZ),$1,$2,$3,$4,$5,$6,$THREADS,$MEMORY_LIMIT" >> "$GEN_LOG"
+}
+
+STAGING_ROWS=$(query "SELECT count(*) FROM read_parquet('$STAGING')")
+
+HASH_EXPR="hash(l_orderkey * 10000 + l_linenumber)"
+
+ensure_inter_hash() {
+    [[ -f "$INTER_HASH" ]] && return
+    log "  intermediate sorted by _h → $INTER_HASH"
+    cat > "$WORK/inter_hash.sql" <<EOF
+$SETTINGS
+COPY (SELECT *, ${HASH_EXPR} AS _h FROM read_parquet('${STAGING}') ORDER BY _h)
+TO '${INTER_HASH}' (FORMAT PARQUET, COMPRESSION ZSTD, ROW_GROUP_SIZE 122880);
+EOF
+    run_sql_file "$WORK/inter_hash.sql"
+    gen_log "$SF" "_intermediate" "by_hash" "$LAST_SECONDS" "$LAST_RSS_KB" 1
+}
+
+ensure_inter_date() {
+    [[ -f "$INTER_DATE" ]] && return
+    log "  intermediate sorted by (l_shipdate, _h) → $INTER_DATE"
+    cat > "$WORK/inter_date.sql" <<EOF
+$SETTINGS
+COPY (
+    SELECT *,
+        date_part('year',    l_shipdate)::INTEGER AS ship_year,
+        date_part('quarter', l_shipdate)::INTEGER AS ship_quarter,
+        date_part('month',   l_shipdate)::INTEGER AS ship_month,
+        date_part('day',     l_shipdate)::INTEGER AS ship_day,
+        (date_part('year', l_shipdate) * 100 + date_part('month', l_shipdate))::INTEGER AS ship_ym,
+        (l_suppkey % 200)::INTEGER AS supp,
+        ${HASH_EXPR} AS _h
+    FROM read_parquet('${STAGING}')
+    ORDER BY l_shipdate, _h
+) TO '${INTER_DATE}' (FORMAT PARQUET, COMPRESSION ZSTD, ROW_GROUP_SIZE 122880);
+EOF
+    run_sql_file "$WORK/inter_date.sql"
+    gen_log "$SF" "_intermediate" "by_date" "$LAST_SECONDS" "$LAST_RSS_KB" 1
+}
+
+OUT_OPTS="FORMAT PARQUET, COMPRESSION ZSTD, ROW_GROUP_SIZE 1048576"
+
+write_flat() {  # dst n
+    local dst="$1" n="$2"
+    ensure_inter_hash
+    query "
+SELECT format('COPY (SELECT * EXCLUDE (_h) FROM read_parquet(''{}'') WHERE _h >= {}{} ORDER BY l_orderkey, l_linenumber) TO ''{}/part_{:06d}.parquet'' ($OUT_OPTS);',
+              '${INTER_HASH}',
+              (i::HUGEINT * 18446744073709551616 // ${n})::UBIGINT,
+              CASE WHEN i < ${n} - 1
+                   THEN format(' AND _h < {}', ((i + 1)::HUGEINT * 18446744073709551616 // ${n})::UBIGINT)
+                   ELSE '' END,
+              '${dst}', i)
+FROM range(${n}) t(i) ORDER BY i" > "$WORK/body.sql"
+}
+
+write_zipf() {  # dst n s: file i (0-based) gets a share of the rows proportional to 1/(i+1)^s
+    local dst="$1" n="$2" s="$3"
+    ensure_inter_hash
+    query "
+WITH w AS (SELECT i, pow(i + 1, -${s}) AS wt FROM range(${n}) t(i)),
+     c AS (SELECT i, (sum(wt) OVER (ORDER BY i) - wt) / sum(wt) OVER () AS lo,
+                  sum(wt) OVER (ORDER BY i) / sum(wt) OVER () AS hi FROM w)
+SELECT format('COPY (SELECT * EXCLUDE (_h) FROM read_parquet(''{}'') WHERE _h >= {}{} ORDER BY l_orderkey, l_linenumber) TO ''{}/part_{:06d}.parquet'' ($OUT_OPTS);',
+              '${INTER_HASH}',
+              (lo * 18446744073709551616)::HUGEINT::UBIGINT,
+              CASE WHEN i < ${n} - 1
+                   THEN format(' AND _h < {}', (hi * 18446744073709551616)::HUGEINT::UBIGINT)
+                   ELSE '' END,
+              '${dst}', i)
+FROM c ORDER BY i" > "$WORK/body.sql"
+}
+
+write_sorted() {  # dst n — n equal row ranges of the date-sorted order
+    local dst="$1" n="$2"
+    ensure_inter_date
+    query "
+SELECT format('COPY (SELECT * EXCLUDE (_h, file_row_number, ship_year, ship_quarter, ship_month, ship_day, ship_ym, supp) FROM read_parquet(''{}'', file_row_number = true) WHERE file_row_number >= {} AND file_row_number < {}) TO ''{}/part_{:06d}.parquet'' ($OUT_OPTS);',
+              '${INTER_DATE}',
+              (i * ${STAGING_ROWS}) // ${n}, ((i + 1) * ${STAGING_ROWS}) // ${n},
+              '${dst}', i)
+FROM range(${n}) t(i) ORDER BY i" > "$WORK/body.sql"
+}
+
+write_hive() {  # dst "col1, col2" k
+    local dst="$1" cols="$2" k="$3"
+    ensure_inter_date
+    local drop="_h, ship_quarter, ship_ym, supp" c
+    for c in ${cols//,/ }; do
+        [[ "$c" == "ship_quarter" || "$c" == "ship_ym" || "$c" == "supp" ]] || drop+=", $c"
+    done
+    local path_expr="" where_expr="" sep=""
+    for c in ${cols//,/ }; do
+        path_expr+="${sep:+ || '/' || }'${c}=' || ${c}"
+        where_expr+="${sep:+ || ' AND ' || }'${c} = ' || ${c}"
+        sep=1
+    done
+    query "SELECT DISTINCT ${path_expr} FROM read_parquet('${INTER_DATE}') ORDER BY 1" \
+        | while IFS= read -r leaf; do mkdir -p "$dst/$leaf"; done
+    query "
+WITH leaves AS (
+    SELECT DISTINCT ${path_expr} AS leaf, ${where_expr} AS cond
+    FROM read_parquet('${INTER_DATE}'))
+SELECT format('COPY (SELECT * EXCLUDE (${drop}) FROM read_parquet(''{}'') WHERE {}{} ORDER BY l_orderkey, l_linenumber) TO ''{}/{}/data_{}.parquet'' ($OUT_OPTS);',
+              '${INTER_DATE}', cond,
+              CASE WHEN ${k} = 1 THEN ''
+                   ELSE format(' AND _h >= {}{}',
+                        (j::HUGEINT * 18446744073709551616 // ${k})::UBIGINT,
+                        CASE WHEN j < ${k} - 1
+                             THEN format(' AND _h < {}', ((j + 1)::HUGEINT * 18446744073709551616 // ${k})::UBIGINT)
+                             ELSE '' END) END,
+              '${dst}', leaf, j)
+FROM leaves, range(${k}) t(j) ORDER BY leaf, j" > "$WORK/body.sql"
+}
+
+build_model() {  # name kind arg [k]
+    local name="$1" kind="$2" arg="$3" k="${4:-1}" dst="$EXP_DIR/$1"
+    if [[ -d "$dst" && $FORCE -eq 0 ]]; then
+        log "$name exists — skipping (use --force to regenerate)."
+        return
+    fi
+    rm -rf "$dst"; mkdir -p "$dst"
+    log "$name ($kind $arg${4:+, $k})"
+    case "$kind" in
+        flat)   write_flat   "$dst" "$arg" ;;
+        zipf)   write_zipf   "$dst" "$arg" "$k" ;;
+        sorted) write_sorted "$dst" "$arg" ;;
+        hive)   write_hive   "$dst" "${arg//+/, }" "$k" ;;
+        *) die "unknown kind $kind" ;;
+    esac
+    local expected; expected=$(wc -l < "$WORK/body.sql")
+    { echo "$SETTINGS"; cat "$WORK/body.sql"; } > "$WORK/model.sql"
+    run_sql_file "$WORK/model.sql"
+    local secs="$LAST_SECONDS" rss="$LAST_RSS_KB"
+
+    local files rows
+    files=$(find "$dst" -name '*.parquet' | wc -l)
+    rows=$(query "SELECT sum(num_rows) FROM parquet_file_metadata('${dst}/**/*.parquet')")
+    [[ "$files" -eq "$expected" ]] || die "$name: $files files, expected $expected"
+    [[ "$rows" -eq "$STAGING_ROWS" ]] || die "$name: $rows rows, staging has $STAGING_ROWS"
+    gen_log "$SF" "$name" "$kind:$arg:$k" "$secs" "$rss" "$files"
+    log "  → $files files, $rows rows, $(du -sh "$dst" | cut -f1), ${secs}s, peak RSS ${rss} KB"
+
+    if [[ -f "$INVENTORY" ]]; then
+        awk -F, -v s="$SF" -v m="$name" 'NR==1 || !($1==s && $2==m)' "$INVENTORY" > "$INVENTORY.tmp_"
+        mv "$INVENTORY.tmp_" "$INVENTORY"
+    fi
+    scripts/tools/inventory.sh "$dst" "$SF" "$name" "$INVENTORY" "$INV_FILES" >/dev/null
+}
+
+declare -A SPEC
+if [[ "$SF" == "10" ]]; then
+    SPEC=([A1]="flat 1" [A2]="flat 8" [A3]="flat 38" [A4]="flat 75"
+          [A5]="flat 150" [A6]="flat 750" [A7]="flat 7500")
+else
+    SPEC=([A1]="flat 1" [A3]="flat 4" [A4]="flat 8"
+          [A5]="flat 15" [A6]="flat 75" [A7]="flat 750")
+fi
+SPEC+=([B2]="hive ship_year" [B3]="hive ship_year+ship_month"
+       [B4]="hive ship_year+ship_month+ship_day" [C1]="hive ship_month+ship_year")
+ORDER=(A1 A2 A3 A4 A5 A6 A7 B2 B3 B4 C1)
+
+if [[ -n "$MODELS" ]]; then
+    IFS=, read -ra SELECTED <<< "$MODELS"
+elif [[ ${#CUSTOM[@]} -eq 0 ]]; then
+    SELECTED=()
+    for m in "${ORDER[@]}"; do [[ -n "${SPEC[$m]:-}" ]] && SELECTED+=("$m"); done
+else
+    SELECTED=()
+fi
+for m in "${SELECTED[@]}"; do
+    [[ -n "${SPEC[$m]:-}" ]] || die "model $m is not defined at SF-$SF"
+done
+
+log "=== SF-$SF: staging $STAGING_ROWS rows → $EXP_DIR ==="
+for m in "${ORDER[@]}"; do
+    [[ " ${SELECTED[*]} " == *" $m "* && "${SPEC[$m]}" == flat* ]] || continue
+    build_model "$m" ${SPEC[$m]}
+done
+for c in "${CUSTOM[@]}"; do
+    IFS=: read -r name kind arg k <<< "$c"
+    [[ "$kind" == flat ]] && build_model "$name" "$kind" "$arg"
+    [[ "$kind" == zipf ]] && build_model "$name" "$kind" "$arg" "$k"
+done
+[[ $KEEP -eq 1 ]] || rm -f "$INTER_HASH"
+for m in "${ORDER[@]}"; do
+    [[ " ${SELECTED[*]} " == *" $m "* && "${SPEC[$m]}" == hive* ]] || continue
+    build_model "$m" ${SPEC[$m]}
+done
+for c in "${CUSTOM[@]}"; do
+    IFS=: read -r name kind arg k <<< "$c"
+    [[ "$kind" != flat && "$kind" != zipf ]] && build_model "$name" "$kind" "$arg" "${k:-1}"
+done
+
+log "=== SF-$SF done ==="

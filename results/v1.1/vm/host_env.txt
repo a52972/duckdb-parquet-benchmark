@@ -1,0 +1,21 @@
+Host environment (reported by the author on 2026-10-26; identifiers omitted)
+===========================================================================
+Host machine     : laptop, Intel Core i7-13650HX (from guest /proc/cpuinfo)
+Host RAM         : 34,070,192,128 bytes (31.7 GiB)
+Host OS          : Microsoft Windows 11 Pro, version 10.0.26200
+Host storage     : SAMSUNG MZAL81T0HFLB-00BL2, SSD, NVMe, 1,024,209,543,168 bytes
+Host boot time   : 2026-10-26 09:28:16 UTC
+Time zones       : CSV timestamps are UTC
+Power            : on AC power, Windows performance mode
+Background load  : ordinary desktop applications open on the host (not controlled)
+
+Hypervisor       : VMware Workstation 17 Pro 17.6.4 build-24832109
+VMware Tools     : 12.5.0.51152 (build-24276846) in the guest
+VM hardware      : virtualHW.version 21; numvcpus 4 (coresPerSocket 1); memsize 16384 MB
+Virtual disk     : 50 GB on scsi0 = "lsilogic" (LSI Logic parallel SCSI, guest driver mptspi)
+VMDK type        : createType "twoGbMaxExtentSparse" (growable / dynamically allocated,
+                   split into 13 extent files of up to ~4 GB); no independent/non-persistent mode
+Host disk cache  : VMware default (no host-cache options in the .vmx); the VMDK extent
+                   files are ordinary files on the host NTFS volume and go through the
+                   Windows file cache
+Guest            : Debian GNU/Linux 13 (trixie), kernel 6.12.57+deb13-amd64

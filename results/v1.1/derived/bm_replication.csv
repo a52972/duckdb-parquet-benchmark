@@ -1,0 +1,112 @@
+Experiment,Item,Metric,Kind,VM,VM_lo,VM_hi,VM_sig,BM,BM_lo,BM_hi,BM_sig,BM_over_VM,BMVM_lo,BMVM_hi,SameDirection,Replicates
+E4,one-month filter: depth 1 vs 2 (84 leaves),EngineLatency_ms,ratio,0.916322,0.891101,0.943021,True,0.96814,0.956584,0.982765,True,1.05655,1.02487,1.09209,True,True
+E4,one-month filter: depth 1 vs 2 (84 leaves),PlannerBinding_ms,ratio,0.873022,0.851272,0.934938,True,0.961485,0.940893,0.978041,True,1.10133,1.02502,1.1346,True,True
+E4,COUNT(*): depth 1 vs 2 (84 leaves),EngineLatency_ms,ratio,0.996671,0.958378,1.02808,False,0.972523,0.960241,0.983381,True,0.975771,0.942302,1.015,True,False
+E4,one-month filter: depth 3 vs 2,EngineLatency_ms,ratio,1.14501,1.09595,1.17678,True,1.12711,1.0775,1.14876,True,0.984372,0.939549,1.03447,True,True
+E4,one-month filter: depth 3 vs 2,PlannerBinding_ms,ratio,1.1643,1.13696,1.24801,True,1.20546,1.14391,1.22807,True,1.03535,0.949898,1.06619,True,True
+E4,COUNT(*): depth 3 vs 2,EngineLatency_ms,ratio,1.15352,1.09335,1.19832,True,1.12695,1.06533,1.14282,True,0.976963,0.924307,1.03236,True,True
+E4,one-month filter: 840 vs 84 files (depth 2),EngineLatency_ms,ratio,1.46052,1.40907,1.50251,True,1.19655,1.19177,1.21428,True,0.819262,0.796355,0.853322,True,True
+E4,one-month filter: 840 vs 84 files (depth 2),PlannerBinding_ms,ratio,1.53682,1.49248,1.61249,True,1.2404,1.22311,1.26365,True,0.807117,0.767588,0.834811,True,True
+E4,COUNT(*): 840 vs 84 files (depth 2),EngineLatency_ms,ratio,4.77134,4.62827,4.87935,True,2.40976,2.36104,2.45182,True,0.50505,0.490151,0.523267,True,True
+E4,"one-month filter: 2,520 vs 84 files (depth 2)",EngineLatency_ms,ratio,2.87636,2.80652,2.94072,True,1.84118,1.76229,1.86607,True,0.640108,0.609968,0.658792,True,True
+E4,"one-month filter: 2,520 vs 84 files (depth 2)",PlannerBinding_ms,ratio,2.9733,2.92025,3.13564,True,1.92437,1.82014,1.95786,True,0.647216,0.600548,0.662141,True,True
+E4,"COUNT(*): 2,520 vs 84 files (depth 2)",EngineLatency_ms,ratio,12.9838,12.5264,13.257,True,5.72508,5.50193,5.95205,True,0.440939,0.42107,0.464989,True,True
+E4,"one-month filter: B4 vs flat, 2,526 files",EngineLatency_ms,ratio,0.420027,0.411238,0.425599,True,0.496436,0.459516,0.510258,True,1.18192,1.09564,1.22649,True,True
+E4,"one-month filter: B4 vs flat, 2,526 files",PlannerBinding_ms,ratio,17.2709,16.7688,17.8827,True,14.1865,13.1282,14.6816,True,0.821409,0.752634,0.863423,True,True
+E4,"COUNT(*): B4 vs flat, 2,526 files",EngineLatency_ms,ratio,1.98842,1.95485,2.03599,True,2.60069,2.48416,2.69532,True,1.30792,1.24247,1.36138,True,True
+E4,"one-month filter: B4 vs depth 2 x 30 (2,526 vs 84 folders)",EngineLatency_ms,ratio,5.83768,5.75851,5.90132,True,5.15415,4.79112,5.41299,True,0.882911,0.820104,0.929402,True,True
+E4,"one-month filter: B4 vs depth 2 x 30 (2,526 vs 84 folders)",PlannerBinding_ms,ratio,8.01771,7.82237,8.11082,True,7.09587,6.55996,7.51357,True,0.885024,0.818692,0.943648,True,True
+E4,"COUNT(*): B4 vs depth 2 x 30 (2,526 vs 84 folders)",EngineLatency_ms,ratio,1.76696,1.72704,1.81918,True,2.17553,2.06775,2.28681,True,1.23123,1.16143,1.30091,True,True
+E4,"planner_binding per folder (ms), B4 vs depth 2 x 30",PlannerBinding_ms,slope,0.122534,0.120514,0.123647,True,0.180618,0.165236,0.186527,True,1.47402,1.34626,1.53937,True,True
+E7,"A1: sorted vs unsorted, Q1",EngineLatency_ms,ratio,1.00792,0.988226,1.01562,False,0.987956,0.985355,0.990076,True,0.980193,0.972348,0.999835,False,False
+E7,"A1: sorted vs unsorted, Q2a",EngineLatency_ms,ratio,0.0774589,0.0757899,0.0805423,True,0.0782072,0.0749155,0.0798345,True,1.00966,0.959543,1.04127,True,True
+E7,"A1: sorted vs unsorted, Q2b",EngineLatency_ms,ratio,0.134026,0.130811,0.136331,True,0.126831,0.126037,0.127605,True,0.946314,0.929034,0.970648,True,True
+E7,"A1: sorted vs unsorted, Q2c",EngineLatency_ms,ratio,0.185203,0.181723,0.188302,True,0.186751,0.186315,0.187348,True,1.00836,0.991688,1.02816,True,True
+E7,"A1: sorted vs unsorted, Q5",EngineLatency_ms,ratio,0.214332,0.20901,0.219119,True,0.216547,0.215576,0.218674,True,1.01033,0.98812,1.03784,True,True
+E7,"A4: sorted vs unsorted, Q1",EngineLatency_ms,ratio,1.01104,0.994029,1.01916,False,1.004,1.00192,1.00514,True,0.993037,0.984723,1.00996,True,False
+E7,"A4: sorted vs unsorted, Q2a",EngineLatency_ms,ratio,0.077613,0.076151,0.0802413,True,0.0659917,0.0639694,0.0671674,True,0.850267,0.814358,0.873738,True,True
+E7,"A4: sorted vs unsorted, Q2b",EngineLatency_ms,ratio,0.139939,0.137088,0.142873,True,0.118947,0.118183,0.120158,True,0.849988,0.830867,0.869727,True,True
+E7,"A4: sorted vs unsorted, Q2c",EngineLatency_ms,ratio,0.19947,0.197257,0.202712,True,0.187149,0.183582,0.187999,True,0.938234,0.9161,0.949201,True,True
+E7,"A4: sorted vs unsorted, Q5",EngineLatency_ms,ratio,0.201853,0.198066,0.207341,True,0.208333,0.206094,0.211101,True,1.0321,1.00314,1.05484,True,True
+E7,"A6: sorted vs unsorted, Q1",EngineLatency_ms,ratio,0.992557,0.987186,0.999599,True,0.977437,0.974001,0.981283,True,0.984767,0.97692,0.991621,True,True
+E7,"A6: sorted vs unsorted, Q2a",EngineLatency_ms,ratio,0.174215,0.172208,0.176596,True,0.108152,0.106774,0.109408,True,0.620797,0.609475,0.630455,True,True
+E7,"A6: sorted vs unsorted, Q2b",EngineLatency_ms,ratio,0.207354,0.203886,0.209003,True,0.157441,0.156268,0.158018,True,0.759285,0.750837,0.772248,True,True
+E7,"A6: sorted vs unsorted, Q2c",EngineLatency_ms,ratio,0.24909,0.246001,0.251982,True,0.217887,0.216659,0.219492,True,0.874733,0.862698,0.887768,True,True
+E7,"A6: sorted vs unsorted, Q5",EngineLatency_ms,ratio,0.242848,0.239452,0.246213,True,0.210743,0.209956,0.212786,True,0.867799,0.855648,0.882214,True,True
+E8,"DuckDB slope Q1 (ms/file), flat A1–A7",EngineLatency_ms,slope,0.237333,0.197817,0.312402,True,0.208954,0.182677,0.26004,True,0.880427,0.658518,1.27962,True,True
+E8,"DuckDB slope Q1 (KB/file), flat A1–A7",PeakRSS_KB,slope,23.0298,22.9594,23.0995,True,23.7511,23.7017,23.7974,True,1.03132,1.02755,1.0349,True,True
+E8,"DuckDB slope Q4 (ms/file), flat A1–A7",EngineLatency_ms,slope,0.131666,0.128852,0.134432,True,0.107912,0.104189,0.114006,True,0.819588,0.783536,0.868562,True,True
+E8,"DuckDB slope Q4 (KB/file), flat A1–A7",PeakRSS_KB,slope,12.3798,12.3568,12.4064,True,12.6367,12.6213,12.6506,True,1.02075,1.01824,1.02291,True,True
+E8,strace A1 Q1: getdents64 per file,Calls,count,2,,,,2,,,,1,,,,
+E8,strace A1 Q1: openat per file,Calls,count,25,,,,27,,,,1.08,,,,
+E8,strace A1 Q1: pread64 per file,Calls,count,352,,,,352,,,,1,,,,
+E8,strace A1 Q4: getdents64 per file,Calls,count,2,,,,2,,,,1,,,,
+E8,strace A1 Q4: openat per file,Calls,count,20,,,,22,,,,1.1,,,,
+E8,strace A1 Q4: pread64 per file,Calls,count,4,,,,4,,,,1,,,,
+E8,strace A4 Q1: getdents64 per file,Calls,count,0.0266667,,,,0.0266667,,,,1,,,,
+E8,strace A4 Q1: openat per file,Calls,count,2.28,,,,2.29333,,,,1.00585,,,,
+E8,strace A4 Q1: pread64 per file,Calls,count,8.02667,,,,8.02667,,,,1,,,,
+E8,strace A4 Q4: getdents64 per file,Calls,count,0.0266667,,,,0.0266667,,,,1,,,,
+E8,strace A4 Q4: openat per file,Calls,count,2.28,,,,2.29333,,,,1.00585,,,,
+E8,strace A4 Q4: pread64 per file,Calls,count,2.02667,,,,2.02667,,,,1,,,,
+E8,strace A6 Q1: getdents64 per file,Calls,count,0.00266667,,,,0.00266667,,,,1,,,,
+E8,strace A6 Q1: openat per file,Calls,count,2.028,,,,2.03067,,,,1.00131,,,,
+E8,strace A6 Q1: pread64 per file,Calls,count,8.00267,,,,8.00267,,,,1,,,,
+E8,strace A6 Q4: getdents64 per file,Calls,count,0.00266667,,,,0.00266667,,,,1,,,,
+E8,strace A6 Q4: openat per file,Calls,count,2.028,,,,2.02933,,,,1.00066,,,,
+E8,strace A6 Q4: pread64 per file,Calls,count,2.00267,,,,2.00267,,,,1,,,,
+E8,strace A7 Q1: getdents64 per file,Calls,count,0.00146667,,,,0.00146667,,,,1,,,,
+E8,strace A7 Q1: openat per file,Calls,count,2.00267,,,,2.00293,,,,1.00013,,,,
+E8,strace A7 Q1: pread64 per file,Calls,count,8.00027,,,,8.00027,,,,1,,,,
+E8,strace A7 Q4: getdents64 per file,Calls,count,0.00146667,,,,0.00146667,,,,1,,,,
+E8,strace A7 Q4: openat per file,Calls,count,2.0028,,,,2.00293,,,,1.00007,,,,
+E8,strace A7 Q4: pread64 per file,Calls,count,2.00027,,,,2.00027,,,,1,,,,
+E8,strace B3 Q1_hive: getdents64 per file,Calls,count,4.38095,,,,4.38095,,,,1,,,,
+E8,strace B3 Q1_hive: openat per file,Calls,count,4.42857,,,,4.44048,,,,1.00269,,,,
+E8,strace B3 Q1_hive: pread64 per file,Calls,count,8,,,,8,,,,1,,,,
+E8,strace B3 Q4_hive: getdents64 per file,Calls,count,4.38095,,,,4.38095,,,,1,,,,
+E8,strace B3 Q4_hive: openat per file,Calls,count,4.41667,,,,4.44048,,,,1.00539,,,,
+E8,strace B3 Q4_hive: pread64 per file,Calls,count,2.02381,,,,2.02381,,,,1,,,,
+E8,strace B4 Q1_hive: getdents64 per file,Calls,count,4.14568,,,,4.14568,,,,1,,,,
+E8,strace B4 Q1_hive: openat per file,Calls,count,4.08076,,,,4.08155,,,,1.00019,,,,
+E8,strace B4 Q1_hive: pread64 per file,Calls,count,7.99921,,,,7.99921,,,,1,,,,
+E8,strace B4 Q4_hive: getdents64 per file,Calls,count,4.14568,,,,4.14568,,,,1,,,,
+E8,strace B4 Q4_hive: openat per file,Calls,count,4.08076,,,,4.08116,,,,1.0001,,,,
+E8,strace B4 Q4_hive: pread64 per file,Calls,count,2.00079,,,,2.00079,,,,1,,,,
+E8,"Polars slope Q1 (ms/file), flat A1–A7",Query_ms,slope,0.161937,0.157743,0.167877,True,0.348198,0.347136,0.34912,True,2.1502,2.07348,2.20717,True,True
+E8,"Polars slope Q1 (KB/file), flat A1–A7",PeakRSS_KB,slope,-45.451,-46.1346,-44.8274,True,-40.413,-40.8304,-39.9722,True,0.889156,0.872868,0.903948,True,True
+E8,"Polars slope Q4 (ms/file), flat A1–A7",Query_ms,slope,0.196495,0.195734,0.197288,True,0.438246,0.437385,0.439029,True,2.23031,2.22065,2.23962,True,True
+E8,"Polars slope Q4 (KB/file), flat A1–A7",PeakRSS_KB,slope,1.0633,0.933742,1.20952,True,1.30612,1.26518,1.3497,True,1.22837,1.07759,1.40502,True,True
+E9,A1 Q1: speed-up 1→4 threads,EngineLatency_ms,ratio,2.9584,2.86903,3.01262,True,1.7216,1.71654,1.72387,True,0.581937,0.571374,0.600231,True,True
+E9,A1 Q1: speed-up 2→4 threads,EngineLatency_ms,ratio,1.5761,1.54251,1.61591,True,1.05748,1.05611,1.05868,True,0.670947,0.654277,0.685773,True,True
+E9,A1 Q1: memory_limit 4GB vs 10GB (4 threads),EngineLatency_ms,ratio,1.0342,1.01144,1.05137,True,0.999893,0.99901,1.00096,False,0.966832,0.950764,0.988467,False,False
+E9,A4 Q1: speed-up 1→4 threads,EngineLatency_ms,ratio,2.89348,2.84038,2.97873,True,1.76695,1.75835,1.77084,True,0.610668,0.592763,0.621922,True,True
+E9,A4 Q1: speed-up 2→4 threads,EngineLatency_ms,ratio,1.59005,1.55118,1.61237,True,1.08338,1.08038,1.08868,True,0.681349,0.671614,0.698922,True,True
+E9,A4 Q1: memory_limit 4GB vs 10GB (4 threads),EngineLatency_ms,ratio,1.00557,0.98337,1.01774,False,1.00105,0.999319,1.0024,False,0.995497,0.983295,1.01802,True,False
+E9,A6 Q1: speed-up 1→4 threads,EngineLatency_ms,ratio,2.8416,2.79149,2.87016,True,2.31932,2.30228,2.33509,True,0.816202,0.805604,0.831574,True,True
+E9,A6 Q1: speed-up 2→4 threads,EngineLatency_ms,ratio,1.47722,1.44418,1.60015,True,1.37517,1.36971,1.38051,True,0.930917,0.858479,0.952655,True,True
+E9,A6 Q1: memory_limit 4GB vs 10GB (4 threads),EngineLatency_ms,ratio,1.01462,1.00101,1.02543,True,0.99819,0.994149,1.00236,False,0.983808,0.972604,0.997802,False,False
+E9,A7 Q1: speed-up 1→4 threads,EngineLatency_ms,ratio,2.83672,2.66003,2.9124,True,4.69791,4.64472,4.74335,True,1.65611,1.61244,1.76799,True,True
+E9,A7 Q1: speed-up 2→4 threads,EngineLatency_ms,ratio,1.57263,1.55666,1.59288,True,1.75912,1.73856,1.78247,True,1.11859,1.10089,1.13786,True,True
+E9,A7 Q1: memory_limit 4GB vs 10GB (4 threads),EngineLatency_ms,ratio,1.00088,0.993457,1.00668,False,0.999384,0.993543,1.00937,False,0.998504,0.990765,1.01064,False,False
+E9,B3 Q1_hive: speed-up 1→4 threads,EngineLatency_ms,ratio,3.03017,2.93009,3.09536,True,1.78107,1.77388,1.7828,True,0.587779,0.574985,0.607389,True,True
+E9,B3 Q1_hive: speed-up 2→4 threads,EngineLatency_ms,ratio,1.58195,1.54357,1.63022,True,1.09555,1.08888,1.10069,True,0.692532,0.671874,0.709954,True,True
+E9,B3 Q1_hive: memory_limit 4GB vs 10GB (4 threads),EngineLatency_ms,ratio,1.04227,1.01797,1.06136,True,1.00087,0.998889,1.00266,False,0.960277,0.942622,0.983133,True,False
+E9,B4 Q1_hive: speed-up 1→4 threads,EngineLatency_ms,ratio,2.29038,2.22783,2.34001,True,2.35233,2.32455,2.389,True,1.02705,1.00285,1.05837,True,True
+E9,B4 Q1_hive: speed-up 2→4 threads,EngineLatency_ms,ratio,1.34312,1.33567,1.3839,True,1.29433,1.27612,1.31029,True,0.963678,0.931122,0.974863,True,True
+E9,B4 Q1_hive: memory_limit 4GB vs 10GB (4 threads),EngineLatency_ms,ratio,0.992647,0.965336,1.0161,False,0.99849,0.982692,1.00292,False,1.00589,0.977793,1.03132,True,False
+E9,A4 Q4: speed-up 1→4 threads,EngineLatency_ms,ratio,1.93075,1.75085,1.97187,True,2.24398,2.19782,2.29817,True,1.16223,1.12962,1.28685,True,True
+E9,A4 Q4: speed-up 2→4 threads,EngineLatency_ms,ratio,1.23078,1.17389,1.26217,True,1.30282,1.26833,1.3315,True,1.05853,1.01941,1.11549,True,True
+E9,A4 Q4: memory_limit 4GB vs 10GB (4 threads),EngineLatency_ms,ratio,1.01916,0.962955,1.10001,False,1.00315,0.982001,1.02532,False,0.984296,0.91183,1.04457,True,False
+E9,A6 Q4: speed-up 1→4 threads,EngineLatency_ms,ratio,1.86924,1.69879,1.95281,True,3.48855,2.76339,3.58095,True,1.8663,1.4614,2.05951,True,True
+E9,A6 Q4: speed-up 2→4 threads,EngineLatency_ms,ratio,1.27561,1.2432,1.32808,True,1.53528,1.50378,1.57876,True,1.20356,1.15256,1.2489,True,True
+E9,A6 Q4: memory_limit 4GB vs 10GB (4 threads),EngineLatency_ms,ratio,1.00915,0.988651,1.0341,False,0.99458,0.964669,1.02396,False,0.98556,0.948032,1.01969,False,False
+E9,A7 Q4: speed-up 1→4 threads,EngineLatency_ms,ratio,1.58147,1.52365,1.79495,True,3.3956,3.07572,3.73739,True,2.14711,1.82088,2.36182,True,True
+E9,A7 Q4: speed-up 2→4 threads,EngineLatency_ms,ratio,1.43685,1.2809,1.50642,True,1.66277,1.62946,1.69487,True,1.15723,1.10062,1.30385,True,True
+E9,A7 Q4: memory_limit 4GB vs 10GB (4 threads),EngineLatency_ms,ratio,0.990409,0.962539,1.01484,False,1.01604,0.977829,1.042,False,1.02588,0.97668,1.06632,False,False
+E9,B3 Q4_hive: speed-up 1→4 threads,EngineLatency_ms,ratio,1.53939,1.46565,1.59572,True,1.70775,1.67925,1.77816,True,1.10937,1.065,1.17945,True,True
+E9,B3 Q4_hive: speed-up 2→4 threads,EngineLatency_ms,ratio,1.12036,1.09551,1.15613,True,1.16868,1.14323,1.21388,True,1.04313,1.00296,1.08898,True,True
+E9,B3 Q4_hive: memory_limit 4GB vs 10GB (4 threads),EngineLatency_ms,ratio,1.0002,0.943674,1.03736,False,1.00365,0.974106,1.04266,False,1.00345,0.958197,1.06971,True,False
+E9,B4 Q4_hive: speed-up 1→4 threads,EngineLatency_ms,ratio,1.46164,1.27039,1.55194,True,2.05657,1.86225,2.23944,True,1.40703,1.25818,1.64718,True,True
+E9,B4 Q4_hive: speed-up 2→4 threads,EngineLatency_ms,ratio,1.15197,1.10617,1.22591,True,1.35397,1.24577,1.39544,True,1.17536,1.06221,1.23911,True,True
+E9,B4 Q4_hive: memory_limit 4GB vs 10GB (4 threads),EngineLatency_ms,ratio,1.01342,0.928555,1.07162,False,1.09212,1.00416,1.14074,True,1.07766,0.980101,1.18798,True,False

@@ -1,0 +1,13 @@
+Experiment,Comparison,Metric,A,B,nA,nB,MedianA,MedianB,Ratio,Ratio_CI95_lo,Ratio_CI95_hi,p,p_holm
+E5,SF1 Q3_Year: C1 vs B3,EngineLatency_ms,SF=1 Model=B3 Query=Q3_Year,SF=1 Model=C1 Query=Q3_Year,20,20,22.0439,22.2493,1.00932,0.87504,1.12805,0.967635,1
+E5,SF1 Q3_Year: C1 vs B3,WallClock_ms,SF=1 Model=B3 Query=Q3_Year,SF=1 Model=C1 Query=Q3_Year,20,20,81.67,77.84,0.953104,0.915566,1.03238,0.198834,1
+E5,SF1 Q3_Month: C1 vs B3,EngineLatency_ms,SF=1 Model=B3 Query=Q3_Month,SF=1 Model=C1 Query=Q3_Month,20,20,20.0609,20.1419,1.00404,0.927103,1.1187,0.424883,1
+E5,SF1 Q3_Month: C1 vs B3,WallClock_ms,SF=1 Model=B3 Query=Q3_Month,SF=1 Model=C1 Query=Q3_Month,20,20,76.415,76.33,0.998888,0.952206,1.06007,0.807647,1
+E5,SF1 Q3_Both: C1 vs B3,EngineLatency_ms,SF=1 Model=B3 Query=Q3_Both,SF=1 Model=C1 Query=Q3_Both,20,20,19.8445,19.361,0.975636,0.930784,1.0571,0.616775,1
+E5,SF1 Q3_Both: C1 vs B3,WallClock_ms,SF=1 Model=B3 Query=Q3_Both,SF=1 Model=C1 Query=Q3_Both,20,20,77.97,77.27,0.991022,0.931918,1.02298,0.273285,1
+E5,SF10 Q3_Year: C1 vs B3,EngineLatency_ms,SF=10 Model=B3 Query=Q3_Year,SF=10 Model=C1 Query=Q3_Year,20,20,35.5928,34.2161,0.961319,0.855816,1.09381,0.310402,1
+E5,SF10 Q3_Year: C1 vs B3,WallClock_ms,SF=10 Model=B3 Query=Q3_Year,SF=10 Model=C1 Query=Q3_Year,20,20,96.745,89.8,0.928213,0.874626,0.998179,0.0166688,0.200026
+E5,SF10 Q3_Month: C1 vs B3,EngineLatency_ms,SF=10 Model=B3 Query=Q3_Month,SF=10 Model=C1 Query=Q3_Month,20,20,27.7156,27.7882,1.00262,0.934179,1.1247,0.285305,1
+E5,SF10 Q3_Month: C1 vs B3,WallClock_ms,SF=10 Model=B3 Query=Q3_Month,SF=10 Model=C1 Query=Q3_Month,20,20,84.845,87.63,1.03282,0.978051,1.09111,0.261594,1
+E5,SF10 Q3_Both: C1 vs B3,EngineLatency_ms,SF=10 Model=B3 Query=Q3_Both,SF=10 Model=C1 Query=Q3_Both,20,20,22.8773,22.7405,0.994022,0.920835,1.07807,0.597863,1
+E5,SF10 Q3_Both: C1 vs B3,WallClock_ms,SF=10 Model=B3 Query=Q3_Both,SF=10 Model=C1 Query=Q3_Both,20,20,83.935,80.375,0.957586,0.918613,1.04116,0.310402,1

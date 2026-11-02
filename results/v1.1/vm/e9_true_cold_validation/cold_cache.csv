@@ -1,0 +1,25 @@
+timestamp,boot_time,label,file,bytes,step,drop_caches,flags,seconds,MB_per_s,host_flush_s
+2026-10-26T18:48:54Z,2026-10-26 15:04:34,staging_sf10,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,1_first_since_boot,yes,none,1.238,1236.6,
+2026-10-26T18:48:55Z,2026-10-26 15:04:34,staging_sf10,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,2_after_drop,yes,none,0.902,1697.4,
+2026-10-26T18:48:55Z,2026-10-26 15:04:34,staging_sf10,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,3_warm_no_drop,no,none,0.142,10796.0,
+2026-10-26T18:48:56Z,2026-10-26 15:04:34,staging_sf10,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,4_direct_after_drop,yes,iflag=direct,0.595,2574.7,
+2026-10-26T18:48:57Z,2026-10-26 15:04:34,staging_sf10,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,5a_after_guest_drop_and_host_flush,yes,none,0.902,1697.0,0.258
+2026-10-26T18:48:58Z,2026-10-26 15:04:34,staging_sf10,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,5b_after_guest_drop_and_host_flush,yes,none,0.960,1594.5,0.255
+2026-10-26T18:48:59Z,2026-10-26 15:04:34,orders_sf10,<v1.0-workdir>/data/sf10/orders.parquet,384347250,1_first_since_boot,yes,none,0.262,1464.5,
+2026-10-26T18:48:59Z,2026-10-26 15:04:34,orders_sf10,<v1.0-workdir>/data/sf10/orders.parquet,384347250,2_after_drop,yes,none,0.269,1428.2,
+2026-10-26T18:48:59Z,2026-10-26 15:04:34,orders_sf10,<v1.0-workdir>/data/sf10/orders.parquet,384347250,3_warm_no_drop,no,none,0.055,7007.1,
+2026-10-26T18:48:59Z,2026-10-26 15:04:34,orders_sf10,<v1.0-workdir>/data/sf10/orders.parquet,384347250,4_direct_after_drop,yes,iflag=direct,0.107,3583.5,
+2026-10-26T18:49:00Z,2026-10-26 15:04:34,orders_sf10,<v1.0-workdir>/data/sf10/orders.parquet,384347250,5a_after_guest_drop_and_host_flush,yes,none,0.265,1452.7,0.296
+2026-10-26T18:49:01Z,2026-10-26 15:04:34,orders_sf10,<v1.0-workdir>/data/sf10/orders.parquet,384347250,5b_after_guest_drop_and_host_flush,yes,none,0.245,1571.7,0.125
+2026-10-26T19:00:10Z,2026-10-26 15:58:15,staging_sf10_after_host_reboot,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,1_first_since_boot,yes,none,2.165,707.1,
+2026-10-26T19:00:11Z,2026-10-26 15:58:15,staging_sf10_after_host_reboot,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,2_after_drop,yes,none,0.788,1943.5,
+2026-10-26T19:00:11Z,2026-10-26 15:58:15,staging_sf10_after_host_reboot,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,3_warm_no_drop,no,none,0.138,11073.2,
+2026-10-26T19:00:11Z,2026-10-26 15:58:15,staging_sf10_after_host_reboot,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,4_direct_after_drop,yes,iflag=direct,0.388,3942.9,
+2026-10-26T19:00:13Z,2026-10-26 15:58:15,staging_sf10_after_host_reboot,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,5a_after_guest_drop_and_host_flush,yes,none,0.843,1815.7,0.986
+2026-10-26T19:00:15Z,2026-10-26 15:58:15,staging_sf10_after_host_reboot,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,5b_after_guest_drop_and_host_flush,yes,none,0.875,1749.2,0.230
+2026-10-26T19:00:15Z,2026-10-26 15:58:15,orders_sf10_after_host_reboot,<v1.0-workdir>/data/sf10/orders.parquet,384347250,1_first_since_boot,yes,none,0.254,1510.9,
+2026-10-26T19:00:15Z,2026-10-26 15:58:15,orders_sf10_after_host_reboot,<v1.0-workdir>/data/sf10/orders.parquet,384347250,2_after_drop,yes,none,0.243,1584.1,
+2026-10-26T19:00:15Z,2026-10-26 15:58:15,orders_sf10_after_host_reboot,<v1.0-workdir>/data/sf10/orders.parquet,384347250,3_warm_no_drop,no,none,0.039,9862.9,
+2026-10-26T19:00:16Z,2026-10-26 15:58:15,orders_sf10_after_host_reboot,<v1.0-workdir>/data/sf10/orders.parquet,384347250,4_direct_after_drop,yes,iflag=direct,0.107,3608.2,
+2026-10-26T19:00:16Z,2026-10-26 15:58:15,orders_sf10_after_host_reboot,<v1.0-workdir>/data/sf10/orders.parquet,384347250,5a_after_guest_drop_and_host_flush,yes,none,0.239,1607.9,0.269
+2026-10-26T19:00:17Z,2026-10-26 15:58:15,orders_sf10_after_host_reboot,<v1.0-workdir>/data/sf10/orders.parquet,384347250,5b_after_guest_drop_and_host_flush,yes,none,0.239,1608.8,0.135

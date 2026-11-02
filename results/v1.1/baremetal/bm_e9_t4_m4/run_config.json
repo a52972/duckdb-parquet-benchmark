@@ -1,0 +1,139 @@
+[
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "A1",
+      "A4",
+      "A6",
+      "A7",
+      "B3",
+      "B4"
+    ],
+    "queries": [
+      "A1:Q1",
+      "A1:Q4",
+      "A4:Q1",
+      "A4:Q4",
+      "A6:Q1",
+      "A6:Q4",
+      "A7:Q1",
+      "A7:Q4",
+      "B3:Q1_hive",
+      "B3:Q4_hive",
+      "B4:Q1_hive",
+      "B4:Q4_hive"
+    ],
+    "no_baseline": true,
+    "cold": 20,
+    "warm": 0,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "4GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "bm_e9_t4_m4",
+    "seed": 20261026,
+    "platform": "baremetal",
+    "order": "interleaved",
+    "pre_cold_cmd": null,
+    "argv": [
+      "02_run_benchmark.py",
+      "--sf",
+      "10",
+      "--order",
+      "interleaved",
+      "--platform",
+      "baremetal",
+      "--run-id",
+      "bm_e9_t4_m4",
+      "--models",
+      "A1,A4,A6,A7,B3,B4",
+      "--queries",
+      "A1:Q1,A1:Q4,A4:Q1,A4:Q4,A6:Q1,A6:Q4,A7:Q1,A7:Q4,B3:Q1_hive,B3:Q4_hive,B4:Q1_hive,B4:Q4_hive",
+      "--no-baseline",
+      "--threads",
+      "4",
+      "--memory-limit",
+      "4GB",
+      "--cold",
+      "20",
+      "--warm",
+      "0"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-27T16:11:03.943682+00:00",
+    "combinations": [
+      [
+        10,
+        "B3",
+        "Q1_hive"
+      ],
+      [
+        10,
+        "B4",
+        "Q4_hive"
+      ],
+      [
+        10,
+        "B3",
+        "Q4_hive"
+      ],
+      [
+        10,
+        "B4",
+        "Q1_hive"
+      ],
+      [
+        10,
+        "A6",
+        "Q4"
+      ],
+      [
+        10,
+        "A1",
+        "Q1"
+      ],
+      [
+        10,
+        "A6",
+        "Q1"
+      ],
+      [
+        10,
+        "A7",
+        "Q1"
+      ],
+      [
+        10,
+        "A7",
+        "Q4"
+      ],
+      [
+        10,
+        "A4",
+        "Q1"
+      ],
+      [
+        10,
+        "A4",
+        "Q4"
+      ],
+      [
+        10,
+        "A1",
+        "Q4"
+      ]
+    ],
+    "layout_files": {
+      "sf10/A1": 1,
+      "sf10/A4": 75,
+      "sf10/A6": 750,
+      "sf10/A7": 7500,
+      "sf10/B3": 84,
+      "sf10/B4": 2526
+    }
+  }
+]

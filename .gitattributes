@@ -1,0 +1,6 @@
+# Shell, Python and SQL files keep LF line endings on every platform.
+*.sh   text eol=lf
+*.py   text eol=lf
+*.sql  text eol=lf
+# Measurements and derived tables are stored byte for byte.
+*.csv  -text

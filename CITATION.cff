@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this benchmark or its data, please cite it as below."
+title: "Analyzing DuckDB's In-Situ Query Performance on Hierarchical and Flat Parquet Layouts"
+type: software
+authors:
+  - family-names: Eleuterio
+    given-names: Davi Silva
+    orcid: "https://orcid.org/0009-0004-2460-704X"
+    affiliation: "CeDRI, SusTEC, Universidade Politécnica de Bragança"
+  - family-names: Oliveira
+    given-names: Pedro Filipe
+    orcid: "https://orcid.org/0000-0002-2848-1606"
+    affiliation: "CeDRI, SusTEC, Universidade Politécnica de Bragança"
+  - family-names: Matos
+    given-names: Paulo
+    orcid: "https://orcid.org/0000-0003-0010-4777"
+    affiliation: "CeDRI, SusTEC, Universidade Politécnica de Bragança"
+version: 1.1.0
+date-released: "2026-11-05"
+license: MIT
+repository-code: "https://github.com/a52972/duckdb-parquet-benchmark"
+abstract: >-
+  Benchmark code, raw measurements and analysis of a study of DuckDB 1.5.0 querying
+  Apache Parquet files in place. Eleven layouts of TPC-H lineitem (1 to 7,500 flat
+  files; Hive trees by year, year/month, year/month/day and month/year) are measured
+  at scale factors 1 and 10 with eight queries, plus experiments on hierarchy depth,
+  key order, file size, writer settings, row order, threads, memory limits and skewed
+  data, on a bare-metal machine (5 campaigns) and a virtual machine (2 campaigns).
+  The repository contains the layout generator, the benchmark runner, every run of
+  both platforms, an inventory of every layout file, and the scripts that produce
+  all tables and figures of the article.
+keywords:
+  - DuckDB
+  - Apache Parquet
+  - data layout
+  - Hive partitioning
+  - benchmark
+  - in-situ query processing

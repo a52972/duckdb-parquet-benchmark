@@ -1,0 +1,7 @@
+timestamp,boot_time,size_MB,step,dd_flags,host_flush,seconds,MB_per_s,flush_s,standby_before_MB,standby_after_MB
+2026-10-26T18:54:13Z,2026-10-26 15:04:34,3072,R1_drop_only,none,no,3.055,1054.3,,,
+2026-10-26T18:54:17Z,2026-10-26 15:04:34,3072,R2_drop_host_flush,none,yes,2.439,1320.9,1.222,2488,0
+2026-10-26T18:54:20Z,2026-10-26 15:04:34,3072,R3_drop_only,none,no,2.252,1430.3,,,
+2026-10-26T18:54:23Z,2026-10-26 15:04:34,3072,R4_drop_host_flush,none,yes,2.468,1305.4,0.542,3098,0
+2026-10-26T18:54:24Z,2026-10-26 15:04:34,3072,R5_direct_drop_only,iflag=direct,no,0.944,3413.3,,,
+2026-10-26T18:54:27Z,2026-10-26 15:04:34,3072,R6_direct_host_flush,iflag=direct,yes,2.196,1467.0,0.489,3084,0

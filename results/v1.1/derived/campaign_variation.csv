@@ -1,0 +1,5 @@
+Platform,Metric,Campaigns,WithinCampaignCV,BetweenCampaignMaxMin
+bm,EngineLatency_ms,5,0.0135,1.0067
+bm,WallClock_ms,5,0.0133,1.0068
+vm,EngineLatency_ms,2,0.0415,1.0556
+vm,WallClock_ms,2,0.0352,1.0525

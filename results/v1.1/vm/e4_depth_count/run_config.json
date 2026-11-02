@@ -1,0 +1,176 @@
+[
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "E4_D1",
+      "B3",
+      "E4_D3",
+      "E4_D2x10",
+      "E4_D2x30",
+      "E4_F2526",
+      "B4"
+    ],
+    "queries": [
+      "E4_D1:Q3_D1",
+      "B3:Q3_B3",
+      "E4_D3:Q3_D3",
+      "E4_D2x10:Q3_B3",
+      "E4_D2x30:Q3_B3",
+      "E4_F2526:Q3_B1",
+      "B4:Q3_B4_month",
+      "E4_D1:Q4_hive",
+      "B3:Q4_hive",
+      "E4_D3:Q4_hive",
+      "E4_D2x10:Q4_hive",
+      "E4_D2x30:Q4_hive",
+      "E4_F2526:Q4",
+      "B4:Q4_hive"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "e4_depth_count",
+    "seed": 20261026,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "e4_depth_count",
+      "--sf",
+      "10",
+      "--models",
+      "E4_D1,B3,E4_D3,E4_D2x10,E4_D2x30,E4_F2526,B4",
+      "--queries",
+      "E4_D1:Q3_D1,B3:Q3_B3,E4_D3:Q3_D3,E4_D2x10:Q3_B3,E4_D2x30:Q3_B3,E4_F2526:Q3_B1,B4:Q3_B4_month,E4_D1:Q4_hive,B3:Q4_hive,E4_D3:Q4_hive,E4_D2x10:Q4_hive,E4_D2x30:Q4_hive,E4_F2526:Q4,B4:Q4_hive",
+      "--cold",
+      "20",
+      "--warm",
+      "3"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-26T13:55:32.270200+00:00",
+    "combinations": [
+      [
+        10,
+        "E4_D2x30",
+        "Q4_hive"
+      ],
+      [
+        10,
+        "E4_F2526",
+        "Q3_B1"
+      ],
+      [
+        10,
+        "E4_D1",
+        "Q3_D1"
+      ],
+      [
+        10,
+        "B4",
+        "Q3_B4_month"
+      ],
+      [
+        10,
+        "E4_F2526",
+        "Q4"
+      ],
+      [
+        10,
+        "B4",
+        "Q0"
+      ],
+      [
+        10,
+        "E4_D3",
+        "Q4_hive"
+      ],
+      [
+        10,
+        "B4",
+        "Q4_hive"
+      ],
+      [
+        10,
+        "E4_D2x10",
+        "Q4_hive"
+      ],
+      [
+        10,
+        "E4_D2x10",
+        "Q3_B3"
+      ],
+      [
+        10,
+        "B3",
+        "Q4_hive"
+      ],
+      [
+        10,
+        "E4_D2x10",
+        "Q0"
+      ],
+      [
+        10,
+        "E4_D3",
+        "Q0"
+      ],
+      [
+        10,
+        "E4_D2x30",
+        "Q3_B3"
+      ],
+      [
+        10,
+        "E4_D1",
+        "Q0"
+      ],
+      [
+        10,
+        "E4_D1",
+        "Q4_hive"
+      ],
+      [
+        10,
+        "E4_D2x30",
+        "Q0"
+      ],
+      [
+        10,
+        "E4_F2526",
+        "Q0"
+      ],
+      [
+        10,
+        "B3",
+        "Q3_B3"
+      ],
+      [
+        10,
+        "E4_D3",
+        "Q3_D3"
+      ],
+      [
+        10,
+        "B3",
+        "Q0"
+      ]
+    ],
+    "layout_files": {
+      "sf10/E4_D1": 84,
+      "sf10/B3": 84,
+      "sf10/E4_D3": 84,
+      "sf10/E4_D2x10": 840,
+      "sf10/E4_D2x30": 2520,
+      "sf10/E4_F2526": 2526,
+      "sf10/B4": 2526
+    }
+  }
+]

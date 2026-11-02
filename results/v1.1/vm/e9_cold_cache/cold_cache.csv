@@ -1,0 +1,9 @@
+timestamp,boot_time,label,file,bytes,step,drop_caches,flags,seconds,MB_per_s
+2026-10-26T15:17:30Z,2026-10-26 12:11:27,staging_sf10,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,1_first_since_boot,yes,none,2.628,582.5
+2026-10-26T15:17:31Z,2026-10-26 12:11:27,staging_sf10,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,2_after_drop,yes,none,0.756,2025.4
+2026-10-26T15:17:31Z,2026-10-26 12:11:27,staging_sf10,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,3_warm_no_drop,no,none,0.145,10527.3
+2026-10-26T15:17:32Z,2026-10-26 12:11:27,staging_sf10,<v1.0-workdir>/data/sf10/lineitem_staging.parquet,1530725931,4_direct_after_drop,yes,iflag=direct,0.396,3867.4
+2026-10-26T15:17:33Z,2026-10-26 12:11:27,A1_v2_sf10,<repo>/experiments-v2/sf10/A1/part_000000.parquet,1530725931,1_first_since_boot,yes,none,0.832,1838.8
+2026-10-26T15:17:34Z,2026-10-26 12:11:27,A1_v2_sf10,<repo>/experiments-v2/sf10/A1/part_000000.parquet,1530725931,2_after_drop,yes,none,0.802,1908.6
+2026-10-26T15:17:34Z,2026-10-26 12:11:27,A1_v2_sf10,<repo>/experiments-v2/sf10/A1/part_000000.parquet,1530725931,3_warm_no_drop,no,none,0.139,11011.4
+2026-10-26T15:17:34Z,2026-10-26 12:11:27,A1_v2_sf10,<repo>/experiments-v2/sf10/A1/part_000000.parquet,1530725931,4_direct_after_drop,yes,iflag=direct,0.332,4612.6

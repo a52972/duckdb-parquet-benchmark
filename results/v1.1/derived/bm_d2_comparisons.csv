@@ -1,0 +1,16 @@
+Comparison,Factor,Query,A,B,MedianA,MedianB,Ratio,Ratio_CI95_lo,Ratio_CI95_hi,p,p_holm
+"codec: Snappy vs ZSTD (DuckDB, 123k-row groups)",codec,Q1,D2_duck_zstd,D2_duck_default,1005.59,1322.31,1.31496,1.3099,1.31761,6.79562e-08,1.01934e-06
+"codec: Snappy vs ZSTD (DuckDB, 123k-row groups)",codec,Q4,D2_duck_zstd,D2_duck_default,36.0565,36.9796,1.0256,0.999066,1.06939,0.0192924,0.0192924
+"codec: Snappy vs ZSTD (DuckDB, 123k-row groups)",codec,Q7,D2_duck_zstd,D2_duck_default,1896.61,2610.14,1.37621,1.37007,1.38461,1.20089e-06,8.40622e-06
+"row groups: 123k vs 1 M rows (DuckDB, ZSTD)",row groups,Q1,D2_duck_zstd_rg1m,D2_duck_zstd,950.236,1005.59,1.05825,1.05498,1.06404,1.20089e-06,8.40622e-06
+"row groups: 123k vs 1 M rows (DuckDB, ZSTD)",row groups,Q4,D2_duck_zstd_rg1m,D2_duck_zstd,26.6741,36.0565,1.35174,1.28564,1.38405,1.20089e-06,8.40622e-06
+"row groups: 123k vs 1 M rows (DuckDB, ZSTD)",row groups,Q7,D2_duck_zstd_rg1m,D2_duck_zstd,1738.4,1896.61,1.09101,1.08244,1.10011,6.79562e-08,1.01934e-06
+"files: 12 vs 1 (generator, ZSTD, 1 M-row groups)",file count,Q1,A1,D2_gen128,960.298,956.378,0.995918,0.994595,0.999615,0.0090454,0.0180908
+"files: 12 vs 1 (generator, ZSTD, 1 M-row groups)",file count,Q7,A1,D2_gen128,1640.21,1900.1,1.15845,1.15256,1.16776,6.79562e-08,1.01934e-06
+"writer: DuckDB COPY vs generator (ZSTD, 1 M-row groups; 28 vs 12 files)",writer,Q1,D2_gen128,D2_duck_zstd_rg1m,956.378,950.236,0.993577,0.98813,0.99661,0.000621998,0.00225161
+"writer: DuckDB COPY vs generator (ZSTD, 1 M-row groups; 28 vs 12 files)",writer,Q4,D2_gen128,D2_duck_zstd_rg1m,25.6776,26.6741,1.03881,1.02396,1.07474,0.000562904,0.00225161
+"writer: DuckDB COPY vs generator (ZSTD, 1 M-row groups; 28 vs 12 files)",writer,Q7,D2_gen128,D2_duck_zstd_rg1m,1900.1,1738.4,0.914899,0.908961,0.92119,6.79562e-08,1.01934e-06
+DuckDB defaults vs single file,all,Q1,A1,D2_duck_default,960.298,1322.31,1.37698,1.37421,1.37977,6.79562e-08,1.01934e-06
+DuckDB defaults vs single file,all,Q7,A1,D2_duck_default,1640.21,2610.14,1.59135,1.58627,1.60483,6.79562e-08,1.01934e-06
+Polars defaults vs single file,all,Q1,A1,D2_polars,960.298,778.782,0.81098,0.790138,0.820461,6.79562e-08,1.01934e-06
+Polars defaults vs single file,all,Q7,A1,D2_polars,1640.21,1780.15,1.08532,1.08122,1.09541,6.79562e-08,1.01934e-06

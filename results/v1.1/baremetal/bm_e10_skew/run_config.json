@@ -1,0 +1,307 @@
+[
+  {
+    "sf": [
+      10
+    ],
+    "models": [
+      "A4",
+      "A6",
+      "Z75",
+      "Z750",
+      "S_B1",
+      "S_S75",
+      "B3",
+      "S_B3"
+    ],
+    "queries": [
+      "A4:Q1",
+      "A4:Q4",
+      "A4:Q3_B1",
+      "A4:Q3_B1_cold",
+      "A6:Q1",
+      "A6:Q4",
+      "A6:Q3_B1",
+      "A6:Q3_B1_cold",
+      "Z75:Q1",
+      "Z75:Q4",
+      "Z75:Q3_B1",
+      "Z75:Q3_B1_cold",
+      "Z750:Q1",
+      "Z750:Q4",
+      "Z750:Q3_B1",
+      "Z750:Q3_B1_cold",
+      "S_B1:Q1",
+      "S_B1:Q4",
+      "S_B1:Q3_B1",
+      "S_B1:Q3_B1_cold",
+      "S_S75:Q1",
+      "S_S75:Q4",
+      "S_S75:Q3_B1",
+      "S_S75:Q3_B1_cold",
+      "B3:Q1_hive",
+      "B3:Q4_hive",
+      "B3:Q3_B3",
+      "B3:Q3_B3_cold",
+      "S_B3:Q1_hive",
+      "S_B3:Q4_hive",
+      "S_B3:Q3_B3",
+      "S_B3:Q3_B3_cold"
+    ],
+    "no_baseline": false,
+    "cold": 20,
+    "warm": 3,
+    "strace_runs": 0,
+    "threads": 4,
+    "memory_limit": "10GB",
+    "timeout": null,
+    "exp_dir": "<repo>/experiments-v2",
+    "layout_label": "v2",
+    "run_id": "bm_e10_skew",
+    "seed": 1010,
+    "platform": "baremetal",
+    "results_root": "results/v1.1",
+    "order": "interleaved",
+    "pre_cold_cmd": null,
+    "argv": [
+      "02_run_benchmark.py",
+      "--run-id",
+      "bm_e10_skew",
+      "--seed",
+      "1010",
+      "--sf",
+      "10",
+      "--experiments-dir",
+      "<repo>/experiments-v2",
+      "--models",
+      "A4,A6,Z75,Z750,S_B1,S_S75,B3,S_B3",
+      "--queries",
+      "A4:Q1,A4:Q4,A4:Q3_B1,A4:Q3_B1_cold,A6:Q1,A6:Q4,A6:Q3_B1,A6:Q3_B1_cold,Z75:Q1,Z75:Q4,Z75:Q3_B1,Z75:Q3_B1_cold,Z750:Q1,Z750:Q4,Z750:Q3_B1,Z750:Q3_B1_cold,S_B1:Q1,S_B1:Q4,S_B1:Q3_B1,S_B1:Q3_B1_cold,S_S75:Q1,S_S75:Q4,S_S75:Q3_B1,S_S75:Q3_B1_cold,B3:Q1_hive,B3:Q4_hive,B3:Q3_B3,B3:Q3_B3_cold,S_B3:Q1_hive,S_B3:Q4_hive,S_B3:Q3_B3,S_B3:Q3_B3_cold",
+      "--cold",
+      "20",
+      "--warm",
+      "3",
+      "--threads",
+      "4",
+      "--memory-limit",
+      "10GB",
+      "--order",
+      "interleaved",
+      "--platform",
+      "baremetal"
+    ],
+    "duckdb_version": "v1.5.0",
+    "started": "2026-10-28T11:57:44.075197+00:00",
+    "combinations": [
+      [
+        10,
+        "A6",
+        "Q4"
+      ],
+      [
+        10,
+        "S_B3",
+        "Q1_hive"
+      ],
+      [
+        10,
+        "B3",
+        "Q3_B3"
+      ],
+      [
+        10,
+        "Z750",
+        "Q4"
+      ],
+      [
+        10,
+        "S_S75",
+        "Q3_B1_cold"
+      ],
+      [
+        10,
+        "B3",
+        "Q1_hive"
+      ],
+      [
+        10,
+        "B3",
+        "Q0"
+      ],
+      [
+        10,
+        "A4",
+        "Q4"
+      ],
+      [
+        10,
+        "Z750",
+        "Q3_B1_cold"
+      ],
+      [
+        10,
+        "B3",
+        "Q4_hive"
+      ],
+      [
+        10,
+        "S_B1",
+        "Q4"
+      ],
+      [
+        10,
+        "Z75",
+        "Q3_B1_cold"
+      ],
+      [
+        10,
+        "A4",
+        "Q0"
+      ],
+      [
+        10,
+        "A4",
+        "Q1"
+      ],
+      [
+        10,
+        "S_S75",
+        "Q0"
+      ],
+      [
+        10,
+        "S_B1",
+        "Q1"
+      ],
+      [
+        10,
+        "S_B3",
+        "Q3_B3_cold"
+      ],
+      [
+        10,
+        "Z75",
+        "Q4"
+      ],
+      [
+        10,
+        "A4",
+        "Q3_B1_cold"
+      ],
+      [
+        10,
+        "Z750",
+        "Q3_B1"
+      ],
+      [
+        10,
+        "A6",
+        "Q3_B1"
+      ],
+      [
+        10,
+        "Z75",
+        "Q1"
+      ],
+      [
+        10,
+        "S_B1",
+        "Q3_B1_cold"
+      ],
+      [
+        10,
+        "S_B1",
+        "Q0"
+      ],
+      [
+        10,
+        "Z750",
+        "Q1"
+      ],
+      [
+        10,
+        "S_S75",
+        "Q3_B1"
+      ],
+      [
+        10,
+        "A4",
+        "Q3_B1"
+      ],
+      [
+        10,
+        "A6",
+        "Q1"
+      ],
+      [
+        10,
+        "S_B1",
+        "Q3_B1"
+      ],
+      [
+        10,
+        "S_B3",
+        "Q4_hive"
+      ],
+      [
+        10,
+        "Z75",
+        "Q3_B1"
+      ],
+      [
+        10,
+        "A6",
+        "Q3_B1_cold"
+      ],
+      [
+        10,
+        "Z75",
+        "Q0"
+      ],
+      [
+        10,
+        "S_B3",
+        "Q0"
+      ],
+      [
+        10,
+        "S_S75",
+        "Q4"
+      ],
+      [
+        10,
+        "S_S75",
+        "Q1"
+      ],
+      [
+        10,
+        "A6",
+        "Q0"
+      ],
+      [
+        10,
+        "B3",
+        "Q3_B3_cold"
+      ],
+      [
+        10,
+        "Z750",
+        "Q0"
+      ],
+      [
+        10,
+        "S_B3",
+        "Q3_B3"
+      ]
+    ],
+    "layout_files": {
+      "sf10/A4": 75,
+      "sf10/A6": 750,
+      "sf10/Z75": 75,
+      "sf10/Z750": 750,
+      "sf10/S_B1": 75,
+      "sf10/S_S75": 75,
+      "sf10/B3": 84,
+      "sf10/S_B3": 84
+    }
+  }
+]

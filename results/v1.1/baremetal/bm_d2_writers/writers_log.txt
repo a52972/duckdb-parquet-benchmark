@@ -1,0 +1,9 @@
+D2_duck_default: COPY ... (FORMAT PARQUET, FILE_SIZE_BYTES '128MB')
+D2_duck_default: 9.09 s, peak RSS 607356 KB
+D2_duck_zstd: COPY ... (FORMAT PARQUET, FILE_SIZE_BYTES '128MB', COMPRESSION ZSTD)
+D2_duck_zstd: 12.12 s, peak RSS 584656 KB
+D2_duck_zstd_rg1m: COPY ... (FORMAT PARQUET, FILE_SIZE_BYTES '128MB', COMPRESSION ZSTD, ROW_GROUP_SIZE 1048576)
+D2_duck_zstd_rg1m: 15.96 s, peak RSS 2046288 KB
+polars 2.1.0
+D2_polars: 14.55 s, peak RSS 4152368 KB
+D2_polars created_by: Polars (python) version 2.1.0 (build 7f902bd3ffd27ff82d14278a09a295ff2f7aed92)

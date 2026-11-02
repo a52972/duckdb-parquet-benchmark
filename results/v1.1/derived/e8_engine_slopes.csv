@@ -1,0 +1,5 @@
+Engine,Query,ms_per_file,KB_per_file
+DuckDB,Q1,0.202407,23.0759
+Polars,Q1,0.159285,-45.3292
+DuckDB,Q4,0.132547,12.3765
+Polars,Q4,0.196517,1.01657

@@ -1,0 +1,7 @@
+Platform,Metric,N_campaigns,n,n_consistent,MinConsistentEffect,MaxNonConsistentEffect,band_1.00-1.05_n,band_1.00-1.05_consistent,band_1.05-1.11_n,band_1.05-1.11_consistent,band_1.11-1.28_n,band_1.11-1.28_consistent,band_1.28-1.65_n,band_1.28-1.65_consistent,band_>1.65_n,band_>1.65_consistent
+bm,EngineLatency_ms,5,283,242,1.00148,1.02177,125,84,29,29,20,20,11,11,98,98
+bm,WallClock_ms,5,283,230,1.00192,1.02014,152,99,21,21,23,23,18,18,69,69
+bm,PeakRSS_KB,5,283,244,1.00116,1.03259,86,47,32,32,43,43,76,76,46,46
+vm,EngineLatency_ms,2,276,189,1.02445,1.09855,73,9,51,28,35,35,18,18,99,99
+vm,WallClock_ms,2,283,184,1.01511,1.12333,90,13,41,21,49,47,17,17,86,86
+vm,PeakRSS_KB,2,283,237,1.00197,1.02887,83,37,33,33,58,58,66,66,43,43

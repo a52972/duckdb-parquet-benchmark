@@ -1,0 +1,277 @@
+Experiment,Comparison,Metric,A,B,nA,nB,MedianA,MedianB,Ratio,Ratio_CI95_lo,Ratio_CI95_hi,p,p_holm
+E5,SF1 Q3_Year: C1 vs B3,EngineLatency_ms,SF=1 Model=B3 Query=Q3_Year,SF=1 Model=C1 Query=Q3_Year,20,20,22.0439,22.2493,1.00932,0.87504,1.12805,0.967635,1
+E5,SF1 Q3_Year: C1 vs B3,WallClock_ms,SF=1 Model=B3 Query=Q3_Year,SF=1 Model=C1 Query=Q3_Year,20,20,81.67,77.84,0.953104,0.915566,1.03238,0.198834,1
+E5,SF1 Q3_Month: C1 vs B3,EngineLatency_ms,SF=1 Model=B3 Query=Q3_Month,SF=1 Model=C1 Query=Q3_Month,20,20,20.0609,20.1419,1.00404,0.927103,1.1187,0.424883,1
+E5,SF1 Q3_Month: C1 vs B3,WallClock_ms,SF=1 Model=B3 Query=Q3_Month,SF=1 Model=C1 Query=Q3_Month,20,20,76.415,76.33,0.998888,0.952206,1.06007,0.807647,1
+E5,SF1 Q3_Both: C1 vs B3,EngineLatency_ms,SF=1 Model=B3 Query=Q3_Both,SF=1 Model=C1 Query=Q3_Both,20,20,19.8445,19.361,0.975636,0.930784,1.0571,0.616775,1
+E5,SF1 Q3_Both: C1 vs B3,WallClock_ms,SF=1 Model=B3 Query=Q3_Both,SF=1 Model=C1 Query=Q3_Both,20,20,77.97,77.27,0.991022,0.931918,1.02298,0.273285,1
+E5,SF10 Q3_Year: C1 vs B3,EngineLatency_ms,SF=10 Model=B3 Query=Q3_Year,SF=10 Model=C1 Query=Q3_Year,20,20,35.5928,34.2161,0.961319,0.855816,1.09381,0.310402,1
+E5,SF10 Q3_Year: C1 vs B3,WallClock_ms,SF=10 Model=B3 Query=Q3_Year,SF=10 Model=C1 Query=Q3_Year,20,20,96.745,89.8,0.928213,0.874626,0.998179,0.0166688,0.200026
+E5,SF10 Q3_Month: C1 vs B3,EngineLatency_ms,SF=10 Model=B3 Query=Q3_Month,SF=10 Model=C1 Query=Q3_Month,20,20,27.7156,27.7882,1.00262,0.934179,1.1247,0.285305,1
+E5,SF10 Q3_Month: C1 vs B3,WallClock_ms,SF=10 Model=B3 Query=Q3_Month,SF=10 Model=C1 Query=Q3_Month,20,20,84.845,87.63,1.03282,0.978051,1.09111,0.261594,1
+E5,SF10 Q3_Both: C1 vs B3,EngineLatency_ms,SF=10 Model=B3 Query=Q3_Both,SF=10 Model=C1 Query=Q3_Both,20,20,22.8773,22.7405,0.994022,0.920835,1.07807,0.597863,1
+E5,SF10 Q3_Both: C1 vs B3,WallClock_ms,SF=10 Model=B3 Query=Q3_Both,SF=10 Model=C1 Query=Q3_Both,20,20,83.935,80.375,0.957586,0.918613,1.04116,0.310402,1
+E4,depth@84 filter: E4_D1 vs B3,EngineLatency_ms,Model=B3 Query=Q3_B3,Model=E4_D1 Query=Q3_D1,20,20,21.4184,19.6262,0.916322,0.890837,0.942711,1.80745e-05,0.000108447
+E4,depth@84 filter: E4_D1 vs B3,WallClock_ms,Model=B3 Query=Q3_B3,Model=E4_D1 Query=Q3_D1,20,20,75.6,73.785,0.975992,0.946277,0.986031,0.0010141,0.00405639
+E4,depth@84 filter: E4_D3 vs B3,EngineLatency_ms,Model=B3 Query=Q3_B3,Model=E4_D3 Query=Q3_D3,20,20,21.4184,24.5242,1.14501,1.09615,1.17813,5.22689e-07,4.18151e-06
+E4,depth@84 filter: E4_D3 vs B3,WallClock_ms,Model=B3 Query=Q3_B3,Model=E4_D3 Query=Q3_D3,20,20,75.6,78.2,1.03439,1.00141,1.05221,0.0179386,0.0538158
+E4,count@depth2 filter: E4_D2x10 vs B3,EngineLatency_ms,Model=B3 Query=Q3_B3,Model=E4_D2x10 Query=Q3_B3,20,20,21.4184,31.282,1.46052,1.41022,1.50419,6.79562e-08,1.90009e-06
+E4,count@depth2 filter: E4_D2x10 vs B3,WallClock_ms,Model=B3 Query=Q3_B3,Model=E4_D2x10 Query=Q3_B3,20,20,75.6,84.495,1.11766,1.08632,1.13972,6.79562e-08,1.90009e-06
+E4,count@depth2 filter: E4_D2x30 vs B3,EngineLatency_ms,Model=B3 Query=Q3_B3,Model=E4_D2x30 Query=Q3_B3,20,20,21.4184,61.6071,2.87636,2.80652,2.94072,6.79562e-08,1.90009e-06
+E4,count@depth2 filter: E4_D2x30 vs B3,WallClock_ms,Model=B3 Query=Q3_B3,Model=E4_D2x30 Query=Q3_B3,20,20,75.6,116.085,1.53552,1.49311,1.55365,6.79562e-08,1.90009e-06
+E4,~2520 files filter: E4_D2x30 vs E4_F2526,EngineLatency_ms,Model=E4_F2526 Query=Q3_B1,Model=E4_D2x30 Query=Q3_B3,20,20,856.238,61.6071,0.071951,0.070977,0.0726665,6.79562e-08,1.90009e-06
+E4,~2520 files filter: E4_D2x30 vs E4_F2526,WallClock_ms,Model=E4_F2526 Query=Q3_B1,Model=E4_D2x30 Query=Q3_B3,20,20,930.32,116.085,0.12478,0.12296,0.126065,6.78604e-08,1.90009e-06
+E4,~2520 files filter: B4 vs E4_F2526,EngineLatency_ms,Model=E4_F2526 Query=Q3_B1,Model=B4 Query=Q3_B4_month,20,20,856.238,359.643,0.420027,0.411267,0.425634,6.79562e-08,1.90009e-06
+E4,~2520 files filter: B4 vs E4_F2526,WallClock_ms,Model=E4_F2526 Query=Q3_B1,Model=B4 Query=Q3_B4_month,20,20,930.32,415.435,0.446551,0.441265,0.453215,6.78604e-08,1.90009e-06
+E4,~2520 files filter: B4 vs E4_D2x30,EngineLatency_ms,Model=E4_D2x30 Query=Q3_B3,Model=B4 Query=Q3_B4_month,20,20,61.6071,359.643,5.83768,5.75816,5.89962,6.79562e-08,1.90009e-06
+E4,~2520 files filter: B4 vs E4_D2x30,WallClock_ms,Model=E4_D2x30 Query=Q3_B3,Model=B4 Query=Q3_B4_month,20,20,116.085,415.435,3.57871,3.55262,3.62825,6.79562e-08,1.90009e-06
+E4,depth@84 count: E4_D1 vs B3,EngineLatency_ms,Model=B3 Query=Q4_hive,Model=E4_D1 Query=Q4_hive,20,20,28.4945,28.3997,0.996671,0.957212,1.02775,0.364842,0.364842
+E4,depth@84 count: E4_D1 vs B3,WallClock_ms,Model=B3 Query=Q4_hive,Model=E4_D1 Query=Q4_hive,20,20,82.485,81.135,0.983633,0.966515,1.01144,0.107495,0.21499
+E4,depth@84 count: E4_D3 vs B3,EngineLatency_ms,Model=B3 Query=Q4_hive,Model=E4_D3 Query=Q4_hive,20,20,28.4945,32.8689,1.15352,1.09335,1.19523,1.57567e-06,1.10297e-05
+E4,depth@84 count: E4_D3 vs B3,WallClock_ms,Model=B3 Query=Q4_hive,Model=E4_D3 Query=Q4_hive,20,20,82.485,86.12,1.04407,1.02089,1.07496,3.48744e-05,0.000174372
+E4,count@depth2 count: E4_D2x10 vs B3,EngineLatency_ms,Model=B3 Query=Q4_hive,Model=E4_D2x10 Query=Q4_hive,20,20,28.4945,135.957,4.77134,4.62587,4.8783,6.79562e-08,1.90009e-06
+E4,count@depth2 count: E4_D2x10 vs B3,WallClock_ms,Model=B3 Query=Q4_hive,Model=E4_D2x10 Query=Q4_hive,20,20,82.485,192.32,2.33158,2.30162,2.37236,6.79562e-08,1.90009e-06
+E4,count@depth2 count: E4_D2x30 vs B3,EngineLatency_ms,Model=B3 Query=Q4_hive,Model=E4_D2x30 Query=Q4_hive,20,20,28.4945,369.968,12.9838,12.5263,13.2558,6.79562e-08,1.90009e-06
+E4,count@depth2 count: E4_D2x30 vs B3,WallClock_ms,Model=B3 Query=Q4_hive,Model=E4_D2x30 Query=Q4_hive,20,20,82.485,437.14,5.29963,5.16683,5.46985,6.79562e-08,1.90009e-06
+E4,~2520 files count: E4_D2x30 vs E4_F2526,EngineLatency_ms,Model=E4_F2526 Query=Q4,Model=E4_D2x30 Query=Q4_hive,20,20,328.763,369.968,1.12533,1.1007,1.14991,6.79562e-08,1.90009e-06
+E4,~2520 files count: E4_D2x30 vs E4_F2526,WallClock_ms,Model=E4_F2526 Query=Q4,Model=E4_D2x30 Query=Q4_hive,20,20,390.845,437.14,1.11845,1.08934,1.14496,6.79562e-08,1.90009e-06
+E4,~2520 files count: B4 vs E4_F2526,EngineLatency_ms,Model=E4_F2526 Query=Q4,Model=B4 Query=Q4_hive,20,20,328.763,653.719,1.98842,1.95485,2.03647,6.79562e-08,1.90009e-06
+E4,~2520 files count: B4 vs E4_F2526,WallClock_ms,Model=E4_F2526 Query=Q4,Model=B4 Query=Q4_hive,20,20,390.845,714.73,1.82868,1.80884,1.86383,6.79562e-08,1.90009e-06
+E4,~2520 files count: B4 vs E4_D2x30,EngineLatency_ms,Model=E4_D2x30 Query=Q4_hive,Model=B4 Query=Q4_hive,20,20,369.968,653.719,1.76696,1.72603,1.81802,6.79562e-08,1.90009e-06
+E4,~2520 files count: B4 vs E4_D2x30,WallClock_ms,Model=E4_D2x30 Query=Q4_hive,Model=B4 Query=Q4_hive,20,20,437.14,714.73,1.63501,1.59754,1.68696,6.79562e-08,1.90009e-06
+E7,A1 Q1: sorted vs unsorted,EngineLatency_ms,Model=A1 Query=Q1,Model=A1s Query=Q1,20,20,361.43,364.292,1.00792,0.988226,1.01564,0.597863,1
+E7,A1 Q1: sorted vs unsorted,WallClock_ms,Model=A1 Query=Q1,Model=A1s Query=Q1,20,20,417.9,423.085,1.01241,0.993487,1.02477,0.163596,0.817979
+E7,A1 Q1: sorted vs unsorted,FSInputBlocks,Model=A1 Query=Q1,Model=A1s Query=Q1,20,20,813704,808952,0.99416,0.99416,0.99416,1.10891e-08,4.75991e-07
+E7,A1 Q2a: sorted vs unsorted,EngineLatency_ms,Model=A1 Query=Q2a,Model=A1s Query=Q2a,20,20,376.314,29.1488,0.0774589,0.0758154,0.0805674,6.79562e-08,2.03581e-06
+E7,A1 Q2a: sorted vs unsorted,WallClock_ms,Model=A1 Query=Q2a,Model=A1s Query=Q2a,20,20,434.03,86.38,0.199019,0.195651,0.202147,6.79562e-08,2.03581e-06
+E7,A1 Q2a: sorted vs unsorted,FSInputBlocks,Model=A1 Query=Q2a,Model=A1s Query=Q2a,20,20,929004,71320,0.0767704,0.0767701,0.0767793,3.58654e-08,1.11183e-06
+E7,A1 Q2b: sorted vs unsorted,EngineLatency_ms,Model=A1 Query=Q2b,Model=A1s Query=Q2b,20,20,388.759,52.1038,0.134026,0.130758,0.136312,6.79562e-08,2.03581e-06
+E7,A1 Q2b: sorted vs unsorted,WallClock_ms,Model=A1 Query=Q2b,Model=A1s Query=Q2b,20,20,447.9,108.935,0.243213,0.238479,0.246599,6.79562e-08,2.03581e-06
+E7,A1 Q2b: sorted vs unsorted,FSInputBlocks,Model=A1 Query=Q2b,Model=A1s Query=Q2b,20,20,929000,102072,0.109873,0.109873,0.109874,1.98033e-08,7.52525e-07
+E7,A1 Q2c: sorted vs unsorted,EngineLatency_ms,Model=A1 Query=Q2c,Model=A1s Query=Q2c,20,20,393.776,72.9284,0.185203,0.181747,0.188186,6.79562e-08,2.03581e-06
+E7,A1 Q2c: sorted vs unsorted,WallClock_ms,Model=A1 Query=Q2c,Model=A1s Query=Q2c,20,20,451.065,128.92,0.285812,0.279893,0.289286,6.78604e-08,2.03581e-06
+E7,A1 Q2c: sorted vs unsorted,FSInputBlocks,Model=A1 Query=Q2c,Model=A1s Query=Q2c,20,20,929136,143064,0.153975,0.153975,0.153977,1.33674e-08,5.34695e-07
+E7,A1 Q5: sorted vs unsorted,EngineLatency_ms,Model=A1 Query=Q5,Model=A1s Query=Q5,20,20,464.077,99.4668,0.214332,0.209017,0.219072,6.79562e-08,2.03581e-06
+E7,A1 Q5: sorted vs unsorted,WallClock_ms,Model=A1 Query=Q5,Model=A1s Query=Q5,20,20,521.27,156.395,0.300027,0.294284,0.303751,6.79562e-08,2.03581e-06
+E7,A1 Q5: sorted vs unsorted,FSInputBlocks,Model=A1 Query=Q5,Model=A1s Query=Q5,20,20,1.01821e+06,185336,0.182022,0.182022,0.18203,2.48214e-08,8.93569e-07
+E7,A4 Q1: sorted vs unsorted,EngineLatency_ms,Model=A4 Query=Q1,Model=A4s Query=Q1,20,20,359.568,363.539,1.01104,0.993704,1.01935,0.364842,1
+E7,A4 Q1: sorted vs unsorted,WallClock_ms,Model=A4 Query=Q1,Model=A4s Query=Q1,20,20,417.155,421.655,1.01079,0.994056,1.0215,0.37931,1
+E7,A4 Q1: sorted vs unsorted,FSInputBlocks,Model=A4 Query=Q1,Model=A4s Query=Q1,20,20,800000,796632,0.99579,0.995785,0.9958,2.74846e-08,8.93569e-07
+E7,A4 Q2a: sorted vs unsorted,EngineLatency_ms,Model=A4 Query=Q2a,Model=A4s Query=Q2a,20,20,403.965,31.3529,0.077613,0.076139,0.0802168,6.79562e-08,2.03581e-06
+E7,A4 Q2a: sorted vs unsorted,WallClock_ms,Model=A4 Query=Q2a,Model=A4s Query=Q2a,20,20,460.875,86.95,0.188663,0.184571,0.192101,6.79562e-08,2.03581e-06
+E7,A4 Q2a: sorted vs unsorted,FSInputBlocks,Model=A4 Query=Q2a,Model=A4s Query=Q2a,20,20,986016,72264,0.0732889,0.0732889,0.0732976,2.65844e-08,8.93569e-07
+E7,A4 Q2b: sorted vs unsorted,EngineLatency_ms,Model=A4 Query=Q2b,Model=A4s Query=Q2b,20,20,411.072,57.5251,0.139939,0.137062,0.142937,6.79562e-08,2.03581e-06
+E7,A4 Q2b: sorted vs unsorted,WallClock_ms,Model=A4 Query=Q2b,Model=A4s Query=Q2b,20,20,468.685,112.775,0.24062,0.236609,0.243231,6.79562e-08,2.03581e-06
+E7,A4 Q2b: sorted vs unsorted,FSInputBlocks,Model=A4 Query=Q2b,Model=A4s Query=Q2b,20,20,986008,123496,0.125248,0.125248,0.125249,8.88324e-09,3.99746e-07
+E7,A4 Q2c: sorted vs unsorted,EngineLatency_ms,Model=A4 Query=Q2c,Model=A4s Query=Q2c,20,20,425.382,84.8509,0.19947,0.197169,0.202673,6.79562e-08,2.03581e-06
+E7,A4 Q2c: sorted vs unsorted,WallClock_ms,Model=A4 Query=Q2c,Model=A4s Query=Q2c,20,20,483,140.165,0.290197,0.286836,0.29512,6.79562e-08,2.03581e-06
+E7,A4 Q2c: sorted vs unsorted,FSInputBlocks,Model=A4 Query=Q2c,Model=A4s Query=Q2c,20,20,986008,184992,0.187617,0.187616,0.187617,2.51816e-08,8.93569e-07
+E7,A4 Q5: sorted vs unsorted,EngineLatency_ms,Model=A4 Query=Q5,Model=A4s Query=Q5,20,20,480.94,97.0793,0.201853,0.198083,0.207307,6.79562e-08,2.03581e-06
+E7,A4 Q5: sorted vs unsorted,WallClock_ms,Model=A4 Query=Q5,Model=A4s Query=Q5,20,20,536.515,154.785,0.288501,0.28196,0.293183,6.79562e-08,2.03581e-06
+E7,A4 Q5: sorted vs unsorted,FSInputBlocks,Model=A4 Query=Q5,Model=A4s Query=Q5,20,20,1.075e+06,183432,0.170634,0.170634,0.170634,1.02932e-08,4.529e-07
+E7,A6 Q1: sorted vs unsorted,EngineLatency_ms,Model=A6 Query=Q1,Model=A6s Query=Q1,20,20,525.096,521.188,0.992557,0.986913,0.9999,0.0565165,0.339099
+E7,A6 Q1: sorted vs unsorted,WallClock_ms,Model=A6 Query=Q1,Model=A6s Query=Q1,20,20,584.825,582.57,0.996144,0.987052,1.00251,0.218362,0.873449
+E7,A6 Q1: sorted vs unsorted,FSInputBlocks,Model=A6 Query=Q1,Model=A6s Query=Q1,20,20,1.03018e+06,1.02706e+06,0.996964,0.996964,0.996968,1.13063e-08,4.75991e-07
+E7,A6 Q2a: sorted vs unsorted,EngineLatency_ms,Model=A6 Query=Q2a,Model=A6s Query=Q2a,20,20,623.924,108.697,0.174215,0.172191,0.176596,6.79562e-08,2.03581e-06
+E7,A6 Q2a: sorted vs unsorted,WallClock_ms,Model=A6 Query=Q2a,Model=A6s Query=Q2a,20,20,682.9,165.25,0.241983,0.238582,0.246129,6.79562e-08,2.03581e-06
+E7,A6 Q2a: sorted vs unsorted,FSInputBlocks,Model=A6 Query=Q2a,Model=A6s Query=Q2a,20,20,1.1635e+06,73168,0.0628859,0.0628855,0.0628859,1.5201e-08,5.9284e-07
+E7,A6 Q2b: sorted vs unsorted,EngineLatency_ms,Model=A6 Query=Q2b,Model=A6s Query=Q2b,20,20,634.912,131.652,0.207354,0.203934,0.208991,6.79562e-08,2.03581e-06
+E7,A6 Q2b: sorted vs unsorted,WallClock_ms,Model=A6 Query=Q2b,Model=A6s Query=Q2b,20,20,695.15,189.215,0.272193,0.270184,0.27575,6.78604e-08,2.03581e-06
+E7,A6 Q2b: sorted vs unsorted,FSInputBlocks,Model=A6 Query=Q2b,Model=A6s Query=Q2b,20,20,1.1635e+06,124640,0.107125,0.107125,0.107125,1.98359e-08,7.52525e-07
+E7,A6 Q2c: sorted vs unsorted,EngineLatency_ms,Model=A6 Query=Q2c,Model=A6s Query=Q2c,20,20,644.189,160.461,0.24909,0.245988,0.251981,6.79562e-08,2.03581e-06
+E7,A6 Q2c: sorted vs unsorted,WallClock_ms,Model=A6 Query=Q2c,Model=A6s Query=Q2c,20,20,703.435,217.59,0.309325,0.306276,0.312774,6.78604e-08,2.03581e-06
+E7,A6 Q2c: sorted vs unsorted,FSInputBlocks,Model=A6 Query=Q2c,Model=A6s Query=Q2c,20,20,1.1635e+06,187032,0.160749,0.160749,0.16075,1.10695e-08,4.75991e-07
+E7,A6 Q5: sorted vs unsorted,EngineLatency_ms,Model=A6 Query=Q5,Model=A6s Query=Q5,20,20,811.637,197.105,0.242848,0.239487,0.246127,6.79562e-08,2.03581e-06
+E7,A6 Q5: sorted vs unsorted,WallClock_ms,Model=A6 Query=Q5,Model=A6s Query=Q5,20,20,875.715,254.385,0.290488,0.287652,0.294989,6.79562e-08,2.03581e-06
+E7,A6 Q5: sorted vs unsorted,FSInputBlocks,Model=A6 Query=Q5,Model=A6s Query=Q5,20,20,1.25294e+06,217512,0.173601,0.173601,0.173602,2.55873e-08,8.93569e-07
+E6,Q1: E6_512MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_512MB Query=Q1,20,20,336.879,341.62,1.01407,1.00137,1.03036,0.0411236,0.246742
+E6,Q2a: E6_512MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_512MB Query=Q2a,20,20,374.499,383.988,1.02534,0.996928,1.04345,0.0764309,0.360227
+E6,Q4: E6_512MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_512MB Query=Q4,20,20,2.77,9.62735,3.47558,1.98706,10.5559,1.25052e-05,0.000237598
+E6,Q5: E6_512MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_512MB Query=Q5,20,20,430.955,445.365,1.03344,1.02338,1.05316,1.80745e-05,0.000271117
+E6,Q6: E6_512MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_512MB Query=Q6,20,20,429.699,519.105,1.20807,1.18229,1.23006,6.79562e-08,4.48511e-06
+E6,Q7: E6_512MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_512MB Query=Q7,20,20,744.116,814.696,1.09485,1.03801,1.10533,6.61045e-05,0.000859358
+E6,Q1: E6_256MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_256MB Query=Q1,20,20,336.879,340.183,1.00981,0.993724,1.02198,0.364842,0.729683
+E6,Q2a: E6_256MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_256MB Query=Q2a,20,20,374.499,361.686,0.965786,0.943418,0.984724,0.00037499,0.00412489
+E6,Q4: E6_256MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_256MB Query=Q4,20,20,2.77,10.0013,3.61058,2.06733,10.8905,1.25052e-05,0.000237598
+E6,Q5: E6_256MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_256MB Query=Q5,20,20,430.955,425.889,0.988245,0.975982,1.00141,0.239324,0.717971
+E6,Q6: E6_256MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_256MB Query=Q6,20,20,429.699,521.943,1.21467,1.19312,1.23077,6.79562e-08,4.48511e-06
+E6,Q7: E6_256MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_256MB Query=Q7,20,20,744.116,831.527,1.11747,1.05827,1.12997,6.0148e-07,1.5037e-05
+E6,Q1: E6_128MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_128MB Query=Q1,20,20,336.879,344.897,1.0238,1.00121,1.03719,0.00655719,0.054363
+E6,Q2a: E6_128MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_128MB Query=Q2a,20,20,374.499,365.474,0.975902,0.950698,0.992987,0.00604033,0.054363
+E6,Q4: E6_128MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_128MB Query=Q4,20,20,2.77,10.6385,3.8406,2.20178,11.984,5.16578e-06,0.000108481
+E6,Q5: E6_128MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_128MB Query=Q5,20,20,430.955,436.94,1.01389,1.00594,1.0246,0.00178238,0.0178238
+E6,Q6: E6_128MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_128MB Query=Q6,20,20,429.699,523.702,1.21876,1.20298,1.23592,6.79562e-08,4.48511e-06
+E6,Q7: E6_128MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_128MB Query=Q7,20,20,744.116,842.23,1.13185,1.07372,1.14479,6.79562e-08,4.48511e-06
+E6,Q1: E6_64MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_64MB Query=Q1,20,20,336.879,352.118,1.04524,1.03265,1.06396,6.91658e-07,1.59081e-05
+E6,Q2a: E6_64MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_64MB Query=Q2a,20,20,374.499,372.867,0.995642,0.970712,1.01514,0.507505,0.729683
+E6,Q4: E6_64MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_64MB Query=Q4,20,20,2.77,11.9764,4.32363,2.44687,13.1083,1.04727e-06,2.304e-05
+E6,Q5: E6_64MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_64MB Query=Q5,20,20,430.955,444.858,1.03226,1.02037,1.05039,4.6804e-05,0.000655256
+E6,Q6: E6_64MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_64MB Query=Q6,20,20,429.699,523.132,1.21744,1.20235,1.22729,6.79562e-08,4.48511e-06
+E6,Q7: E6_64MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_64MB Query=Q7,20,20,744.116,866.554,1.16454,1.1039,1.17953,6.79562e-08,4.48511e-06
+E6,Q1: E6_32MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_32MB Query=Q1,20,20,336.879,341.452,1.01357,0.999857,1.02625,0.0720454,0.360227
+E6,Q2a: E6_32MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_32MB Query=Q2a,20,20,374.499,366.641,0.979019,0.955353,0.996518,0.0179386,0.12557
+E6,Q4: E6_32MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_32MB Query=Q4,20,20,2.77,15.217,5.4935,3.11651,16.8773,1.91771e-07,4.98605e-06
+E6,Q5: E6_32MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_32MB Query=Q5,20,20,430.955,447.337,1.03801,1.03259,1.04968,6.0148e-07,1.5037e-05
+E6,Q6: E6_32MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_32MB Query=Q6,20,20,429.699,530.628,1.23488,1.21802,1.24661,6.79562e-08,4.48511e-06
+E6,Q7: E6_32MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_32MB Query=Q7,20,20,744.116,896.81,1.2052,1.14144,1.21696,6.79562e-08,4.48511e-06
+E6,Q1: E6_16MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_16MB Query=Q1,20,20,336.879,360.565,1.07031,1.05355,1.08713,1.65708e-07,4.48511e-06
+E6,Q2a: E6_16MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_16MB Query=Q2a,20,20,374.499,361.345,0.964877,0.942301,0.982475,0.000103734,0.00124481
+E6,Q4: E6_16MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_16MB Query=Q4,20,20,2.77,19.6893,7.10803,4.10665,21.4014,6.79562e-08,4.48511e-06
+E6,Q5: E6_16MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_16MB Query=Q5,20,20,430.955,442.33,1.02639,1.01983,1.04057,1.41488e-05,0.00024053
+E6,Q6: E6_16MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_16MB Query=Q6,20,20,429.699,519.359,1.20866,1.1811,1.21875,6.79562e-08,4.48511e-06
+E6,Q7: E6_16MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_16MB Query=Q7,20,20,744.116,890.834,1.19717,1.13374,1.20877,6.79562e-08,4.48511e-06
+E6,Q1: E6_8MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_8MB Query=Q1,20,20,336.879,403.567,1.19796,1.17994,1.21365,6.79562e-08,4.48511e-06
+E6,Q2a: E6_8MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_8MB Query=Q2a,20,20,374.499,391.213,1.04463,1.02039,1.06376,1.59972e-05,0.000255956
+E6,Q4: E6_8MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_8MB Query=Q4,20,20,2.77,31.5855,11.4027,6.5135,34.3382,6.79562e-08,4.48511e-06
+E6,Q5: E6_8MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_8MB Query=Q5,20,20,430.955,503.138,1.1675,1.1589,1.18238,6.79562e-08,4.48511e-06
+E6,Q6: E6_8MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_8MB Query=Q6,20,20,429.699,608.455,1.416,1.39915,1.43739,6.79562e-08,4.48511e-06
+E6,Q7: E6_8MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_8MB Query=Q7,20,20,744.116,1034.02,1.38959,1.31587,1.40379,6.79562e-08,4.48511e-06
+E6,Q1: E6_4MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_4MB Query=Q1,20,20,336.879,448.039,1.32997,1.31257,1.34682,6.79562e-08,4.48511e-06
+E6,Q2a: E6_4MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_4MB Query=Q2a,20,20,374.499,427.177,1.14066,1.11425,1.16232,6.79562e-08,4.48511e-06
+E6,Q4: E6_4MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_4MB Query=Q4,20,20,2.77,58.2233,21.0193,11.9343,64.683,6.79562e-08,4.48511e-06
+E6,Q5: E6_4MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_4MB Query=Q5,20,20,430.955,578.992,1.34351,1.31974,1.35839,6.79562e-08,4.48511e-06
+E6,Q6: E6_4MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_4MB Query=Q6,20,20,429.699,664.3,1.54597,1.52315,1.55594,6.79562e-08,4.48511e-06
+E6,Q7: E6_4MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_4MB Query=Q7,20,20,744.116,1115.98,1.49974,1.42071,1.51345,6.79562e-08,4.48511e-06
+E6,Q1: E6_1MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_1MB Query=Q1,20,20,336.879,669.213,1.98651,1.9628,2.01798,6.79562e-08,4.48511e-06
+E6,Q2a: E6_1MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_1MB Query=Q2a,20,20,374.499,819.357,2.18788,2.13711,2.22529,6.79562e-08,4.48511e-06
+E6,Q4: E6_1MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_1MB Query=Q4,20,20,2.77,206.043,74.3836,42.7072,224.746,6.79562e-08,4.48511e-06
+E6,Q5: E6_1MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_1MB Query=Q5,20,20,430.955,1091.53,2.53281,2.5199,2.55826,6.79562e-08,4.48511e-06
+E6,Q6: E6_1MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_1MB Query=Q6,20,20,429.699,977.928,2.27584,2.24578,2.29992,6.79562e-08,4.48511e-06
+E6,Q7: E6_1MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_1MB Query=Q7,20,20,744.116,1828.58,2.45738,2.32876,2.49202,6.79562e-08,4.48511e-06
+E6,Q1: E6_duckdb_fsb128 vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_duckdb_fsb128 Query=Q1,20,20,336.879,512.363,1.52091,1.48505,1.60857,6.79562e-08,4.48511e-06
+E6,Q2a: E6_duckdb_fsb128 vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_duckdb_fsb128 Query=Q2a,20,20,374.499,499.546,1.3339,1.30004,1.35671,6.79562e-08,4.48511e-06
+E6,Q4: E6_duckdb_fsb128 vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_duckdb_fsb128 Query=Q4,20,20,2.77,24.3417,8.7876,5.05681,26.4735,6.79562e-08,4.48511e-06
+E6,Q5: E6_duckdb_fsb128 vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_duckdb_fsb128 Query=Q5,20,20,430.955,606.733,1.40788,1.39507,1.42696,6.79562e-08,4.48511e-06
+E6,Q6: E6_duckdb_fsb128 vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_duckdb_fsb128 Query=Q6,20,20,429.699,755.685,1.75864,1.72537,1.77194,6.79562e-08,4.48511e-06
+E6,Q7: E6_duckdb_fsb128 vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_duckdb_fsb128 Query=Q7,20,20,744.116,1130.15,1.51878,1.43968,1.5321,6.79562e-08,4.48511e-06
+E6,Q1: E6_polars_default vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_polars_default Query=Q1,20,20,336.879,432.315,1.28329,1.26626,1.30043,6.79562e-08,4.48511e-06
+E6,Q2a: E6_polars_default vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_polars_default Query=Q2a,20,20,374.499,464.057,1.23914,1.20818,1.26,6.79562e-08,4.48511e-06
+E6,Q4: E6_polars_default vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_polars_default Query=Q4,20,20,2.77,9.9,3.57401,1.97624,11.1467,6.67365e-06,0.000133473
+E6,Q5: E6_polars_default vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_polars_default Query=Q5,20,20,430.955,756.554,1.75553,1.74667,1.77549,6.79562e-08,4.48511e-06
+E6,Q6: E6_polars_default vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_polars_default Query=Q6,20,20,429.699,605.89,1.41003,1.39182,1.42578,6.79562e-08,4.48511e-06
+E6,Q7: E6_polars_default vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_polars_default Query=Q7,20,20,744.116,1046.76,1.40672,1.33211,1.41929,6.79562e-08,4.48511e-06
+E9,A1 Q1: 1 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=A1 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A1 Q=Q1 Threads=1 MemoryLimit=10GB,10,10,336.825,996.465,2.9584,2.86679,3.01265,0.000182672,0.00803756
+E9,A1 Q1: 2 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=A1 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A1 Q=Q1 Threads=2 MemoryLimit=10GB,10,10,336.825,530.869,1.5761,1.54285,1.61817,0.000182672,0.00803756
+E9,A1 Q1: 4 threads/8GB vs 4 threads/10GB,EngineLatency_ms,Model=A1 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A1 Q=Q1 Threads=4 MemoryLimit=8GB,10,10,336.825,346.879,1.02985,1.00512,1.0544,0.00458639,0.0917278
+E9,A1 Q1: 4 threads/4GB vs 4 threads/10GB,EngineLatency_ms,Model=A1 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A1 Q=Q1 Threads=4 MemoryLimit=4GB,10,10,336.825,348.343,1.0342,1.01251,1.05266,0.00361051,0.0758208
+E9,A4 Q1: 1 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=A4 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A4 Q=Q1 Threads=1 MemoryLimit=10GB,10,10,343.029,992.546,2.89348,2.83799,2.97873,0.000182672,0.00803756
+E9,A4 Q1: 2 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=A4 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A4 Q=Q1 Threads=2 MemoryLimit=10GB,10,10,343.029,545.431,1.59005,1.55118,1.61237,0.000182672,0.00803756
+E9,A4 Q1: 4 threads/8GB vs 4 threads/10GB,EngineLatency_ms,Model=A4 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A4 Q=Q1 Threads=4 MemoryLimit=8GB,10,10,343.029,343.185,1.00046,0.981903,1.01649,0.909722,1
+E9,A4 Q1: 4 threads/4GB vs 4 threads/10GB,EngineLatency_ms,Model=A4 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A4 Q=Q1 Threads=4 MemoryLimit=4GB,10,10,343.029,344.941,1.00557,0.983367,1.01824,0.909722,1
+E9,A4 Q4: 1 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=A4 Q=Q4 Threads=4 MemoryLimit=10GB,Model=A4 Q=Q4 Threads=1 MemoryLimit=10GB,10,10,16.0694,31.0259,1.93075,1.74809,1.97176,0.000182672,0.00803756
+E9,A4 Q4: 2 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=A4 Q=Q4 Threads=4 MemoryLimit=10GB,Model=A4 Q=Q4 Threads=2 MemoryLimit=10GB,10,10,16.0694,19.7779,1.23078,1.17482,1.26245,0.000182672,0.00803756
+E9,A4 Q4: 4 threads/8GB vs 4 threads/10GB,EngineLatency_ms,Model=A4 Q=Q4 Threads=4 MemoryLimit=10GB,Model=A4 Q=Q4 Threads=4 MemoryLimit=8GB,10,10,16.0694,16.0678,0.999904,0.952943,1.15932,0.96985,1
+E9,A4 Q4: 4 threads/4GB vs 4 threads/10GB,EngineLatency_ms,Model=A4 Q=Q4 Threads=4 MemoryLimit=10GB,Model=A4 Q=Q4 Threads=4 MemoryLimit=4GB,10,10,16.0694,16.3772,1.01916,0.963024,1.09781,0.57075,1
+E9,A6 Q1: 1 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=A6 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A6 Q=Q1 Threads=1 MemoryLimit=10GB,10,10,504.918,1434.77,2.8416,2.7912,2.87001,0.000182672,0.00803756
+E9,A6 Q1: 2 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=A6 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A6 Q=Q1 Threads=2 MemoryLimit=10GB,10,10,504.918,745.873,1.47722,1.44423,1.59981,0.000182672,0.00803756
+E9,A6 Q1: 4 threads/8GB vs 4 threads/10GB,EngineLatency_ms,Model=A6 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A6 Q=Q1 Threads=4 MemoryLimit=8GB,10,10,504.918,508.625,1.00734,0.994814,1.01719,0.241322,1
+E9,A6 Q1: 4 threads/4GB vs 4 threads/10GB,EngineLatency_ms,Model=A6 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A6 Q=Q1 Threads=4 MemoryLimit=4GB,10,10,504.918,512.299,1.01462,1.00095,1.02584,0.0257481,0.463465
+E9,A6 Q4: 1 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=A6 Q=Q4 Threads=4 MemoryLimit=10GB,Model=A6 Q=Q4 Threads=1 MemoryLimit=10GB,10,10,103.039,192.605,1.86924,1.69896,1.95187,0.000182672,0.00803756
+E9,A6 Q4: 2 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=A6 Q=Q4 Threads=4 MemoryLimit=10GB,Model=A6 Q=Q4 Threads=2 MemoryLimit=10GB,10,10,103.039,131.438,1.27561,1.24389,1.3275,0.000182672,0.00803756
+E9,A6 Q4: 4 threads/8GB vs 4 threads/10GB,EngineLatency_ms,Model=A6 Q=Q4 Threads=4 MemoryLimit=10GB,Model=A6 Q=Q4 Threads=4 MemoryLimit=8GB,10,10,103.039,104.94,1.01845,0.996582,1.05432,0.10411,1
+E9,A6 Q4: 4 threads/4GB vs 4 threads/10GB,EngineLatency_ms,Model=A6 Q=Q4 Threads=4 MemoryLimit=10GB,Model=A6 Q=Q4 Threads=4 MemoryLimit=4GB,10,10,103.039,103.982,1.00915,0.989121,1.03369,0.212294,1
+E9,A7 Q1: 1 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=A7 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A7 Q=Q1 Threads=1 MemoryLimit=10GB,10,10,1834.82,5204.87,2.83672,2.66021,2.9135,0.000182672,0.00803756
+E9,A7 Q1: 2 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=A7 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A7 Q=Q1 Threads=2 MemoryLimit=10GB,10,10,1834.82,2885.49,1.57263,1.55703,1.59376,0.000182672,0.00803756
+E9,A7 Q1: 4 threads/8GB vs 4 threads/10GB,EngineLatency_ms,Model=A7 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A7 Q=Q1 Threads=4 MemoryLimit=8GB,10,10,1834.82,1842,1.00391,0.997068,1.01079,0.140465,1
+E9,A7 Q1: 4 threads/4GB vs 4 threads/10GB,EngineLatency_ms,Model=A7 Q=Q1 Threads=4 MemoryLimit=10GB,Model=A7 Q=Q1 Threads=4 MemoryLimit=4GB,10,10,1834.82,1836.44,1.00088,0.993457,1.00643,0.791337,1
+E9,A7 Q4: 1 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=A7 Q=Q4 Threads=4 MemoryLimit=10GB,Model=A7 Q=Q4 Threads=1 MemoryLimit=10GB,10,10,1032.1,1632.24,1.58147,1.5235,1.79283,0.000182672,0.00803756
+E9,A7 Q4: 2 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=A7 Q=Q4 Threads=4 MemoryLimit=10GB,Model=A7 Q=Q4 Threads=2 MemoryLimit=10GB,10,10,1032.1,1482.98,1.43685,1.28086,1.50954,0.000182672,0.00803756
+E9,A7 Q4: 4 threads/8GB vs 4 threads/10GB,EngineLatency_ms,Model=A7 Q=Q4 Threads=4 MemoryLimit=10GB,Model=A7 Q=Q4 Threads=4 MemoryLimit=8GB,10,10,1032.1,1042.98,1.01054,0.965486,1.03251,0.909722,1
+E9,A7 Q4: 4 threads/4GB vs 4 threads/10GB,EngineLatency_ms,Model=A7 Q=Q4 Threads=4 MemoryLimit=10GB,Model=A7 Q=Q4 Threads=4 MemoryLimit=4GB,10,10,1032.1,1022.2,0.990409,0.962539,1.0142,0.273036,1
+E9,B3 Q1: 1 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=B3 Q=Q1 Threads=4 MemoryLimit=10GB,Model=B3 Q=Q1 Threads=1 MemoryLimit=10GB,10,10,346.712,1050.6,3.03017,2.92956,3.09453,0.000182672,0.00803756
+E9,B3 Q1: 2 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=B3 Q=Q1 Threads=4 MemoryLimit=10GB,Model=B3 Q=Q1 Threads=2 MemoryLimit=10GB,10,10,346.712,548.481,1.58195,1.54374,1.62886,0.000182672,0.00803756
+E9,B3 Q1: 4 threads/8GB vs 4 threads/10GB,EngineLatency_ms,Model=B3 Q=Q1 Threads=4 MemoryLimit=10GB,Model=B3 Q=Q1 Threads=4 MemoryLimit=8GB,10,10,346.712,357.871,1.03219,1.00253,1.0507,0.0172575,0.327892
+E9,B3 Q1: 4 threads/4GB vs 4 threads/10GB,EngineLatency_ms,Model=B3 Q=Q1 Threads=4 MemoryLimit=10GB,Model=B3 Q=Q1 Threads=4 MemoryLimit=4GB,10,10,346.712,361.367,1.04227,1.01841,1.06136,0.00170625,0.0375375
+E9,B3 Q4: 1 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=B3 Q=Q4 Threads=4 MemoryLimit=10GB,Model=B3 Q=Q4 Threads=1 MemoryLimit=10GB,10,10,29.4331,45.309,1.53939,1.45403,1.59403,0.000182672,0.00803756
+E9,B3 Q4: 2 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=B3 Q=Q4 Threads=4 MemoryLimit=10GB,Model=B3 Q=Q4 Threads=2 MemoryLimit=10GB,10,10,29.4331,32.9755,1.12036,1.09638,1.15614,0.000182672,0.00803756
+E9,B3 Q4: 4 threads/8GB vs 4 threads/10GB,EngineLatency_ms,Model=B3 Q=Q4 Threads=4 MemoryLimit=10GB,Model=B3 Q=Q4 Threads=4 MemoryLimit=8GB,10,10,29.4331,29.5561,1.00418,0.985793,1.03445,0.520523,1
+E9,B3 Q4: 4 threads/4GB vs 4 threads/10GB,EngineLatency_ms,Model=B3 Q=Q4 Threads=4 MemoryLimit=10GB,Model=B3 Q=Q4 Threads=4 MemoryLimit=4GB,10,10,29.4331,29.4389,1.0002,0.943377,1.0368,0.791337,1
+E9,B4 Q1: 1 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=B4 Q=Q1 Threads=4 MemoryLimit=10GB,Model=B4 Q=Q1 Threads=1 MemoryLimit=10GB,10,10,1310.94,3002.55,2.29038,2.22735,2.33765,0.000182672,0.00803756
+E9,B4 Q1: 2 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=B4 Q=Q1 Threads=4 MemoryLimit=10GB,Model=B4 Q=Q1 Threads=2 MemoryLimit=10GB,10,10,1310.94,1760.75,1.34312,1.33567,1.38273,0.000182672,0.00803756
+E9,B4 Q1: 4 threads/8GB vs 4 threads/10GB,EngineLatency_ms,Model=B4 Q=Q1 Threads=4 MemoryLimit=10GB,Model=B4 Q=Q1 Threads=4 MemoryLimit=8GB,10,10,1310.94,1300.2,0.991811,0.960252,1.0133,0.344704,1
+E9,B4 Q1: 4 threads/4GB vs 4 threads/10GB,EngineLatency_ms,Model=B4 Q=Q1 Threads=4 MemoryLimit=10GB,Model=B4 Q=Q1 Threads=4 MemoryLimit=4GB,10,10,1310.94,1301.3,0.992647,0.965336,1.0161,0.623176,1
+E9,B4 Q4: 1 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=B4 Q=Q4 Threads=4 MemoryLimit=10GB,Model=B4 Q=Q4 Threads=1 MemoryLimit=10GB,10,10,641.045,936.975,1.46164,1.26672,1.54864,0.000182672,0.00803756
+E9,B4 Q4: 2 threads/10GB vs 4 threads/10GB,EngineLatency_ms,Model=B4 Q=Q4 Threads=4 MemoryLimit=10GB,Model=B4 Q=Q4 Threads=2 MemoryLimit=10GB,10,10,641.045,738.463,1.15197,1.10574,1.22591,0.000182672,0.00803756
+E9,B4 Q4: 4 threads/8GB vs 4 threads/10GB,EngineLatency_ms,Model=B4 Q=Q4 Threads=4 MemoryLimit=10GB,Model=B4 Q=Q4 Threads=4 MemoryLimit=8GB,10,10,641.045,648.645,1.01185,0.974906,1.07066,0.427355,1
+E9,B4 Q4: 4 threads/4GB vs 4 threads/10GB,EngineLatency_ms,Model=B4 Q=Q4 Threads=4 MemoryLimit=10GB,Model=B4 Q=Q4 Threads=4 MemoryLimit=4GB,10,10,641.045,649.649,1.01342,0.928557,1.07604,0.850107,1
+E6-BM,Q1: E6_512MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_512MB Query=Q1,20,20,962.267,950.468,0.987738,0.983622,0.990401,2.21776e-07,6.65329e-06
+E6-BM,Q2a: E6_512MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_512MB Query=Q2a,20,20,858.869,861.509,1.00307,1.00041,1.00824,0.0720454,0.576363
+E6-BM,Q4: E6_512MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_512MB Query=Q4,20,20,7.505,25.2077,3.35879,2.6823,6.7211,6.79562e-08,3.66963e-06
+E6-BM,Q5: E6_512MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_512MB Query=Q5,20,20,1009.57,1009.54,0.999972,0.994274,1.00521,0.675014,1
+E6-BM,Q6: E6_512MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_512MB Query=Q6,20,20,1206.67,1248.69,1.03483,1.02752,1.04141,6.79562e-08,3.66963e-06
+E6-BM,Q7: E6_512MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_512MB Query=Q7,20,20,1632.21,1810.55,1.10927,1.1025,1.11554,1.20089e-06,3.00222e-05
+E6-BM,Q1: E6_256MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_256MB Query=Q1,20,20,962.267,956.61,0.994121,0.991857,0.997936,0.000415502,0.00457052
+E6-BM,Q2a: E6_256MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_256MB Query=Q2a,20,20,858.869,861.728,1.00333,1.00065,1.01025,0.0909074,0.636352
+E6-BM,Q4: E6_256MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_256MB Query=Q4,20,20,7.505,25.6317,3.41528,2.73179,6.89878,6.79562e-08,3.66963e-06
+E6-BM,Q5: E6_256MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_256MB Query=Q5,20,20,1009.57,1002.26,0.99276,0.989064,1.00022,0.00556046,0.0556046
+E6-BM,Q6: E6_256MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_256MB Query=Q6,20,20,1206.67,1242.42,1.02963,1.02244,1.03807,6.79562e-08,3.66963e-06
+E6-BM,Q7: E6_256MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_256MB Query=Q7,20,20,1632.21,1854.04,1.13591,1.1301,1.14171,1.20089e-06,3.00222e-05
+E6-BM,Q1: E6_128MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_128MB Query=Q1,20,20,962.267,958.917,0.996518,0.993311,0.999052,0.0274834,0.247351
+E6-BM,Q2a: E6_128MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_128MB Query=Q2a,20,20,858.869,870.329,1.01334,1.00832,1.02323,1.80745e-05,0.000253043
+E6-BM,Q4: E6_128MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_128MB Query=Q4,20,20,7.505,25.9812,3.46185,2.76329,6.90623,6.79562e-08,3.66963e-06
+E6-BM,Q5: E6_128MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_128MB Query=Q5,20,20,1009.57,1010.97,1.00139,0.994617,1.00481,0.71498,1
+E6-BM,Q6: E6_128MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_128MB Query=Q6,20,20,1206.67,1247.78,1.03407,1.02644,1.0419,6.79562e-08,3.66963e-06
+E6-BM,Q7: E6_128MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_128MB Query=Q7,20,20,1632.21,1888.82,1.15722,1.15099,1.1679,1.20089e-06,3.00222e-05
+E6-BM,Q1: E6_64MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_64MB Query=Q1,20,20,962.267,957.488,0.995033,0.991736,1.00139,0.101729,0.636352
+E6-BM,Q2a: E6_64MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_64MB Query=Q2a,20,20,858.869,872.063,1.01536,1.01242,1.02125,1.25052e-05,0.000200083
+E6-BM,Q4: E6_64MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_64MB Query=Q4,20,20,7.505,27.6371,3.68249,2.94482,7.41456,6.79562e-08,3.66963e-06
+E6-BM,Q5: E6_64MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_64MB Query=Q5,20,20,1009.57,1014.15,1.00454,0.998105,1.00789,0.394171,1
+E6-BM,Q6: E6_64MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_64MB Query=Q6,20,20,1206.67,1235.63,1.02401,1.01375,1.0324,3.41558e-07,9.90517e-06
+E6-BM,Q7: E6_64MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_64MB Query=Q7,20,20,1632.21,1951.64,1.1957,1.18594,1.20476,1.20089e-06,3.00222e-05
+E6-BM,Q1: E6_32MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_32MB Query=Q1,20,20,962.267,962.754,1.00051,0.996848,1.00277,0.903116,1
+E6-BM,Q2a: E6_32MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_32MB Query=Q2a,20,20,858.869,882.012,1.02695,1.02337,1.03423,1.37606e-06,3.00222e-05
+E6-BM,Q4: E6_32MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_32MB Query=Q4,20,20,7.505,30.098,4.01039,3.21311,8.01828,6.79562e-08,3.66963e-06
+E6-BM,Q5: E6_32MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_32MB Query=Q5,20,20,1009.57,1022.36,1.01267,1.00835,1.01931,7.4064e-05,0.000888768
+E6-BM,Q6: E6_32MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_32MB Query=Q6,20,20,1206.67,1250.6,1.03641,1.02969,1.04441,6.79562e-08,3.66963e-06
+E6-BM,Q7: E6_32MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_32MB Query=Q7,20,20,1632.21,2028.18,1.2426,1.23657,1.25116,1.20089e-06,3.00222e-05
+E6-BM,Q1: E6_16MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_16MB Query=Q1,20,20,962.267,971.114,1.00919,1.00546,1.01361,6.67365e-06,0.000113452
+E6-BM,Q2a: E6_16MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_16MB Query=Q2a,20,20,858.869,857.543,0.998456,0.994053,1.00484,0.860431,1
+E6-BM,Q4: E6_16MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_16MB Query=Q4,20,20,7.505,33.4067,4.45126,3.57418,8.86751,6.79562e-08,3.66963e-06
+E6-BM,Q5: E6_16MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_16MB Query=Q5,20,20,1009.57,1024.89,1.01517,1.01012,1.01988,3.70512e-05,0.000481665
+E6-BM,Q6: E6_16MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_16MB Query=Q6,20,20,1206.67,1262.98,1.04667,1.03956,1.05241,6.79562e-08,3.66963e-06
+E6-BM,Q7: E6_16MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_16MB Query=Q7,20,20,1632.21,2036.43,1.24765,1.24041,1.25367,1.20089e-06,3.00222e-05
+E6-BM,Q1: E6_8MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_8MB Query=Q1,20,20,962.267,984.889,1.02351,1.02122,1.02826,1.04727e-06,2.72291e-05
+E6-BM,Q2a: E6_8MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_8MB Query=Q2a,20,20,858.869,919.67,1.07079,1.06768,1.07653,4.53897e-07,1.27091e-05
+E6-BM,Q4: E6_8MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_8MB Query=Q4,20,20,7.505,43.904,5.84997,4.70073,11.667,6.79562e-08,3.66963e-06
+E6-BM,Q5: E6_8MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_8MB Query=Q5,20,20,1009.57,1062.34,1.05226,1.04605,1.057,1.59972e-05,0.000239959
+E6-BM,Q6: E6_8MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_8MB Query=Q6,20,20,1206.67,1298.81,1.07637,1.0681,1.08246,6.79562e-08,3.66963e-06
+E6-BM,Q7: E6_8MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_8MB Query=Q7,20,20,1632.21,2169.36,1.32909,1.3226,1.33681,1.20089e-06,3.00222e-05
+E6-BM,Q1: E6_4MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_4MB Query=Q1,20,20,962.267,1090.62,1.13339,1.13042,1.1366,6.79562e-08,3.66963e-06
+E6-BM,Q2a: E6_4MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_4MB Query=Q2a,20,20,858.869,958.127,1.11557,1.11117,1.12349,6.79562e-08,3.66963e-06
+E6-BM,Q4: E6_4MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_4MB Query=Q4,20,20,7.505,65.5817,8.73841,7.01278,17.4037,6.79562e-08,3.66963e-06
+E6-BM,Q5: E6_4MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_4MB Query=Q5,20,20,1009.57,1127.48,1.11679,1.11212,1.12319,9.12665e-07,2.46419e-05
+E6-BM,Q6: E6_4MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_4MB Query=Q6,20,20,1206.67,1355.27,1.12315,1.11522,1.1309,6.79562e-08,3.66963e-06
+E6-BM,Q7: E6_4MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_4MB Query=Q7,20,20,1632.21,2239.78,1.37224,1.3647,1.38526,1.06457e-07,3.66963e-06
+E6-BM,Q1: E6_1MB vs A1,EngineLatency_ms,Model=A1 Query=Q1,Model=E6_1MB Query=Q1,20,20,962.267,1246.5,1.29537,1.28817,1.30092,6.79562e-08,3.66963e-06
+E6-BM,Q2a: E6_1MB vs A1,EngineLatency_ms,Model=A1 Query=Q2a,Model=E6_1MB Query=Q2a,20,20,858.869,1295.25,1.50809,1.50026,1.51776,6.79562e-08,3.66963e-06
+E6-BM,Q4: E6_1MB vs A1,EngineLatency_ms,Model=A1 Query=Q4,Model=E6_1MB Query=Q4,20,20,7.505,202.047,26.9217,21.5059,53.7014,6.79562e-08,3.66963e-06
+E6-BM,Q5: E6_1MB vs A1,EngineLatency_ms,Model=A1 Query=Q5,Model=E6_1MB Query=Q5,20,20,1009.57,1635.16,1.61966,1.60805,1.63344,6.79562e-08,3.66963e-06
+E6-BM,Q6: E6_1MB vs A1,EngineLatency_ms,Model=A1 Query=Q6,Model=E6_1MB Query=Q6,20,20,1206.67,1624.49,1.34626,1.33376,1.35425,6.79562e-08,3.66963e-06
+E6-BM,Q7: E6_1MB vs A1,EngineLatency_ms,Model=A1 Query=Q7,Model=E6_1MB Query=Q7,20,20,1632.21,2811.99,1.72282,1.71197,1.73352,6.79562e-08,3.66963e-06
+D1,Q3_Year: /supp/year/ vs /year/supp/,EngineLatency_ms,Model=E5b_YS Query=Q3_Year,Model=E5b_SY Query=Q3_Year,20,20,349.099,359.061,1.02853,0.972879,1.10984,0.473481,1
+D1,Q3_Year: /supp/year/ vs /year/supp/,PlannerBinding_ms,Model=E5b_YS Query=Q3_Year,Model=E5b_SY Query=Q3_Year,20,20,267.756,281.661,1.05193,0.978044,1.15939,0.250297,1
+D1,Q3_Supp: /supp/year/ vs /year/supp/,EngineLatency_ms,Model=E5b_YS Query=Q3_Supp,Model=E5b_SY Query=Q3_Supp,20,20,277.189,297.306,1.07257,0.975468,1.17462,0.163596,0.887079
+D1,Q3_Supp: /supp/year/ vs /year/supp/,PlannerBinding_ms,Model=E5b_YS Query=Q3_Supp,Model=E5b_SY Query=Q3_Supp,20,20,258.057,278.382,1.07876,0.975587,1.19003,0.147847,0.887079
+D1,Q3_SuppYear: /supp/year/ vs /year/supp/,EngineLatency_ms,Model=E5b_YS Query=Q3_SuppYear,Model=E5b_SY Query=Q3_SuppYear,20,20,289.821,301.574,1.04056,0.948617,1.08806,0.881731,1
+D1,Q3_SuppYear: /supp/year/ vs /year/supp/,PlannerBinding_ms,Model=E5b_YS Query=Q3_SuppYear,Model=E5b_SY Query=Q3_SuppYear,20,20,267.972,280.62,1.0472,0.946969,1.09856,0.860431,1
+E10,"file sizes Zipf vs equal, 75 files, Q1: Z75 vs A4",EngineLatency_ms,Model=A4 Query=Q1,Model=Z75 Query=Q1,20,20,967.099,958.525,0.991134,0.987148,0.998363,0.0114328,0.0571641
+E10,"file sizes Zipf vs equal, 75 files, Q4: Z75 vs A4",EngineLatency_ms,Model=A4 Query=Q4,Model=Z75 Query=Q4,20,20,29.9066,31.2725,1.04567,0.992394,1.08489,0.0810317,0.305724
+E10,"file sizes Zipf vs equal, 75 files, Q3_B1: Z75 vs A4",EngineLatency_ms,Model=A4 Query=Q3_B1,Model=Z75 Query=Q3_B1,20,20,493.815,459.146,0.929794,0.923969,0.939659,1.20089e-06,1.32098e-05
+E10,"file sizes Zipf vs equal, 750 files, Q1: Z750 vs A6",EngineLatency_ms,Model=A6 Query=Q1,Model=Z750 Query=Q1,20,20,1106.08,1144.44,1.03469,1.01519,1.04391,1.37606e-06,1.37606e-05
+E10,"file sizes Zipf vs equal, 750 files, Q4: Z750 vs A6",EngineLatency_ms,Model=A6 Query=Q4,Model=Z750 Query=Q4,20,20,115.118,114.11,0.991243,0.953716,1.05987,0.967635,1
+E10,"file sizes Zipf vs equal, 750 files, Q3_B1: Z750 vs A6",EngineLatency_ms,Model=A6 Query=Q3_B1,Model=Z750 Query=Q3_B1,20,20,651.892,692.322,1.06202,1.02539,1.0804,9.74798e-06,8.77318e-05
+E10,"skewed vs uniform data, 75 flat files, Q1: S_B1 vs A4",EngineLatency_ms,Model=A4 Query=Q1,Model=S_B1 Query=Q1,20,20,967.099,962.327,0.995066,0.990145,1.00108,0.0764309,0.305724
+E10,"skewed vs uniform data, 75 flat files, Q4: S_B1 vs A4",EngineLatency_ms,Model=A4 Query=Q4,Model=S_B1 Query=Q4,20,20,29.9066,29.4667,0.985291,0.936397,1.03062,0.675014,1
+E10,"skewed data: sorted vs hash-distributed rows, Q1: S_S75 vs S_B1",EngineLatency_ms,Model=S_B1 Query=Q1,Model=S_S75 Query=Q1,20,20,962.327,956.235,0.993669,0.987445,0.998781,0.00655719,0.0393432
+E10,"skewed data: sorted vs hash-distributed rows, Q3_B1: S_S75 vs S_B1",EngineLatency_ms,Model=S_B1 Query=Q3_B1,Model=S_S75 Query=Q3_B1,20,20,480.939,59.0078,0.122693,0.120091,0.125325,6.79562e-08,1.42105e-06
+E10,"skewed data: sorted vs hash-distributed rows, Q3_B1_cold: S_S75 vs S_B1",EngineLatency_ms,Model=S_B1 Query=Q3_B1_cold,Model=S_S75 Query=Q3_B1_cold,20,20,476.141,30.4787,0.0640119,0.062034,0.0728743,6.79562e-08,1.42105e-06
+E10,"pruning, uniform data, hot month 1996-01: B3 vs A4",EngineLatency_ms,Model=A4 Query=Q3_B1,Model=B3 Query=Q3_B3,20,20,493.815,50.0656,0.101385,0.0864311,0.113293,6.79562e-08,1.42105e-06
+E10,"pruning, uniform data, cold month 1992-01: B3 vs A4",EngineLatency_ms,Model=A4 Query=Q3_B1_cold,Model=B3 Query=Q3_B3_cold,20,20,494.089,45.6881,0.0924695,0.0833484,0.109343,6.79562e-08,1.42105e-06
+E10,"pruning, skewed data, hot month 1996-01: S_B3 vs S_B1",EngineLatency_ms,Model=S_B1 Query=Q3_B1,Model=S_B3 Query=Q3_B3,20,20,480.939,100.922,0.209845,0.19327,0.219086,6.79562e-08,1.42105e-06
+E10,"pruning, skewed data, cold month 1992-01: S_B3 vs S_B1",EngineLatency_ms,Model=S_B1 Query=Q3_B1_cold,Model=S_B3 Query=Q3_B3_cold,20,20,476.141,43.7441,0.0918721,0.0821117,0.106506,6.79562e-08,1.42105e-06
+E10,"hot vs cold month, S_B1",EngineLatency_ms,Model=S_B1 Query=Q3_B1_cold,Model=S_B1 Query=Q3_B1,20,20,476.141,480.939,1.01008,1.00495,1.01366,0.000757881,0.00530517
+E10,"hot vs cold month, S_B3",EngineLatency_ms,Model=S_B3 Query=Q3_B3_cold,Model=S_B3 Query=Q3_B3,20,20,43.7441,100.922,2.30711,1.94133,2.60929,1.59972e-05,0.000127978
+E10,"hot vs cold month, S_S75",EngineLatency_ms,Model=S_S75 Query=Q3_B1_cold,Model=S_S75 Query=Q3_B1,20,20,30.4787,59.0078,1.93604,1.6968,2.00494,9.12665e-07,1.0952e-05
+E10,"peak memory, Q1: Z75 vs A4",PeakRSS_KB,Model=A4 Query=Q1,Model=Z75 Query=Q1,20,20,70064,113842,1.62483,1.59312,1.66348,6.79562e-08,1.42105e-06
+E10,"peak memory, Q1: Z750 vs A6",PeakRSS_KB,Model=A6 Query=Q1,Model=Z750 Query=Q1,20,20,51336,98102,1.91098,1.87076,1.94408,6.76692e-08,1.42105e-06
+E10,"peak memory, Q1_hive: S_B3 vs B3",PeakRSS_KB,Model=B3 Query=Q1_hive,Model=S_B3 Query=Q1_hive,20,20,76680,102222,1.3331,1.29285,1.40012,6.79562e-08,1.42105e-06
