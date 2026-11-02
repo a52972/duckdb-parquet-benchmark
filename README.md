@@ -164,7 +164,7 @@ results above come from 1.1.0. `results/v1.0/` keeps the 1.0.0 measurements, and
   author  = {Eleuterio, Davi Silva and Oliveira, Pedro Filipe and Matos, Paulo},
   title   = {Analyzing DuckDB's In-Situ Query Performance on Hierarchical and Flat Parquet Layouts},
   version = {1.1.0},
-  doi     = {10.5281/zenodo.XXXXXXXX},
+  doi     = {10.5281/zenodo.23883300},
   url     = {https://github.com/a52972/duckdb-parquet-benchmark},
   year    = {2026}
 }
